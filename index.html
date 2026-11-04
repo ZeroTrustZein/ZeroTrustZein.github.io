@@ -880,8 +880,12 @@ textarea.input { min-height: 90px; resize: vertical; }
         <p style="font-size: 13px; line-height: 14px; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(32, 30, 29, 0.7); margin: 14px 0 0">Diffusion Fine-Tune &middot; 784-Image Corpus &middot; ControlNet &middot; Dergham Design</p>
         <p style="font-size: 15.5px; line-height: 28px; margin: 14px 0 0; color: rgba(32, 30, 29, 0.78); text-align: justify; hyphens: auto">A LoRA on FLUX.1-dev, trained on 784 images from the studio’s own portfolio so renders come out in its limestone and cantilevered-concrete style. ControlNet conditions the output on a 2D elevation or a SketchUp massing model, so the geometry stays the architect’s and the model only supplies materials and light. The studio’s architects use it for early client renders.</p>
         <figure class="press-plate">
+          <div class="press-plate-view" style="aspect-ratio: 16 / 9"><img src="assets/media/gflow-arch-villa.webp" alt="Lebanese mountain villa pavilion generated with Google Flow Imagen" loading="lazy" width="1200" height="670"></div>
+          <figcaption class="press-caption"><span class="fig-id">FIG. 05A</span><span class="fig-kicker">Flow plate · limestone pavilion study</span><span class="fig-cmyk">CMYK · Process proof</span></figcaption>
+        </figure>
+        <figure class="press-plate">
           <div class="press-plate-view" style="aspect-ratio: 16 / 9"><video src="assets/media/proj-flux-morph.mp4" autoplay loop muted playsinline preload="metadata" aria-label="Diffusion loop: SketchUp massing converging into a rendered limestone villa"></video></div>
-          <figcaption class="press-caption"><span class="fig-id">FIG. 05</span><span class="fig-kicker">Massing to stone · diffusion convergence loop</span><span class="fig-cmyk">CMYK · Process proof</span></figcaption>
+          <figcaption class="press-caption"><span class="fig-id">FIG. 05B</span><span class="fig-kicker">Massing to stone · diffusion convergence loop</span><span class="fig-cmyk">CMYK · Process proof</span></figcaption>
         </figure>
       </div>
 
@@ -910,6 +914,10 @@ textarea.input { min-height: 90px; resize: vertical; }
         </div>
         <p style="font-size: 13px; line-height: 14px; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(32, 30, 29, 0.7); margin: 14px 0 0">Bare-Metal Ubuntu Server &middot; Docker &middot; Coolify &middot; Tailscale Mesh &middot; Model Gateway</p>
         <p style="font-size: 15.5px; line-height: 28px; margin: 14px 0 0; color: rgba(32, 30, 29, 0.78); text-align: justify; hyphens: auto">One Ubuntu machine at home running five long-lived services in Docker, deployed through Coolify. Nothing is exposed to the public internet: my laptops reach it over Tailscale with SSH keys only. It hosts Django backends and an OpenAI-compatible gateway that routes my coding tools across several model providers and falls back when one runs out of quota.</p>
+        <figure class="press-plate">
+          <div class="press-plate-view"><pre class="press-code" aria-label="Homelab deployment and tailscale mesh status"><span class="l c"># tailscale status · overlay mesh (no public ports)</span><span class="l"><span class="k">100.122.26.61</span>  coolify-server   linux    active  [Ubuntu 26.04]</span><span class="l"><span class="k">100.99.44.2</span>    zeins-pc         windows  active  [RTX 4070 Ti]</span><span class="l"> </span><span class="l c"># docker ps · coolify stack</span><span class="l">omniroute   :20128  UP  LLM router (claude / deepseek / gemini)</span><span class="l">coolify     :8000   UP  App deployment &amp; Postgres engine</span><span class="l">beszel-hub  :8090   UP  Host telemetrics agent</span></pre></div>
+          <figcaption class="press-caption"><span class="fig-id">FIG. 07</span><span class="fig-kicker">Homelab overlay mesh · private subnet dispatch</span><span class="fig-cmyk">K plate · Composing room</span></figcaption>
+        </figure>
       </div>
     </div>
   </section>
