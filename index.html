@@ -684,6 +684,11 @@ textarea.input { min-height: 90px; resize: vertical; }
     .press-card:hover::before { transform: scaleX(1); }
     .press-card h3 { transition: color 0.3s ease; }
     .press-card:hover h3 { color: var(--color-accent-700); }
+    .proj-grid { grid-template-columns: 1fr; }
+    @media (min-width: 760px) {
+      .proj-grid { grid-template-columns: 1fr 1fr; }
+      .proj-span2 { grid-row: span 2; }
+    }
 
     /* by-the-numbers: dotted leaders draw in on reveal (script-driven
        scaleX) and answer the row hover; numerals count up, tabular so the
@@ -825,7 +830,7 @@ textarea.input { min-height: 90px; resize: vertical; }
       <span style="font-size: 13px; line-height: 14px; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(32, 30, 29, 0.7)">Projects &middot; Filed &amp; Verified</span>
       <span style="font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; color: rgba(32, 30, 29, 0.5)">All metrics verifiable in source</span>
     </div>
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 48px clamp(28px, 4vw, 56px)">
+    <div class="proj-grid" style="display: grid; gap: 48px clamp(28px, 4vw, 56px)">
       <!-- 1. YomYom -->
       <div class="press-card">
         <div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap">
@@ -873,12 +878,12 @@ textarea.input { min-height: 90px; resize: vertical; }
         <p style="font-size: 15.5px; line-height: 28px; margin: 14px 0 0; color: rgba(32, 30, 29, 0.78); text-align: justify; hyphens: auto">A small GPT written in PyTorch without <code>nn.MultiheadAttention</code> or a borrowed tokenizer. Multi-head causal attention is written out by hand, the byte-level BPE tokenizer is my own, and generation uses a KV cache so each new token doesn’t recompute the whole prefix. 34 tests check tokenizer round-trips, that hand-written attention matches PyTorch’s SDPA, that cached and uncached decoding give the same logits, and that the model can overfit a single batch.</p>
         <figure class="press-plate">
           <div class="press-plate-view" style="aspect-ratio: 16 / 9"><video src="assets/media/proj-picogpt-cli.mp4" poster="assets/media/proj-picogpt-cli.webp" autoplay loop muted playsinline preload="metadata" aria-label="pico-gpt CLI: 34 tests passing and streaming text generation with KV-cache"></video></div>
-          <figcaption class="press-caption"><span class="fig-id">FIG. 06</span><span class="fig-kicker">Terminal dispatch · 34 passing tests &amp; streaming KV generation</span><span class="fig-cmyk">CMYK · Process proof</span></figcaption>
+          <figcaption class="press-caption"><span class="fig-id">FIG. 04</span><span class="fig-kicker">Terminal dispatch · 34 passing tests &amp; streaming KV generation</span><span class="fig-cmyk">CMYK · Process proof</span></figcaption>
         </figure>
       </div>
 
       <!-- 4. FLUX.1-dev LoRA -->
-      <div class="press-card">
+      <div class="press-card proj-span2">
         <div style="display: flex; gap: var(--space-2); align-items: baseline; flex-wrap: wrap">
           <h3 style="font-family: var(--font-heading); font-weight: 600; font-size: 26px; line-height: 28px; letter-spacing: -0.01em; margin: 0">FLUX.1-dev LoRA</h3>
           <span class="tag tag-accent-2">In Production</span>
@@ -895,6 +900,23 @@ textarea.input { min-height: 90px; resize: vertical; }
         </figure>
       </div>
 
+      <!-- Hopwire (Graph AML Engine) -->
+      <div class="press-card">
+        <div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap">
+          <div style="display: flex; gap: var(--space-2); align-items: baseline">
+            <h3 style="font-family: var(--font-heading); font-weight: 600; font-size: 26px; line-height: 28px; letter-spacing: -0.01em; margin: 0">Hopwire</h3>
+            <span class="tag tag-accent-2">Rust Engine</span>
+          </div>
+          <a href="https://github.com/ZeroTrustZein/hopwire" target="_blank" rel="noopener" style="font-size: 13px; text-decoration: none; font-weight: 600">Repo <span class="arrow">&rarr;</span></a>
+        </div>
+        <p style="font-size: 13px; line-height: 14px; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(32, 30, 29, 0.7); margin: 14px 0 0">Graph AML Engine &middot; Rust &middot; tract-onnx &middot; ISO 20022 &middot; React + Cytoscape</p>
+        <p style="font-size: 15.5px; line-height: 28px; margin: 14px 0 0; color: rgba(32, 30, 29, 0.78); text-align: justify; hyphens: auto">An anti-money-laundering engine that keeps the last 72 hours of payments in memory as a graph of accounts, devices and IPs. Each payment, as JSON or ISO 20022 pacs.008, triggers a bounded 2&ndash;4 hop search for cycles and pass-through chains; hubs like payroll providers are capped so they can’t stall the search. A small graph neural network runs in-process through tract-onnx, no Python sidecar. On a 2.6M-transaction synthetic benchmark, single-threaded: 9.2 &micro;s p99 at 376k tx/s. On the public IBM AML set precision falls to 1.5%, and the report says so.</p>
+        <figure class="press-plate">
+          <div class="press-plate-view" style="aspect-ratio: 16 / 9"><img src="assets/media/proj-hopwire-flow.svg" alt="Hopwire: in-memory graph traversal with 2-4 hop cyclic AML detection and degree ceilings" loading="lazy" width="1600" height="900"></div>
+          <figcaption class="press-caption"><span class="fig-id">FIG. 06</span><span class="fig-kicker">Fund-flow schematic &middot; 2&ndash;4 hop cycle trace, hubs capped</span><span class="fig-cmyk">CMYK &middot; Schematic</span></figcaption>
+        </figure>
+      </div>
+
       <!-- 5. Jev Assist (Browser Agent) -->
       <div class="press-card">
         <div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap">
@@ -908,7 +930,7 @@ textarea.input { min-height: 90px; resize: vertical; }
         <p style="font-size: 15.5px; line-height: 28px; margin: 14px 0 0; color: rgba(32, 30, 29, 0.78); text-align: justify; hyphens: auto">A browser agent that runs mostly on my own GPU. A 322M-parameter model, distilled and fine-tuned on an RTX 4070 Ti, picks the next DOM action in under 75 ms. When a page has no usable labels, it falls back to a vision-language model that reads the screenshot. It controls the open tab through the Chrome DevTools Protocol from a Manifest V3 side panel in Brave.</p>
         <figure class="press-plate">
           <div class="press-plate-view" style="aspect-ratio: 1152 / 750"><video src="assets/media/proj-jev-demo.mp4" poster="assets/media/proj-jev-demo.webp" autoplay loop muted playsinline preload="metadata" aria-label="Jev Assist replay: the agent books a Zürich to London search in the browser"></video></div>
-          <figcaption class="press-caption"><span class="fig-id">FIG. 04</span><span class="fig-kicker">Live browser replay · Zürich → London in 7.1s</span><span class="fig-cmyk">CMYK · Process proof</span></figcaption>
+          <figcaption class="press-caption"><span class="fig-id">FIG. 07</span><span class="fig-kicker">Live browser replay · Zürich → London in 7.1s</span><span class="fig-cmyk">CMYK · Process proof</span></figcaption>
         </figure>
       </div>
 
@@ -922,7 +944,7 @@ textarea.input { min-height: 90px; resize: vertical; }
         <p style="font-size: 15.5px; line-height: 28px; margin: 14px 0 0; color: rgba(32, 30, 29, 0.78); text-align: justify; hyphens: auto">One Ubuntu machine at home running five long-lived services in Docker, deployed through Coolify. Nothing is exposed to the public internet: my laptops reach it over Tailscale with SSH keys only. It hosts Django backends and an OpenAI-compatible gateway that routes my coding tools across several model providers and falls back when one runs out of quota.</p>
         <figure class="press-plate">
           <div class="press-plate-view"><pre class="press-code" aria-label="Homelab deployment and tailscale mesh status"><span class="l c"># tailscale status · overlay mesh (no public ports)</span><span class="l"><span class="k">100.122.26.61</span>  coolify-server   linux    active  [Ubuntu 26.04]</span><span class="l"><span class="k">100.99.44.2</span>    zeins-pc         windows  active  [RTX 4070 Ti]</span><span class="l"> </span><span class="l c"># docker ps · coolify stack</span><span class="l">omniroute   :20128  UP  LLM router (claude / deepseek / gemini)</span><span class="l">coolify     :8000   UP  App deployment &amp; Postgres engine</span><span class="l">beszel-hub  :8090   UP  Host telemetrics agent</span></pre></div>
-          <figcaption class="press-caption"><span class="fig-id">FIG. 07</span><span class="fig-kicker">Homelab overlay mesh · private subnet dispatch</span><span class="fig-cmyk">K plate · Composing room</span></figcaption>
+          <figcaption class="press-caption"><span class="fig-id">FIG. 08</span><span class="fig-kicker">Homelab overlay mesh · private subnet dispatch</span><span class="fig-cmyk">K plate · Composing room</span></figcaption>
         </figure>
       </div>
     </div>

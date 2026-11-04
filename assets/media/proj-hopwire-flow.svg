@@ -1,0 +1,116 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="t">
+<title id="t">Hopwire: a pacs.008 payment enters seed account A, a bounded 3-hop traversal expands, hub H is capped by a degree ceiling, and cycle A to B to C to A is flagged for review</title>
+<defs>
+<marker id="mc" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#0088b0"/></marker>
+<marker id="mm" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#d6006c"/></marker>
+</defs>
+<style>
+text{font-family:ui-monospace,Menlo,Consolas,monospace;fill:#201e1d}
+.ink{fill:none;stroke:#201e1d;stroke-width:2.5}
+.nd{fill:#fff;stroke:#201e1d;stroke-width:3}
+.lb{font-size:26px;font-weight:700;text-anchor:middle;dominant-baseline:central}
+.sm{font-size:18px;fill:#8c8882;letter-spacing:.06em}
+.ring{fill:none;stroke:#8c8882;stroke-width:2;stroke-dasharray:8 10}
+.e{fill:none;stroke:#8c8882;stroke-width:2}
+.tv{fill:none;stroke:#0088b0;stroke-width:4;stroke-dasharray:1 1}
+.cy{fill:none;stroke:#d6006c;stroke-width:6;stroke-linecap:round}
+.pk{animation:pk 6s linear infinite both}
+.r1,.r2,.r3{animation:r 6s ease-out infinite both}
+.r2{animation-name:r2}.r3{animation-name:r3}
+.tv{animation:tv 6s ease-in-out infinite both}
+.cyg{animation:cy 6s ease-out infinite both}
+.cy{stroke-dasharray:1 1;animation:cyd 6s ease-in-out infinite both}
+.bd{animation:bd 6s ease-out infinite both}
+.cap{animation:cap 6s ease-in-out infinite both}
+@keyframes pk{0%{transform:translateX(-360px);opacity:0}3%{opacity:1}10%{transform:translateX(0);opacity:1}13%,100%{transform:translateX(0);opacity:0}}
+@keyframes r{0%,10%{opacity:0}16%{opacity:1;stroke-width:4}22%,88%{opacity:1;stroke-width:2}96%,100%{opacity:0}}
+@keyframes r2{0%,20%{opacity:0}26%{opacity:1;stroke-width:4}32%,88%{opacity:1;stroke-width:2}96%,100%{opacity:0}}
+@keyframes r3{0%,30%{opacity:0}37%{opacity:1;stroke-width:4}43%,88%{opacity:1;stroke-width:2}96%,100%{opacity:0}}
+@keyframes tv{0%,10%{stroke-dashoffset:1;opacity:1}43%,88%{stroke-dashoffset:0;opacity:1}96%,100%{stroke-dashoffset:0;opacity:0}}
+@keyframes cap{0%,30%{opacity:.35}38%,44%{opacity:1}41%{opacity:.55}88%{opacity:1}100%{opacity:.35}}
+@keyframes cyd{0%,47%{stroke-dashoffset:1}70%,90%{stroke-dashoffset:0}}
+@keyframes cy{0%,46%{opacity:0}47%,90%{opacity:1}97%,100%{opacity:0}}
+@keyframes bd{0%,68%{opacity:0;transform:translateY(12px)}72%,90%{opacity:1;transform:translateY(0)}97%,100%{opacity:0}}
+@media (prefers-reduced-motion:reduce){.pk,.r1,.r2,.r3,.tv,.cyg,.cy,.bd,.cap{animation:none}.pk{opacity:0}}
+</style>
+
+<!-- header -->
+<text x="60" y="76" font-size="22" font-weight="700" letter-spacing=".14em">HOPWIRE · IN-MEMORY FUND-FLOW GRAPH</text>
+<text x="1540" y="76" class="sm" text-anchor="end">SEED A · BOUNDED k ≤ 3</text>
+<path class="ink" d="M60 98H1540"/>
+
+<!-- hop boundaries centred on seed A (560,450) -->
+<circle class="ring r1" cx="560" cy="450" r="120"/>
+<circle class="ring r2" cx="560" cy="450" r="230"/>
+<circle class="ring r3" cx="560" cy="450" r="330"/>
+<g class="sm">
+<text class="r1" x="560" y="322" text-anchor="middle">hop 1</text>
+<text class="r2" x="560" y="212" text-anchor="middle">hop 2</text>
+<text class="r3" x="560" y="112" text-anchor="middle">hop 3</text>
+</g>
+
+<!-- base graph edges -->
+<g class="e">
+<path d="M560 450L470 330M560 450L440 560M560 450L700 340M700 340L730 590M730 590L560 450M700 340L860 260M730 590L880 650M860 260L1060 430M440 560L330 690M470 330L300 250"/>
+<path d="M1060 430L1240 250M1060 430L1290 320M1060 430L1310 430M1060 430L1290 540M1060 430L1240 620M1060 430L1170 690M1060 430L1170 180"/>
+</g>
+
+<!-- traversal (cyan) -->
+<g>
+<path class="tv" pathLength="1" d="M560 450L470 330L300 250"/>
+<path class="tv" pathLength="1" d="M560 450L440 560L330 690"/>
+<path class="tv" pathLength="1" d="M560 450L700 340L860 260L1022 398" marker-end="url(#mc)"/>
+<path class="tv" pathLength="1" d="M700 340L730 590L880 650"/>
+</g>
+
+<!-- hub fan-out leaves (pruned) -->
+<g fill="#fff" stroke="#8c8882" stroke-width="2">
+<circle cx="1240" cy="250" r="14"/><circle cx="1290" cy="320" r="14"/><circle cx="1310" cy="430" r="14"/><circle cx="1290" cy="540" r="14"/><circle cx="1240" cy="620" r="14"/><circle cx="1170" cy="690" r="14"/><circle cx="1170" cy="180" r="14"/>
+</g>
+<text x="1350" y="436" class="sm">+4,812 …</text>
+
+<!-- degree ceiling cap -->
+<g class="cap">
+<rect x="1130" y="200" width="22" height="480" fill="#edbb00" stroke="#201e1d" stroke-width="2.5"/>
+<path d="M1130 230l22-22M1130 290l22-22M1130 350l22-22M1130 410l22-22M1130 470l22-22M1130 530l22-22M1130 590l22-22M1130 650l22-22" stroke="#201e1d" stroke-width="2"/>
+<rect x="1000" y="712" width="296" height="40" fill="#edbb00" stroke="#201e1d" stroke-width="2.5"/>
+<text x="1148" y="739" font-size="19" font-weight="700" text-anchor="middle" letter-spacing=".06em">CAP: DEGREE CEILING</text>
+</g>
+
+<!-- nodes: circle=account, rect=device, diamond=IP -->
+<circle class="nd" cx="560" cy="450" r="40" stroke-width="4"/><text class="lb" x="560" y="450">A</text>
+<circle class="nd" cx="700" cy="340" r="32"/><text class="lb" x="700" y="340">B</text>
+<circle class="nd" cx="730" cy="590" r="32"/><text class="lb" x="730" y="590">C</text>
+<circle class="nd" cx="860" cy="260" r="26"/>
+<circle class="nd" cx="300" cy="250" r="24"/>
+<circle class="nd" cx="880" cy="650" r="24"/>
+<rect class="nd" x="440" y="306" width="60" height="48" rx="10"/><text x="470" y="294" class="sm" text-anchor="middle">device</text>
+<path class="nd" d="M440 528L472 560L440 592L408 560z"/><text x="440" y="620" class="sm" text-anchor="middle">ip</text>
+<path class="nd" d="M330 666L354 690L330 714L306 690z"/>
+<circle class="nd" cx="1060" cy="430" r="46" stroke-width="4"/><text class="lb" x="1060" y="430">H</text>
+<text x="1060" y="500" class="sm" text-anchor="middle">hub</text>
+
+<!-- cycle A→B→C→A -->
+<g class="cyg">
+<path class="cy" pathLength="1" d="M594 427Q620 360 664 344" marker-end="url(#mm)"/>
+<path class="cy" pathLength="1" d="M720 372Q760 470 740 554" marker-end="url(#mm)"/>
+<path class="cy" pathLength="1" d="M696 584Q620 560 590 480" marker-end="url(#mm)"/>
+</g>
+<g class="bd">
+<rect x="560" y="716" width="330" height="44" fill="#d6006c"/>
+<text x="725" y="745" font-size="19" font-weight="700" text-anchor="middle" letter-spacing=".06em" style="fill:#fff">CYCLE DETECTED · REVIEW</text>
+</g>
+
+<!-- incoming pacs.008 packet -->
+<g class="pk">
+<path d="M380 450H514" stroke="#0088b0" stroke-width="4" marker-end="url(#mc)"/>
+<rect x="236" y="426" width="140" height="48" fill="#0088b0"/>
+<text x="306" y="456" font-size="19" font-weight="700" text-anchor="middle" style="fill:#fff">pacs.008</text>
+</g>
+<text x="90" y="456" class="sm">ISO 20022 ▸</text>
+
+<!-- status bar -->
+<path class="ink" d="M60 812H1540"/>
+<text x="60" y="852" font-size="21" letter-spacing=".04em">p99 9.2 µs · 376k tx/s · 72h sliding window · single thread · tract-onnx</text>
+<circle cx="1528" cy="845" r="8" fill="#d6006c"/>
+</svg>
