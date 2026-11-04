@@ -828,9 +828,12 @@ textarea.input { min-height: 90px; resize: vertical; }
     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 48px clamp(28px, 4vw, 56px)">
       <!-- 1. YomYom -->
       <div class="press-card">
-        <div style="display: flex; gap: var(--space-2); align-items: baseline; flex-wrap: wrap">
-          <h3 style="font-family: var(--font-heading); font-weight: 600; font-size: 26px; line-height: 28px; letter-spacing: -0.01em; margin: 0">YomYom</h3>
-          <span class="tag tag-accent">Flagship SaaS</span>
+        <div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap">
+          <div style="display: flex; gap: var(--space-2); align-items: baseline">
+            <h3 style="font-family: var(--font-heading); font-weight: 600; font-size: 26px; line-height: 28px; letter-spacing: -0.01em; margin: 0">YomYom</h3>
+            <span class="tag tag-accent">Flagship SaaS</span>
+          </div>
+          <a href="beta.html?app=yomyom" style="font-size: 13px; text-decoration: none; font-weight: 600">Join the beta <span class="arrow">&rarr;</span></a>
         </div>
         <p style="font-size: 13px; line-height: 14px; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(32, 30, 29, 0.7); margin: 14px 0 0">Restaurant Operations SaaS &middot; Next.js &middot; Supabase &middot; Python &middot; PostgreSQL</p>
         <p style="font-size: 15.5px; line-height: 28px; margin: 14px 0 0; color: rgba(32, 30, 29, 0.78); text-align: justify; hyphens: auto">A dashboard for restaurant owners with more than one branch. It ingests the daily POS exports, computes KPIs per branch, and flags voids, comps and cash drift that don’t match the receipts, the usual sign of a leak or of fraud. The flags come from plain SQL and Python rules; a language model only explains a flag that already exists. The &ge;10% saving is a projection, not a measured result.</p>
@@ -842,9 +845,12 @@ textarea.input { min-height: 90px; resize: vertical; }
 
       <!-- 2. Luka -->
       <div class="press-card">
-        <div style="display: flex; gap: var(--space-2); align-items: baseline; flex-wrap: wrap">
-          <h3 style="font-family: var(--font-heading); font-weight: 600; font-size: 26px; line-height: 28px; letter-spacing: -0.01em; margin: 0">Luka</h3>
-          <span class="tag tag-neutral">Private Beta</span>
+        <div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap">
+          <div style="display: flex; gap: var(--space-2); align-items: baseline">
+            <h3 style="font-family: var(--font-heading); font-weight: 600; font-size: 26px; line-height: 28px; letter-spacing: -0.01em; margin: 0">Luka</h3>
+            <span class="tag tag-neutral">Private Beta</span>
+          </div>
+          <a href="beta.html?app=luka" style="font-size: 13px; text-decoration: none; font-weight: 600">Join the beta <span class="arrow">&rarr;</span></a>
         </div>
         <p style="font-size: 13px; line-height: 14px; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(32, 30, 29, 0.7); margin: 14px 0 0">Memory Archive &middot; React Native Expo &middot; PostgreSQL RLS &middot; 546 Tests</p>
         <p style="font-size: 15.5px; line-height: 28px; margin: 14px 0 0; color: rgba(32, 30, 29, 0.78); text-align: justify; hyphens: auto">An iOS and Android app where families store photos, recordings and stories. Each family is a tenant, and Postgres Row Level Security policies scope every query to the caller’s family, so a bug in the app code can’t leak another family’s data. Media is served through short-lived signed URLs. 546 tests in 50 suites run on every commit, including checks that one tenant can’t read another’s rows.</p>
@@ -896,7 +902,7 @@ textarea.input { min-height: 90px; resize: vertical; }
             <h3 style="font-family: var(--font-heading); font-weight: 600; font-size: 26px; line-height: 28px; letter-spacing: -0.01em; margin: 0">Jev Assist</h3>
             <span class="tag tag-accent">CUDA Agent</span>
           </div>
-          <a href="https://github.com/ZeroTrustZein/open-browser-automation" target="_blank" rel="noopener" style="font-size: 13px; text-decoration: none; font-weight: 600">Repo <span class="arrow">&rarr;</span></a>
+          <a href="https://github.com/ZeroTrustZein/jev-ultrafast" target="_blank" rel="noopener" style="font-size: 13px; text-decoration: none; font-weight: 600">Repo <span class="arrow">&rarr;</span></a>
         </div>
         <p style="font-size: 13px; line-height: 14px; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(32, 30, 29, 0.7); margin: 14px 0 0">Browser Automation Agent &middot; 322M Distilled Model &middot; Chrome DevTools Protocol &middot; Manifest V3</p>
         <p style="font-size: 15.5px; line-height: 28px; margin: 14px 0 0; color: rgba(32, 30, 29, 0.78); text-align: justify; hyphens: auto">A browser agent that runs mostly on my own GPU. A 322M-parameter model, distilled and fine-tuned on an RTX 4070 Ti, picks the next DOM action in under 75 ms. When a page has no usable labels, it falls back to a vision-language model that reads the screenshot. It controls the open tab through the Chrome DevTools Protocol from a Manifest V3 side panel in Brave.</p>
