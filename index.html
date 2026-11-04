@@ -594,7 +594,7 @@ textarea.input { min-height: 90px; resize: vertical; }
       background: var(--color-bg); border: 1px solid var(--color-divider);
       transition: border-color 0.4s ease; }
     .press-frame:hover { border-color: color-mix(in srgb, var(--color-text) 45%, transparent); }
-    .press-frame::before { content: ""; position: absolute; inset: 0; z-index: 3; pointer-events: none; opacity: 0.55;
+    .press-frame::before, .press-plate::before { content: ""; position: absolute; inset: 0; z-index: 3; pointer-events: none; opacity: 0.55;
       background-repeat: no-repeat;
       background-image:
         linear-gradient(var(--color-text), var(--color-text)), linear-gradient(var(--color-text), var(--color-text)),
@@ -604,6 +604,38 @@ textarea.input { min-height: 90px; resize: vertical; }
       background-size: 9px 1px, 1px 9px, 9px 1px, 1px 9px, 9px 1px, 1px 9px, 9px 1px, 1px 9px;
       background-position: left 4px top 4px, left 4px top 4px, right 4px top 4px, right 4px top 4px,
         left 4px bottom 4px, left 4px bottom 4px, right 4px bottom 4px, right 4px bottom 4px; }
+
+    /* media plates: screenshots and proof loops pulled as press proofs —
+       same crop marks as the portrait sheet (shared ::before above), a
+       halftone screen over the view that lifts on hover, process-ink
+       misregistration shadows on the trim */
+    .press-plate { position: relative; margin: 20px 0 0; padding: 8px; background: var(--color-bg);
+      border: 1px solid var(--color-divider);
+      transition: border-color 0.35s ease, box-shadow 0.35s ease; }
+    .press-plate-view { position: relative; overflow: hidden; background: color-mix(in srgb, var(--color-text) 6%, transparent); }
+    .press-plate-view > img, .press-plate-view > video { display: block; width: 100%; height: 100%; object-fit: cover;
+      transition: transform 0.6s cubic-bezier(0.2, 0.6, 0.2, 1); }
+    .press-plate-view::after { content: ""; position: absolute; inset: 0; pointer-events: none;
+      background-image: radial-gradient(circle, rgba(0,0,0,0.18) 28%, transparent 30%);
+      background-size: 3px 3px; mix-blend-mode: multiply; opacity: 0.85; transition: opacity 0.45s ease; }
+    .press-plate:hover, .press-card:hover .press-plate { border-color: color-mix(in srgb, var(--color-text) 45%, transparent);
+      box-shadow: 3px 3px 0 color-mix(in srgb, var(--color-accent) 30%, transparent), -2px -2px 0 color-mix(in srgb, var(--color-accent-2) 15%, transparent); }
+    .press-plate:hover .press-plate-view::after, .press-card:hover .press-plate-view::after { opacity: 0.15; }
+    .press-plate:hover .press-plate-view > *, .press-card:hover .press-plate-view > * { transform: scale(1.02); }
+    .press-caption { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 10px; margin: 8px 0 0; padding-top: 6px;
+      border-top: 1px dotted color-mix(in srgb, var(--color-text) 40%, transparent);
+      font-size: 10.5px; line-height: 14px; letter-spacing: 0.08em; text-transform: uppercase;
+      color: color-mix(in srgb, var(--color-text) 70%, transparent); }
+    .press-caption .fig-id { font-weight: 700; color: var(--color-text); }
+    .press-caption .fig-kicker { flex: 1; font-family: "Source Serif 4", serif; font-style: italic; }
+    .press-caption .fig-cmyk { margin-left: auto; color: var(--color-accent-2-700); white-space: nowrap; }
+    /* the code plate: a galley proof of source, set in mono on the sheet */
+    .press-code { margin: 0; padding: 14px 16px; overflow-x: auto; background: color-mix(in srgb, var(--color-text) 4%, var(--color-bg));
+      font: 12px/19px ui-monospace, "Cascadia Mono", Consolas, monospace; color: var(--color-text); }
+    .press-code .l { display: block; white-space: pre; } /* one span per line: the runtime drops bare-newline text nodes */
+    .press-code .c { color: color-mix(in srgb, var(--color-text) 50%, transparent); font-style: italic; }
+    .press-code .k { color: var(--color-accent-700); }
+    .press-code .m { color: var(--color-accent-2-700); }
 
     
     /* Interactive calibration and arrow hover animations */
@@ -768,6 +800,10 @@ textarea.input { min-height: 90px; resize: vertical; }
     <h2 style="font-family: var(--font-heading); font-weight: 600; font-size: clamp(30px, 3.2vw, 44px); line-height: 1.15; letter-spacing: -0.015em; margin: 0; max-width: 24ch">The office that left paper behind</h2>
     <p style="font-size: 13px; line-height: 14px; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(32, 30, 29, 0.7); margin: 24px 0 0">IT &amp; Digital Operations Lead · Dergham Design Studio, Beirut · Jun 2023 – May 2025</p>
     <p style="font-size: 16.5px; line-height: 28px; max-width: 62ch; margin: 24px 0 0; text-align: justify; hyphens: auto">A design and real-estate studio that ran on shelves of paper maps. Over two years — through Lebanon’s electricity crisis — Zein rebuilt it as a high-tech operation: hardware, network, continuity, web presence and automation, all owned end to end.</p>
+    <figure class="press-plate" style="margin-top: 36px">
+      <div class="press-plate-view" style="aspect-ratio: 16 / 9"><img src="assets/media/exp-dergham-villa.webp" alt="The coastal villa, a Dergham Design Studio monograph plate" loading="lazy" width="1000" height="563"></div>
+      <figcaption class="press-caption"><span class="fig-id">FIG. 01</span><span class="fig-kicker">The coastal villa · monograph plate · Beirut</span><span class="fig-cmyk">CMYK · Process proof</span></figcaption>
+    </figure>
     <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 42px clamp(28px, 4vw, 64px); margin-top: 56px">
       <div>
         <h3 style="font-family: var(--font-heading); font-weight: 600; font-size: 24px; line-height: 28px; letter-spacing: -0.01em; margin: 0">Infrastructure &amp; continuity</h3>
@@ -798,6 +834,10 @@ textarea.input { min-height: 90px; resize: vertical; }
         </div>
         <p style="font-size: 13px; line-height: 14px; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(32, 30, 29, 0.7); margin: 14px 0 0">Restaurant Operations SaaS &middot; Next.js &middot; Supabase &middot; Python &middot; PostgreSQL</p>
         <p style="font-size: 15.5px; line-height: 28px; margin: 14px 0 0; color: rgba(32, 30, 29, 0.78); text-align: justify; hyphens: auto">An owner-first control room for multi-branch restaurants. Daily POS exports become actionable operating KPIs, void/comp tracking, and automated profit-leak alerts. An AI copilot sits on top of deterministic logic to diagnose operational variance rather than chat. Projected to lift efficiency by &ge;10%.</p>
+        <figure class="press-plate">
+          <div class="press-plate-view" style="aspect-ratio: 16 / 10"><img src="assets/media/proj-yomyom-dash.webp" alt="YomYom operator dashboard: branch KPIs from POS ingestion" loading="lazy" width="1000" height="625"></div>
+          <figcaption class="press-caption"><span class="fig-id">FIG. 02</span><span class="fig-kicker">Operator control room · POS to KPI ingestion</span><span class="fig-cmyk">CMYK · Process proof</span></figcaption>
+        </figure>
       </div>
 
       <!-- 2. Luka -->
@@ -808,6 +848,10 @@ textarea.input { min-height: 90px; resize: vertical; }
         </div>
         <p style="font-size: 13px; line-height: 14px; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(32, 30, 29, 0.7); margin: 14px 0 0">Memory Archive &middot; React Native Expo &middot; PostgreSQL RLS &middot; 546 Tests</p>
         <p style="font-size: 15.5px; line-height: 28px; margin: 14px 0 0; color: rgba(32, 30, 29, 0.78); text-align: justify; hyphens: auto">A cross-platform mobile archive for family memory preservation. Privacy is enforced at the database layer through family-scoped Postgres Row Level Security and signed temporary storage URLs. Backed by 546 automated tests across 50 test suites verifying multi-tenant isolation on every commit.</p>
+        <figure class="press-plate">
+          <div class="press-plate-view" style="aspect-ratio: 16 / 10"><img src="assets/media/proj-luka-app.webp" alt="Luka: a family memory archive" loading="lazy" width="800" height="1433" style="object-position: 50% 62%"></div>
+          <figcaption class="press-caption"><span class="fig-id">FIG. 03</span><span class="fig-kicker">The living archive · database-enforced RLS</span><span class="fig-cmyk">CMYK · Process proof</span></figcaption>
+        </figure>
       </div>
 
       <!-- 3. pico-gpt -->
@@ -821,6 +865,10 @@ textarea.input { min-height: 90px; resize: vertical; }
         </div>
         <p style="font-size: 13px; line-height: 14px; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(32, 30, 29, 0.7); margin: 14px 0 0">Transformer Language Model &middot; PyTorch &middot; BPE Tokenizer &middot; KV-Cache &middot; 34 Tests</p>
         <p style="font-size: 15.5px; line-height: 28px; margin: 14px 0 0; color: rgba(32, 30, 29, 0.78); text-align: justify; hyphens: auto">A minimal GPT transformer built from first principles in PyTorch. Implements hand-coded multi-head self-attention without framework shortcuts, paired with a custom byte-level Byte Pair Encoding (BPE) tokenizer and KV-cache decoding for fast autoregressive generation. 34 unit tests cover every layer.</p>
+        <figure class="press-plate">
+          <div class="press-plate-view"><pre class="press-code" aria-label="pico-gpt attention and training loss excerpt"><span class="l c"># model.py · causal self-attention, by hand</span><span class="l"><span class="k">att</span> = (q @ k.transpose(-2, -1)) / math.sqrt(hs)</span><span class="l"><span class="k">att</span> = att.masked_fill(mask[:T, :T] == <span class="m">0</span>, <span class="m">-inf</span>)</span><span class="l"><span class="k">att</span> = F.softmax(att, dim=-1)</span><span class="l"><span class="k">y</span>   = att @ v   <span class="c"># (B, nh, T, hs)</span></span><span class="l"> </span><span class="l c"># train.log · cross-entropy, val split</span><span class="l">step    0 │ loss <span class="m">10.98</span> ████████████████████</span><span class="l">step  500 │ loss  <span class="m">4.71</span> █████████</span><span class="l">step 1000 │ loss  <span class="m">3.12</span> ██████</span><span class="l">step 2000 │ loss  <span class="m">2.41</span> ████▌</span></pre></div>
+          <figcaption class="press-caption"><span class="fig-id">FIG. 06</span><span class="fig-kicker">Galley proof · attention, then the loss falls</span><span class="fig-cmyk">K plate · Composing room</span></figcaption>
+        </figure>
       </div>
 
       <!-- 4. FLUX.1-dev LoRA -->
@@ -831,6 +879,10 @@ textarea.input { min-height: 90px; resize: vertical; }
         </div>
         <p style="font-size: 13px; line-height: 14px; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(32, 30, 29, 0.7); margin: 14px 0 0">Diffusion Fine-Tune &middot; 784-Image Corpus &middot; ControlNet &middot; Dergham Design</p>
         <p style="font-size: 15.5px; line-height: 28px; margin: 14px 0 0; color: rgba(32, 30, 29, 0.78); text-align: justify; hyphens: auto">An architectural diffusion model fine-tuned on a curated 784-image portfolio dataset to render in the firm's limestone and cantilevered-concrete signature style. Conditioned on 2D elevations and SketchUp massing via ControlNet and deployed directly to live production for the studio's architects.</p>
+        <figure class="press-plate">
+          <div class="press-plate-view" style="aspect-ratio: 16 / 9"><video src="assets/media/proj-flux-morph.mp4" autoplay loop muted playsinline preload="metadata" aria-label="Diffusion loop: SketchUp massing converging into a rendered limestone villa"></video></div>
+          <figcaption class="press-caption"><span class="fig-id">FIG. 05</span><span class="fig-kicker">Massing to stone · diffusion convergence loop</span><span class="fig-cmyk">CMYK · Process proof</span></figcaption>
+        </figure>
       </div>
 
       <!-- 5. Jev Assist (Browser Agent) -->
@@ -844,6 +896,10 @@ textarea.input { min-height: 90px; resize: vertical; }
         </div>
         <p style="font-size: 13px; line-height: 14px; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(32, 30, 29, 0.7); margin: 14px 0 0">Browser Automation Agent &middot; 322M Distilled Model &middot; Chrome DevTools Protocol &middot; Manifest V3</p>
         <p style="font-size: 15.5px; line-height: 28px; margin: 14px 0 0; color: rgba(32, 30, 29, 0.78); text-align: justify; hyphens: auto">A hybrid on-device browser automation agent. Distilled and fine-tuned a 322M parameter decision model on local CUDA (RTX 4070 Ti) delivering sub-75ms DOM action predictions, backed by an autonomous VLM fallback for unlabelled UI. Drives active tabs via CDP through a custom Manifest V3 Brave side panel.</p>
+        <figure class="press-plate">
+          <div class="press-plate-view" style="aspect-ratio: 1152 / 750"><video src="assets/media/proj-jev-demo.mp4" poster="assets/media/proj-jev-demo.webp" autoplay loop muted playsinline preload="metadata" aria-label="Jev Assist replay: the agent books a Zürich to London search in the browser"></video></div>
+          <figcaption class="press-caption"><span class="fig-id">FIG. 04</span><span class="fig-kicker">Live browser replay · Zürich → London in 7.1s</span><span class="fig-cmyk">CMYK · Process proof</span></figcaption>
+        </figure>
       </div>
 
       <!-- 6. Homelab & Deployment Platform -->
@@ -1069,6 +1125,16 @@ class Component extends DCLogic {
         };
         addEventListener('scroll', upd, { passive: true });
         upd();
+      }
+      // proof loops: React drops the empty boolean attrs (muted/loop), so set
+      // them as properties; play only on screen, never under reduced motion
+      const vids = [...document.querySelectorAll('.press-plate-view video')];
+      vids.forEach(v => { v.muted = true; v.loop = true; v.playsInline = true; v.autoplay = false; v.pause(); });
+      if (vids.length && !reduce && 'IntersectionObserver' in window) {
+        const io3 = new IntersectionObserver(es => es.forEach(e => {
+          if (e.isIntersecting) e.target.play().catch(() => {}); else e.target.pause();
+        }), { threshold: 0.25 });
+        vids.forEach(v => io3.observe(v));
       }
     };
     // this runs before dc-runtime swaps the raw <x-dc> template for the
