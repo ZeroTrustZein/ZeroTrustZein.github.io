@@ -590,25 +590,137 @@ textarea.input { min-height: 90px; resize: vertical; }
 </nav>
 <div style="max-width: 1200px; margin: 0 auto; padding: 0 clamp(20px, 5vw, 72px)">
 
-  <section data-screen-label="Skills" style="padding: 42px 0 84px" data-reveal="">
-    <span style="display: block; font-size: 13px; line-height: 14px; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(32, 30, 29, 0.7); margin: 0 0 14px">Toolbox</span>
-    <h2 style="font-family: var(--font-heading); font-weight: 600; font-size: clamp(30px, 3.2vw, 44px); line-height: 1.15; letter-spacing: -0.015em; margin: 0">The composing room</h2>
-    <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 42px clamp(20px, 3vw, 48px); margin-top: 42px">
+  <section style="display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 4fr); gap: 28px clamp(32px, 5vw, 88px); align-items: center; padding: clamp(56px, 8vw, 112px) 0 84px">
+    <div>
+      <h1 style="font-family: var(--font-heading); font-weight: var(--font-heading-weight); font-size: clamp(40px, 5.6vw, 76px); line-height: 1.08; letter-spacing: -0.02em; margin: 0 0 0 -0.035em">
+        <span class="cmyk-head" style="display: block; animation: rise 0.9s cubic-bezier(0.2, 0.6, 0.2, 1) 0.05s both"><span class="paper">Runs on AI.</span><span class="plate plate-c" aria-hidden="true">Runs on AI.</span><span class="plate plate-m" aria-hidden="true">Runs on AI.</span><span class="plate plate-y" aria-hidden="true">Runs on AI.</span></span>
+        <span class="cmyk-head" style="display: block; animation: rise 0.9s cubic-bezier(0.2, 0.6, 0.2, 1) 0.22s both"><span class="paper">Reads the business.</span><span class="plate plate-c" aria-hidden="true">Reads the business.</span><span class="plate plate-m" aria-hidden="true">Reads the business.</span><span class="plate plate-y" aria-hidden="true">Reads the business.</span></span>
+      </h1>
+      <p style="font-size: 17px; line-height: 28px; max-width: 58ch; margin: 36px 0 0; animation: fadein 1s ease 0.5s both">Zein Dergham is a Data Science master’s student in Leipzig who builds dashboards, pipelines and AI copilots that make operations cheaper, faster and harder to break — and explains them in the language owners actually speak.</p>
+      <div style="display: flex; gap: var(--space-3); flex-wrap: wrap; margin-top: 28px; animation: fadein 1s ease 0.7s both">
+        <a class="btn btn-primary" href="#experience" style="text-decoration: none">Read the work</a>
+        <a class="btn btn-ghost" href="mailto:z.dergham@lancaster.ac.uk" style="text-decoration: none">Write to the editor</a>
+      </div>
+    </div>
+    <figure class="cmyk" style="margin: 0; overflow: visible; animation: fadein 1.2s ease 0.35s both">
+      <div class="print" style="aspect-ratio: 1122 / 1402">
+        <img src="portrait.png" alt="Portrait of Zein Dergham, printed as four process plates" style="width: 100%; height: 100%; object-fit: cover; display: block; opacity: 1">
+      </div>
+    </figure>
+  </section>
+
+  <section aria-label="By the numbers" style="padding: 0 0 70px" data-reveal="">
+    <hr style="height: 5px; border: 0; margin: 0; border-top: 2px solid var(--color-text); border-bottom: 1px solid var(--color-text)">
+    <p style="display: flex; justify-content: space-between; flex-wrap: wrap; gap: 14px 28px; margin: 0; padding: 14px 0; font-size: 13px; line-height: 14px; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(32, 30, 29, 0.7)">
+      <span>Leipzig, Germany</span>
+      <span>M.Sc. Data Science, Lancaster University</span>
+      <span>Open to working-student roles</span>
+      <span>Remote-friendly</span>
+    </p>
+    <hr style="height: 0; border: 0; border-top: 1px solid var(--color-text); margin: 0">
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px 70px; padding: 14px 0 28px">
+      <p style="display: flex; align-items: baseline; gap: 8px; margin: 0; font-size: 15.5px; line-height: 28px"><span>Office hours won back daily, mid power crisis</span><span style="flex: 1; min-width: 28px; align-self: flex-end; margin-bottom: 0.34em; border-bottom: 1px dotted rgba(32, 30, 29, 0.45)"></span><span style="font-family: var(--font-heading); font-weight: 600; font-size: 17px; color: var(--color-accent-700)">+4</span></p>
+      <p style="display: flex; align-items: baseline; gap: 8px; margin: 0; font-size: 15.5px; line-height: 28px"><span>Projected cost &amp; efficiency gain, YomYom</span><span style="flex: 1; min-width: 28px; align-self: flex-end; margin-bottom: 0.34em; border-bottom: 1px dotted rgba(32, 30, 29, 0.45)"></span><span style="font-family: var(--font-heading); font-weight: 600; font-size: 17px">≥10%</span></p>
+      <p style="display: flex; align-items: baseline; gap: 8px; margin: 0; font-size: 15.5px; line-height: 28px"><span>Years running a studio’s entire IT</span><span style="flex: 1; min-width: 28px; align-self: flex-end; margin-bottom: 0.34em; border-bottom: 1px dotted rgba(32, 30, 29, 0.45)"></span><span style="font-family: var(--font-heading); font-weight: 600; font-size: 17px">2</span></p>
+      <p style="display: flex; align-items: baseline; gap: 8px; margin: 0; font-size: 15.5px; line-height: 28px"><span>Languages on the desk</span><span style="flex: 1; min-width: 28px; align-self: flex-end; margin-bottom: 0.34em; border-bottom: 1px dotted rgba(32, 30, 29, 0.45)"></span><span style="font-family: var(--font-heading); font-weight: 600; font-size: 17px">4</span></p>
+    </div>
+    <hr style="height: 0; border: 0; border-top: 1px solid var(--color-text); margin: 0">
+  </section>
+
+  <section id="experience" data-screen-label="Experience" style="padding: 42px 0 84px" data-reveal="">
+    <span style="display: block; font-size: 13px; line-height: 14px; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(32, 30, 29, 0.7); margin: 0 0 14px">Experience</span>
+    <h2 style="font-family: var(--font-heading); font-weight: 600; font-size: clamp(30px, 3.2vw, 44px); line-height: 1.15; letter-spacing: -0.015em; margin: 0; max-width: 28ch">From the lecture hall to the terminal</h2>
+    <p style="font-size: 13px; line-height: 14px; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(32, 30, 29, 0.7); margin: 24px 0 0">Graduate Lab Demonstrator &middot; Lancaster University Leipzig &middot; Oct 2026 – Present</p>
+    <p style="font-size: 16.5px; line-height: 28px; max-width: 62ch; margin: 24px 0 0; text-align: justify; hyphens: auto">Each week in the lab, final-year students bring code that almost works. Zein's job is the distance between <em>almost</em> and <em>done</em>. He demonstrates across three courses: deep learning, compiler architecture, and software testing. Build it, then show that it holds.</p>
+    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 42px clamp(28px, 4vw, 64px); margin-top: 42px; margin-bottom: 56px">
       <div>
-        <h3 style="font-family: var(--font-heading); font-weight: 600; font-size: 20px; line-height: 24px; letter-spacing: -0.01em; margin: 0">Machine Learning</h3>
-        <p style="font-size: 15px; line-height: 26px; margin: 14px 0 0; color: rgba(32, 30, 29, 0.78)">PyTorch, transformer architectures from scratch, LoRA diffusion fine-tuning, ControlNet, RAG (BM25 + dense vector fusion), scikit-learn, NumPy.</p>
+        <h3 style="font-family: var(--font-heading); font-weight: 600; font-size: 22px; line-height: 26px; letter-spacing: -0.01em; margin: 0">Deep Learning</h3>
+        <p style="font-size: 15.5px; line-height: 28px; margin: 14px 0 0; color: rgba(32, 30, 29, 0.78); text-align: justify; hyphens: auto">Guiding third-year computer science students through neural network architectures, backprop derivation, loss convergence on GPUs, and PyTorch training loops.</p>
       </div>
       <div>
-        <h3 style="font-family: var(--font-heading); font-weight: 600; font-size: 20px; line-height: 24px; letter-spacing: -0.01em; margin: 0">Data &amp; Analytics</h3>
-        <p style="font-size: 15px; line-height: 26px; margin: 14px 0 0; color: rgba(32, 30, 29, 0.78)">Python, SQL, PostgreSQL, relational data modelling, operational KPI telemetry, automated leak detection, branch comparisons, pandas.</p>
+        <h3 style="font-family: var(--font-heading); font-weight: 600; font-size: 22px; line-height: 26px; letter-spacing: -0.01em; margin: 0">Compiler Architecture</h3>
+        <p style="font-size: 15.5px; line-height: 28px; margin: 14px 0 0; color: rgba(32, 30, 29, 0.78); text-align: justify; hyphens: auto">Demystifying AST construction, lexical parsing, type-checking passes, and intermediate representations where semantic bugs have nowhere to hide.</p>
       </div>
       <div>
-        <h3 style="font-family: var(--font-heading); font-weight: 600; font-size: 20px; line-height: 24px; letter-spacing: -0.01em; margin: 0">Engineering</h3>
-        <p style="font-size: 15px; line-height: 26px; margin: 14px 0 0; color: rgba(32, 30, 29, 0.78)">TypeScript, Next.js, React Native / Expo, Supabase (Row-Level Security), Django, Rust (LSM-tree KV engine), REST APIs, Git, pytest, Jest.</p>
+        <h3 style="font-family: var(--font-heading); font-weight: 600; font-size: 22px; line-height: 26px; letter-spacing: -0.01em; margin: 0">Software Testing</h3>
+        <p style="font-size: 15.5px; line-height: 28px; margin: 14px 0 0; color: rgba(32, 30, 29, 0.78); text-align: justify; hyphens: auto">Instilling the contract that unverified software is a hypothesis. Unit test suites, test fixtures, property tests, and boundary assertions.</p>
+      </div>
+    </div>
+
+    <hr style="height: 0; border: 0; border-top: 1px dashed rgba(32, 30, 29, 0.25); margin: 42px 0 56px">
+
+    <h2 style="font-family: var(--font-heading); font-weight: 600; font-size: clamp(30px, 3.2vw, 44px); line-height: 1.15; letter-spacing: -0.015em; margin: 0; max-width: 24ch">The office that left paper behind</h2>
+    <p style="font-size: 13px; line-height: 14px; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(32, 30, 29, 0.7); margin: 24px 0 0">IT &amp; Digital Operations Lead · Dergham Design Studio, Beirut · Jun 2023 – May 2025</p>
+    <p style="font-size: 16.5px; line-height: 28px; max-width: 62ch; margin: 24px 0 0; text-align: justify; hyphens: auto">A design and real-estate studio that ran on shelves of paper maps. Over two years — through Lebanon’s electricity crisis — Zein rebuilt it as a high-tech operation: hardware, network, continuity, web presence and automation, all owned end to end.</p>
+    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 42px clamp(28px, 4vw, 64px); margin-top: 56px">
+      <div>
+        <h3 style="font-family: var(--font-heading); font-weight: 600; font-size: 24px; line-height: 28px; letter-spacing: -0.01em; margin: 0">Infrastructure &amp; continuity</h3>
+        <p style="font-size: 15.5px; line-height: 28px; margin: 14px 0 0; color: rgba(32, 30, 29, 0.78); text-align: justify; hyphens: auto">Sourced and assembled workstation PCs, configured laptops, deployed the office network and set up a NAS for centralised storage and backup. When the power grid failed, battery backup plus the NAS kept files reachable — four working hours a day, won back.</p>
       </div>
       <div>
-        <h3 style="font-family: var(--font-heading); font-weight: 600; font-size: 20px; line-height: 24px; letter-spacing: -0.01em; margin: 0">Systems &amp; Tongues</h3>
-        <p style="font-size: 15px; line-height: 26px; margin: 14px 0 0; color: rgba(32, 30, 29, 0.78)">Bare-metal Ubuntu Linux, Docker, Coolify, Tailscale mesh. English (C1), French (C1), Arabic (Native), German (A1, actively learning).</p>
+        <h3 style="font-family: var(--font-heading); font-weight: 600; font-size: 24px; line-height: 28px; letter-spacing: -0.01em; margin: 0">Web, content &amp; outreach</h3>
+        <p style="font-size: 15.5px; line-height: 28px; margin: 14px 0 0; color: rgba(32, 30, 29, 0.78); text-align: justify; hyphens: auto">Built and launched the company website from scratch — structure, copy and updates. Created and ran the LinkedIn presence and targeted email outreach with Resend: sequences written, replies tracked, follow-ups owned so nothing went cold.</p>
+      </div>
+      <div>
+        <h3 style="font-family: var(--font-heading); font-weight: 600; font-size: 24px; line-height: 28px; letter-spacing: -0.01em; margin: 0">Automation &amp; AI</h3>
+        <p style="font-size: 15.5px; line-height: 28px; margin: 14px 0 0; color: rgba(32, 30, 29, 0.78); text-align: justify; hyphens: auto">Wired an automated content pipeline: a new property listing fires a Sanity webhook, an AI agent writes and structures the post, and AutoReels renders the video — publishing across channels with no hands on the keys. CRM and internal tools joined up over REST APIs.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects" data-screen-label="Projects" style="padding: 42px 0 84px" data-reveal="">
+    <span style="display: block; font-size: 13px; line-height: 14px; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(32, 30, 29, 0.7); margin: 0 0 42px">Projects</span>
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 56px clamp(32px, 5vw, 88px)">
+      <div>
+        <div style="display: flex; gap: var(--space-2); align-items: baseline; flex-wrap: wrap">
+          <h3 style="font-family: var(--font-heading); font-weight: 600; font-size: 28px; line-height: 28px; letter-spacing: -0.01em; margin: 0">YomYom</h3>
+          <span class="tag tag-accent">Flagship</span>
+        </div>
+        <p style="font-size: 13px; line-height: 14px; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(32, 30, 29, 0.7); margin: 14px 0 0">Restaurant operations SaaS · Next.js · TypeScript · Supabase · PostgreSQL</p>
+        <p style="font-size: 15.5px; line-height: 28px; margin: 14px 0 0; color: rgba(32, 30, 29, 0.78); text-align: justify; hyphens: auto">An owner-first control room for multi-branch restaurants: daily CSV exports become KPIs, alerts, profit-leak indicators and branch comparisons. An AI copilot panel sits on top of the deterministic logic — it explains why something is flagged and suggests the next check, instead of chatting. Projected to cut costs and lift efficiency by at least 10%.</p>
+      </div>
+      <div>
+        <div style="display: flex; gap: var(--space-2); align-items: baseline; flex-wrap: wrap">
+          <h3 style="font-family: var(--font-heading); font-weight: 600; font-size: 28px; line-height: 28px; letter-spacing: -0.01em; margin: 0">Luka</h3>
+          <span class="tag tag-neutral">Private Beta</span>
+        </div>
+        <p style="font-size: 13px; line-height: 14px; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(32, 30, 29, 0.7); margin: 14px 0 0">Memory archive &middot; React Native &middot; Expo &middot; PostgreSQL RLS &middot; 546 Tests</p>
+        <p style="font-size: 15.5px; line-height: 28px; margin: 14px 0 0; color: rgba(32, 30, 29, 0.78); text-align: justify; hyphens: auto">A memory safekeeping application for families. Privacy is enforced at the database level rather than left to the interface: family-scoped Postgres Row-Level Security ensures a query only ever sees its own household rows. 546 automated tests across 50 test suites verify integrity on every release.</p>
+      </div>
+      <div>
+        <h3 style="font-family: var(--font-heading); font-weight: 600; font-size: 28px; line-height: 28px; letter-spacing: -0.01em; margin: 0">Traffic enforcement system</h3>
+        <p style="font-size: 13px; line-height: 14px; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(32, 30, 29, 0.7); margin: 14px 0 0">Event-logging platform · C++ · Django · PostgreSQL</p>
+        <p style="font-size: 15.5px; line-height: 28px; margin: 14px 0 0; color: rgba(32, 30, 29, 0.78); text-align: justify; hyphens: auto">A tracking and event-logging platform recording vehicles, events and violations — time-series-style data streams, relational modelling, and a management dashboard for analysing operational patterns.</p>
+      </div>
+      <div>
+        <div style="display: flex; gap: var(--space-2); align-items: baseline; flex-wrap: wrap">
+          <h3 style="font-family: var(--font-heading); font-weight: 600; font-size: 28px; line-height: 28px; letter-spacing: -0.01em; margin: 0">pico-gpt</h3>
+          <span class="tag tag-accent">From Scratch</span>
+        </div>
+        <p style="font-size: 13px; line-height: 14px; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(32, 30, 29, 0.7); margin: 14px 0 0">Language Model &middot; PyTorch &middot; BPE Tokenizer &middot; KV-Cache &middot; 34 Tests</p>
+        <p style="font-size: 15.5px; line-height: 28px; margin: 14px 0 0; color: rgba(32, 30, 29, 0.78); text-align: justify; hyphens: auto">A minimal GPT transformer language model written from first principles in PyTorch. Self-attention is hand-coded without high-level library shortcuts, paired with a custom byte-level BPE tokenizer and KV-cache decoding for accelerated autoregression. 34 unit tests cover every component.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills" data-screen-label="Skills" style="padding: 42px 0 84px" data-reveal="">
+    <span style="display: block; font-size: 13px; line-height: 14px; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(32, 30, 29, 0.7); margin: 0 0 42px">The composing room</span>
+    <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 42px clamp(24px, 3vw, 48px)">
+      <div>
+        <h3 style="font-family: var(--font-heading); font-weight: 600; font-size: 20px; line-height: 28px; margin: 0">AI &amp; automation</h3>
+        <p style="font-size: 15.5px; line-height: 28px; margin: 14px 0 0; color: rgba(32, 30, 29, 0.78)">AI copilots over deterministic logic, prompt engineering, RAG concepts, webhook automation (Sanity, Resend, AutoReels), daily Claude / ChatGPT / Perplexity.</p>
+      </div>
+      <div>
+        <h3 style="font-family: var(--font-heading); font-weight: 600; font-size: 20px; line-height: 28px; margin: 0">Data &amp; analytics</h3>
+        <p style="font-size: 15.5px; line-height: 28px; margin: 14px 0 0; color: rgba(32, 30, 29, 0.78)">Python, SQL, KPI design, dashboarding, relational data modelling, data quality checks, branch comparisons, operations reporting.</p>
+      </div>
+      <div>
+        <h3 style="font-family: var(--font-heading); font-weight: 600; font-size: 20px; line-height: 28px; margin: 0">Engineering</h3>
+        <p style="font-size: 15.5px; line-height: 28px; margin: 14px 0 0; color: rgba(32, 30, 29, 0.78)">Next.js, TypeScript, React / Expo, Django, Supabase, PostgreSQL, REST APIs, Git, Docker basics, Vercel.</p>
+      </div>
+      <div>
+        <h3 style="font-family: var(--font-heading); font-weight: 600; font-size: 20px; line-height: 28px; margin: 0">Business &amp; languages</h3>
+        <p style="font-size: 15.5px; line-height: 28px; margin: 14px 0 0; color: rgba(32, 30, 29, 0.78)">Requirements gathering, stakeholder communication, process documentation, Jira, Miro. Arabic (native), English (C1), French (C1), German (A1, learning).</p>
       </div>
     </div>
   </section>
@@ -629,22 +741,19 @@ textarea.input { min-height: 90px; resize: vertical; }
     </div>
   </section>
 
-  <section id="contact" data-screen-label="Contact" style="padding: 70px 0 84px" data-reveal="">
-    <hr style="height: 5px; border: 0; margin: 0 0 56px; border-top: 2px solid var(--color-text); border-bottom: 1px solid var(--color-text)">
-    <div style="display: grid; grid-template-columns: 1.2fr 1fr; gap: 42px clamp(32px, 5vw, 88px)">
-      <div>
-        <span style="display: block; font-size: 13px; line-height: 14px; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(32, 30, 29, 0.7); margin: 0 0 14px">Write to the editor</span>
-        <h2 style="font-family: var(--font-heading); font-weight: 600; font-size: clamp(30px, 3.4vw, 48px); line-height: 1.15; letter-spacing: -0.015em; margin: 0">The next edition is written with your team on it.</h2>
-        <p style="font-size: 16.5px; line-height: 28px; max-width: 52ch; margin: 24px 0 0; color: rgba(32, 30, 29, 0.85)">Available as a <strong>Werkstudent</strong> at <strong>20 hours a week</strong> in machine learning, data science, or Python data engineering alongside my M.Sc. at Lancaster University Leipzig. <strong>Eligible to work in Germany without visa sponsorship.</strong></p>
-      </div>
-      <div style="display: flex; flex-direction: column; justify-content: flex-end; gap: 14px">
-        <p style="font-size: 15.5px; line-height: 24px; margin: 0"><strong style="display: inline-block; width: 90px; text-transform: uppercase; font-size: 12px; letter-spacing: 0.08em; color: rgba(32, 30, 29, 0.6)">Email</strong> <a href="mailto:z.dergham@lancaster.ac.uk" style="color: var(--color-text); text-decoration: underline; text-underline-offset: 3px">z.dergham@lancaster.ac.uk</a></p>
-        <p style="font-size: 15.5px; line-height: 24px; margin: 0"><strong style="display: inline-block; width: 90px; text-transform: uppercase; font-size: 12px; letter-spacing: 0.08em; color: rgba(32, 30, 29, 0.6)">LinkedIn</strong> <a href="https://linkedin.com/in/zein-dergham" target="_blank" rel="noopener" style="color: var(--color-text); text-decoration: underline; text-underline-offset: 3px">linkedin.com/in/zein-dergham</a></p>
-        <p style="font-size: 15.5px; line-height: 24px; margin: 0"><strong style="display: inline-block; width: 90px; text-transform: uppercase; font-size: 12px; letter-spacing: 0.08em; color: rgba(32, 30, 29, 0.6)">GitHub</strong> <a href="https://github.com/ZeroTrustZein" target="_blank" rel="noopener" style="color: var(--color-text); text-decoration: underline; text-underline-offset: 3px">github.com/ZeroTrustZein</a></p>
-        <p style="font-size: 15.5px; line-height: 24px; margin: 0"><strong style="display: inline-block; width: 90px; text-transform: uppercase; font-size: 12px; letter-spacing: 0.08em; color: rgba(32, 30, 29, 0.6)">Telephone</strong> <span style="color: var(--color-text)">+49 152 29227743</span></p>
-        <p style="font-size: 13px; line-height: 20px; margin: 14px 0 0; color: rgba(32, 30, 29, 0.6)">Set in Source Serif 4, printed in four process inks. &copy; 2026 Zein Dergham &middot; Leipzig, Germany</p>
-      </div>
+  <section id="contact" data-screen-label="Contact" style="padding: 42px 0 56px" data-reveal="">
+    <hr style="height: 5px; border: 0; margin: 0 0 42px; border-top: 2px solid var(--color-text); border-bottom: 1px solid var(--color-text)">
+    <h3 style="font-family: var(--font-heading); font-weight: 600; font-size: clamp(28px, 3vw, 40px); line-height: 1.2; letter-spacing: -0.015em; margin: 0; max-width: 24ch">The next edition is written with your team on it.</h3>
+    <p style="font-size: 15.5px; line-height: 28px; max-width: 58ch; margin: 20px 0 0; color: rgba(32, 30, 29, 0.78)">Available as a <strong>Werkstudent</strong> at <strong>20 hours a week</strong> in machine learning, data science, or Python data engineering alongside my M.Sc. at Lancaster University Leipzig. <strong>Eligible to work in Germany without visa sponsorship.</strong></p>
+    <div style="display: flex; gap: var(--space-3); flex-wrap: wrap; margin-top: 28px">
+      <a class="btn btn-primary" href="mailto:z.dergham@lancaster.ac.uk" style="text-decoration: none">z.dergham@lancaster.ac.uk</a>
+      <a class="btn btn-secondary" href="https://linkedin.com/in/zein-dergham" style="text-decoration: none">LinkedIn</a>
+      <a class="btn btn-ghost" href="https://github.com/ZeroTrustZein" style="text-decoration: none">GitHub · ZeroTrustZein</a>
     </div>
+    <sc-if value="{{ showPhone }}" hint-placeholder-val="{{ true }}">
+      <p style="font-size: 13px; line-height: 14px; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(32, 30, 29, 0.7); margin: 42px 0 0">+49 152 29227743 · Leipzig, Germany</p>
+    </sc-if>
+    <p style="font-size: 13px; line-height: 28px; color: rgba(32, 30, 29, 0.7); margin: 56px 0 28px">Set in Source Serif 4, printed in four inks. © 2026 Zein Dergham.</p>
   </section>
 </div>
 
