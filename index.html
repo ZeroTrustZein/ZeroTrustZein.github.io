@@ -1,294 +1,694 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
+<html><head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Zein Dergham - Data Science and ML Engineering</title>
-<meta name="description" content="Zein Dergham: M.Sc. Data Science student at Lancaster University Leipzig. Seeking Working Student (20h/wk) roles in ML, Data Science or Python/Data Engineering in Germany.">
-<meta name="color-scheme" content="dark light">
-<meta name="theme-color" content="#0d1117" media="(prefers-color-scheme: dark)">
-<meta name="theme-color" content="#fafaf9" media="(prefers-color-scheme: light)">
-<link rel="canonical" href="https://zeindergham.me/">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://zeindergham.me/">
-<meta property="og:title" content="Zein Dergham - Data Science and ML Engineering">
-<meta property="og:description" content="M.Sc. Data Science @ Lancaster University Leipzig. Seeking Working Student (20h/wk) roles in Germany.">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%233fb27f'/%3E%3Ctext x='16' y='22' font-family='monospace' font-size='15' font-weight='700' text-anchor='middle' fill='%230d1117'%3EZD%3C/text%3E%3C/svg%3E">
-<script>try{var t=localStorage.getItem("theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
-<style>
-:root{--bg:#0d1117;--bg2:#151b23;--fg:#e6edf3;--mut:#9ba7b4;--line:#262f3a;--acc:#4cc38a;--acc2:#0d1117;--tag:#1c2530;color-scheme:dark}
-@media (prefers-color-scheme:light){:root:not([data-theme=dark]){--bg:#fafaf9;--bg2:#fff;--fg:#16191d;--mut:#57606a;--line:#e3e5e8;--acc:#13774c;--acc2:#fff;--tag:#f0f2f4;color-scheme:light}}
-:root[data-theme=light]{--bg:#fafaf9;--bg2:#fff;--fg:#16191d;--mut:#57606a;--line:#e3e5e8;--acc:#13774c;--acc2:#fff;--tag:#f0f2f4;color-scheme:light}
-*,*::before,*::after{box-sizing:border-box}
-html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
-@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
-body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;text-rendering:optimizeLegibility;-webkit-font-smoothing:antialiased}
-code,.mono,.tags li,.kicker{font-family:ui-monospace,SFMono-Regular,"Cascadia Code",Menlo,Consolas,monospace}
-a{color:var(--acc);text-decoration:none}
-a:hover{text-decoration:underline;text-underline-offset:3px}
-:focus-visible{outline:2px solid var(--acc);outline-offset:3px;border-radius:4px}
-.wrap{max-width:960px;margin:0 auto;padding:0 1.25rem}
-.skip{position:absolute;left:-999px}.skip:focus{left:1rem;top:1rem;background:var(--bg2);padding:.5rem 1rem;z-index:9}
-header.top{position:sticky;top:0;z-index:5;background:color-mix(in srgb,var(--bg) 85%,transparent);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
-header.top .wrap{display:flex;align-items:center;gap:1rem;height:56px}
-.logo{font-weight:700;color:var(--fg);letter-spacing:-.02em}
-.logo span{color:var(--acc)}
-nav{margin-left:auto;display:flex;gap:1.25rem;font-size:.92rem}
-nav a{color:var(--mut)}nav a:hover{color:var(--fg);text-decoration:none}
-#theme{background:none;border:1px solid var(--line);color:var(--fg);border-radius:8px;width:36px;height:36px;display:grid;place-items:center;cursor:pointer;padding:0}
-#theme:hover{border-color:var(--mut)}
-#theme svg{width:18px;height:18px}
-.moon{display:none}
-:root[data-theme=light] .sun{display:none}:root[data-theme=light] .moon{display:block}
-@media (prefers-color-scheme:light){:root:not([data-theme=dark]) .sun{display:none}:root:not([data-theme=dark]) .moon{display:block}}
-.hero{padding:5.5rem 0 3.5rem;border-top:0}
-.status{display:inline-flex;align-items:center;gap:.6rem;font-size:.85rem;color:var(--mut);border:1px solid var(--line);background:var(--bg2);border-radius:999px;padding:.35rem .9rem;margin:0 0 1.5rem}
-.dot{width:8px;height:8px;border-radius:50%;background:var(--acc);box-shadow:0 0 0 4px color-mix(in srgb,var(--acc) 20%,transparent);flex:none}
-h1{font-size:clamp(2.4rem,7vw,4rem);line-height:1.05;letter-spacing:-.035em;margin:0 0 1rem}
-.lead{font-size:clamp(1.05rem,2.4vw,1.25rem);color:var(--mut);max-width:42rem;margin:0 0 2rem}
-.lead strong{color:var(--fg);font-weight:600}
-.cta{display:flex;flex-wrap:wrap;gap:.75rem}
-.btn{display:inline-flex;align-items:center;gap:.5rem;padding:.65rem 1.1rem;border-radius:8px;border:1px solid var(--line);color:var(--fg);font-weight:500;font-size:.95rem}
-.btn:hover{text-decoration:none;border-color:var(--mut)}
-.btn.pri{background:var(--acc);border-color:var(--acc);color:var(--acc2)}
-.btn.pri:hover{filter:brightness(1.08)}
-.btn svg{width:17px;height:17px;fill:currentColor}
-section{padding:3.5rem 0;border-top:1px solid var(--line)}
-section[id]{scroll-margin-top:56px}
-h2{font-size:1.5rem;letter-spacing:-.02em;margin:0 0 .4rem}
-.kicker{color:var(--acc);font-size:.8rem;letter-spacing:.08em;text-transform:uppercase;margin:0 0 .4rem}
-.sub{color:var(--mut);margin:0 0 2rem}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(280px,100%),1fr));gap:1rem}
-.card{background:var(--bg2);border:1px solid var(--line);border-radius:12px;padding:1.4rem;display:flex;flex-direction:column;transition:border-color .15s,transform .15s}
-.card:hover{border-color:color-mix(in srgb,var(--acc) 55%,var(--line));transform:translateY(-2px)}
-.card h3{font-size:1.08rem;margin:0 0 .15rem;letter-spacing:-.01em}
-.card .meta{font-size:.8rem;color:var(--mut);margin:0 0 .75rem}
-.card p{margin:0 0 1rem;color:var(--mut);font-size:.95rem}
-.card ul.pts{margin:0 0 1rem;padding-left:1.1rem;color:var(--mut);font-size:.9rem}
-.card ul.pts li{margin:.15rem 0}
-.card .ft{margin-top:auto;display:flex;justify-content:space-between;align-items:flex-end;gap:.75rem;flex-wrap:wrap}
-.tags{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:.35rem}
-.tags li{font-size:.72rem;background:var(--tag);color:var(--fg);border-radius:5px;padding:.15rem .5rem}
-.link{font-size:.85rem;font-weight:500;white-space:nowrap}
-.priv{font-size:.78rem;color:var(--mut);white-space:nowrap}
-.feat{grid-column:1/-1}
-@media (min-width:720px){.feat{display:grid;grid-template-columns:1.2fr 1fr;gap:1.5rem}.feat .ft{grid-column:1/-1}}
-.tl{display:grid;gap:1.25rem}
-.row{display:grid;grid-template-columns:150px 1fr;gap:1rem}
-.row .when{color:var(--mut);font-size:.88rem;padding-top:.15rem}
-.row h3{margin:0;font-size:1.05rem}
-.row .org{color:var(--mut);margin:0 0 .4rem;font-size:.95rem}
-.row p{margin:0;color:var(--mut)}
-@media (max-width:600px){.row{grid-template-columns:1fr;gap:.2rem}nav{display:none}#theme{margin-left:auto}.hero{padding:3.5rem 0 2.5rem}}
-.cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.75rem}
-.cols h3{font-size:.95rem;margin:0 0 .6rem}
-.lang{list-style:none;margin:0;padding:0}
-.lang li{display:flex;justify-content:space-between;border-bottom:1px dashed var(--line);padding:.35rem 0;font-size:.95rem}
-.lang span{color:var(--mut);font-size:.85rem}
-.contact p{max-width:38rem;color:var(--mut);margin:0 0 1.5rem}
-footer{border-top:1px solid var(--line);padding:2rem 0;color:var(--mut);font-size:.85rem}
-footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:.5rem}
-</style>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="js/react.production.min.js"></script>
+<script src="js/react-dom.production.min.js"></script>
+<script src="js/dc-runtime.js"></script>
 </head>
 <body>
-<a class="skip" href="#main">Skip to content</a>
-<header class="top">
-<div class="wrap">
-<a class="logo" href="#top" aria-label="Zein Dergham, home">zein<span>.</span>dergham</a>
-<nav aria-label="Primary">
-<a href="#projects">Projects</a>
-<a href="#experience">Experience</a>
-<a href="#skills">Skills</a>
-<a href="#contact">Contact</a>
+<x-dc>
+<helmet>
+  <style>/* Broadsheet — design-system tokens and component classes. This file is the source of truth for the system's look; retune it here and see readme.md. */
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Source Serif 4';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url("fonts/c771f2b9-b648-40dc-8cc6-880f38ebc754.woff2") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Source Serif 4';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url("fonts/46b3d881-6471-4208-a82d-66bd79802a92.woff2") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek */
+@font-face {
+  font-family: 'Source Serif 4';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url("fonts/62c276f7-55a8-4a78-b50a-9460482336a5.woff2") format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Source Serif 4';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url("fonts/706147dd-823c-41b1-bd8f-a755ef916c4a.woff2") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Source Serif 4';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url("fonts/4ac376e1-4844-4c74-b1d5-260fd27b76d0.woff2") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Source Serif 4';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url("fonts/12128ab7-eefa-43cc-82fe-eb0aa40f8825.woff2") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Source Serif 4';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("fonts/d7f57589-24f5-4f55-ae06-c5ed98e30471.woff2") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Source Serif 4';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("fonts/5e839efc-2bc9-4475-93ef-3e04e59a8286.woff2") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek */
+@font-face {
+  font-family: 'Source Serif 4';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("fonts/eee31206-c311-4ad8-88db-d0322efa8381.woff2") format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Source Serif 4';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("fonts/a753198d-1f36-4902-95e6-b48b9d6416e4.woff2") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Source Serif 4';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("fonts/92349533-b8af-440e-b508-64608e314881.woff2") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Source Serif 4';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("fonts/0b5897ff-2abc-4a5d-9720-67e680fde48f.woff2") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Source Serif 4';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("fonts/d7f57589-24f5-4f55-ae06-c5ed98e30471.woff2") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Source Serif 4';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("fonts/5e839efc-2bc9-4475-93ef-3e04e59a8286.woff2") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek */
+@font-face {
+  font-family: 'Source Serif 4';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("fonts/eee31206-c311-4ad8-88db-d0322efa8381.woff2") format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Source Serif 4';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("fonts/a753198d-1f36-4902-95e6-b48b9d6416e4.woff2") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Source Serif 4';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("fonts/92349533-b8af-440e-b508-64608e314881.woff2") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Source Serif 4';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("fonts/0b5897ff-2abc-4a5d-9720-67e680fde48f.woff2") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+
+:root {
+  --color-bg: #f3f2f2;
+  --color-surface: #eae9e9;
+  --color-text: #201e1d;
+  --color-accent: #0088b0;
+  --color-accent-2: #d6006c;
+  --color-divider: color-mix(in srgb, #201e1d 16%, transparent);
+
+  /* Tonal ramps — generated in OKLCH on one shared lightness scale, so the
+     same step of any role matches the others in visual value. */
+  --color-neutral-100: #f8f4f4;
+  --color-neutral-200: #eae7e7;
+  --color-neutral-300: #d7d3d3;
+  --color-neutral-400: #bab6b6;
+  --color-neutral-500: #9b9797;
+  --color-neutral-600: #7d7979;
+  --color-neutral-700: #605d5d;
+  --color-neutral-800: #444141;
+  --color-neutral-900: #2d2b2b;
+
+  --color-accent-100: #e9f8ff;
+  --color-accent-200: #cbeeff;
+  --color-accent-300: #99e0ff;
+  --color-accent-400: #62c5ee;
+  --color-accent-500: #38a6cf;
+  --color-accent-600: #1186ac;
+  --color-accent-700: #006786;
+  --color-accent-800: #004961;
+  --color-accent-900: #0a303e;
+
+  --color-accent-2-100: #fff1f4;
+  --color-accent-2-200: #ffdee6;
+  --color-accent-2-300: #ffc0d0;
+  --color-accent-2-400: #ff90b1;
+  --color-accent-2-500: #ff458e;
+  --color-accent-2-600: #d82071;
+  --color-accent-2-700: #aa0b56;
+  --color-accent-2-800: #790e3d;
+  --color-accent-2-900: #4b1528;
+
+  /* The third process ink — review round 3: the deck's print treatments
+     (the CMYK separation and the misregistered plate numerals below) need
+     the full four-color set. Cyan and magenta are the system's own accents;
+     this yellow completes them, muted to the same press-ink register. A
+     print treatment color, not an interface accent — body copy and chrome
+     never take it. */
+  --color-process-yellow: #edbb00;
+
+  --font-heading: "Source Serif 4", system-ui, sans-serif;
+  --font-heading-weight: 600;
+  --font-body: "Source Serif 4", system-ui, sans-serif;
+
+  --space-1: 5.0px;
+  --space-2: 10.0px;
+  --space-3: 15.0px;
+  --space-4: 20.0px;
+  --space-6: 30.0px;
+  --space-8: 40.0px;
+
+  --radius-sm: 1px;
+  --radius-md: 2px;
+  --radius-lg: 4px;
+
+  /* Elevation — derived from the ground: soft ink-tinted shadows on a
+     light theme, a hairline edge + ambient darkness on a dark one. */
+  --shadow-sm: 0 1px 2px color-mix(in srgb, #2d2b2b 14%, transparent);
+  --shadow-md: 0 3px 10px color-mix(in srgb, #2d2b2b 16%, transparent);
+  --shadow-lg: 0 12px 32px color-mix(in srgb, #2d2b2b 22%, transparent);
+}
+
+body {
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-body);
+}
+h1, h2, h3, h4 { font-family: var(--font-heading); font-weight: var(--font-heading-weight); }
+
+.halftone{position:relative;filter:grayscale(0.35) contrast(1.15);overflow:hidden}
+.halftone::after{content:"";position:absolute;inset:0;pointer-events:none;
+  background-image:radial-gradient(circle,rgba(0,0,0,0.22) 30%,transparent 32%);
+  background-size:3px 3px;mix-blend-mode:multiply}
+
+/* The four-color separation treatment (review round 3) — a photograph
+   printed as its misregistered process plates, after the Catalogue Three
+   grammar. Markup: a figure.cmyk holding five copies of the image — the
+   first is the layout sizer (hidden), then one per plate, each tagged
+   .sep-c/.sep-m/.sep-y/.sep-k. The plates are extracted live by the SVG
+   feColorMatrix filters in print-plates.js, the system's own defs —
+   inlined in the compiled bundle every template page loads, and a
+   page that links styles.css directly adds
+   <script src="print-plates.js"></script> itself (the defs must be in
+   the document: a data-URI filter reference would not survive Chromium,
+   and external-file references are unreliable across engines) — nudged
+   a few pixels out of register, and multiplied
+   onto the paper ground; the halftone dot screens the recombined print.
+   The plate offsets live with the deck's projection-scale CSS, since
+   misregistration is sized to the output. */
+.cmyk{position:relative;overflow:hidden;background:var(--color-bg)}
+.cmyk img:first-child{opacity:0} /* layout sizer AND the alt-bearing image — opacity
+  keeps it in the accessibility tree (visibility:hidden would drop the figure's only
+  description); fully transparent, it adds nothing to the multiply backdrop */
+.cmyk img+img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;mix-blend-mode:multiply}
+.cmyk .sep-c{filter:url(#sep-c)}
+.cmyk .sep-m{filter:url(#sep-m)}
+.cmyk .sep-y{filter:url(#sep-y)}
+.cmyk .sep-k{filter:url(#sep-k)}
+.cmyk::after{content:"";position:absolute;inset:0;pointer-events:none;
+  background-image:radial-gradient(circle,rgba(0,0,0,0.22) 30%,transparent 32%);
+  background-size:3px 3px;mix-blend-mode:multiply}
+
+/* The one-image separation (review round 9, promoted from the deck in the
+   landing divergence) — the same four plates as ONE compound filter,
+   #sep-all in print-plates.js, for a single swappable image: a .print
+   wrapper inside the figure holds one <image-slot>, and the filter
+   extracts, offsets and multiplies the plates live from whatever the slot
+   shows. Markup: figure.cmyk > .print > image-slot (the page sizes the
+   .print — aspect-ratio, or absolute fill for bleeds). Hover resolves
+   the print into the photograph — the pressman checking registration on
+   the light table — so the source shows crisp and any swap chrome stays
+   legible; only the reduced-motion fallback below still lifts as a
+   single cut (a url() filter cannot CSS-transition; the press driver
+   animates the defs instead). */
+.cmyk .print{position:relative;width:100%;filter:url(#sep-all)}
+/* no hover end-state swap: the press driver (print-plates.js) eases the
+   plates into register while purifying their inks to the pure-process
+   separation on the same curve, so the converged four-plate merge IS
+   the photograph (their multiply equals SourceGraphic by construction)
+   — no cut anywhere on the animated path */
+@media (prefers-reduced-motion: reduce), (hover: none), (pointer: coarse) {
+  .cmyk .print:hover{filter:none} /* without the driver (it stands down on
+    exactly these conditions), hover stays the old single cut to the
+    crisp source */
+}
+.cmyk .print image-slot{width:100%;height:100%;display:block}
+
+/* The plate numeral (review rounds 3-4) — display figures set as
+   misregistered process plates, the catalog's cover grammar. Review
+   round 4 (Barron): THREE plates — C, M, Y only, no black plate — so the
+   dark core comes entirely from the C×M×Y multiply overlap (the inks
+   product to exact black), with the fringes the registration drift; and
+   the spread pulled in by half (less jumbled: one figure with plate
+   fringes rather than figures sliding apart). Markup: a .cmyk-num holding
+   a .paper span (the white of the sheet: the glyph's union, built from
+   offset text-shadow copies) and three .plate spans. The construction
+   carries its own ground (--cmyk-num-ground, defaulting to paper) painted
+   on its padding box, so the multiply plates always have their backdrop
+   even inside an isolated stacking context (entrance animations); the
+   padding bleeds wider than any plate offset and the negative margin
+   hands the layout box back. Offsets are em-scaled to the glyph. The
+   .paper span carries the text once for assistive tech; the .plate spans
+   are aria-hidden repeats. */
+.cmyk-num{--cmyk-num-ground:var(--color-bg);
+  position:relative;width:fit-content;line-height:0.9;
+  font-feature-settings:"pnum" 1;
+  background:var(--cmyk-num-ground);padding:0.12em;margin:-0.12em}
+.cmyk-num .paper{color:var(--color-bg); /* the white of the sheet — always paper,
+  whatever the ground: the plates read as printed on paper even when the
+  surrounding page is ink */
+  text-shadow:0.036em 0.025em 0 var(--color-bg),-0.031em -0.023em 0 var(--color-bg)}
+.cmyk-num .plate{position:absolute;inset:0.12em;mix-blend-mode:multiply;
+  text-box:trim-both cap alphabetic /* the host trims to its cap box; each
+  absolute plate must trim its own line the same way, or its glyphs sit a
+  half-leading below the paper union */}
+.cmyk-num .plate-c{color:var(--color-accent)}
+
+/* The plate headline (divergence round 3, Barron: "use both" — the
+   photograph's plates AND the cover grammar's text plates, on the same
+   page). The same three-plate construction as .cmyk-num — paper span
+   carrying the real text, C/M/Y plate repeats, dark core from the
+   multiply overlap — at HALF the numeral's round-4 offsets: the serif's
+   display hairlines are thinner than the numeral strokes the spread was
+   measured on, and the full offsets swallow them whole (probed at the
+   hero's 80px — the fringes read as an anaglyph poster, not a breath
+   out of register) — recut for display
+   headlines that sit in running text blocks on the page's own paper:
+   no ground painting and no padding bleed (the numeral's ground exists
+   for isolated stacking contexts; a headline on the page multiplies
+   straight onto the sheet), no width:fit-content and no line-height
+   override (the host display class owns its metrics — apply this to
+   each .line, which is position:relative for its plates), and the
+   plates are inert to the hand (pointer-events/user-select none, so a
+   triple-click selects the headline once, not four times). Plates take
+   the same pointer lean as .cmyk-num. */
+.cmyk-head{position:relative}
+.cmyk-head .paper{color:var(--color-bg);
+  text-shadow:0.027em 0.0185em 0 var(--color-bg),-0.0245em -0.0175em 0 var(--color-bg)
+  /* the union's copies sit at the construction's halved plate offsets
+     PLUS the full lean (0.018+0.009 / 0.0125+0.006, and mirrored), so
+     the union still backs the plates at viewport-edge lean — invisible
+     on the page's own paper, load-bearing on any other ground */}
+.cmyk-head .plate{position:absolute;inset:0;mix-blend-mode:multiply;
+  pointer-events:none;user-select:none;
+  text-box:trim-both cap alphabetic /* match the host's trim, or the
+  plates sit a half-leading below the paper union */}
+.cmyk-head .plate-c{color:var(--color-accent)}
+.cmyk-head .plate-m{color:var(--color-accent-2);
+  translate:calc(0.018em + 0.009em*var(--press-nx, 0)) calc(0.0125em + 0.006em*var(--press-ny, 0))}
+.cmyk-head .plate-y{color:var(--color-process-yellow);
+  translate:calc(-0.0155em + 0.009em*var(--press-nx, 0)) calc(-0.0115em + 0.006em*var(--press-ny, 0))}
+.cmyk-num .plate-m{color:var(--color-accent-2);
+  translate:calc(0.036em + 0.018em*var(--press-nx, 0)) calc(0.025em + 0.0125em*var(--press-ny, 0))}
+.cmyk-num .plate-y{color:var(--color-process-yellow);
+  translate:calc(-0.031em + 0.018em*var(--press-nx, 0)) calc(-0.023em + 0.0125em*var(--press-ny, 0))}
+/* --press-nx/--press-ny: the pointer lean as a bare -1..1 factor,
+   published on :root by the press driver (print-plates.js) and zero
+   whenever the driver stands down. Each construction scales the lean to
+   its own spread (half of it, here as everywhere) so the moving plates
+   drift a breath toward the cursor and the C plate holds. */
+
+/* ══════════════════════════════════════════════════════════════════════════
+   Components — built with the tokens above. Plain CSS
+   on plain HTML: no JavaScript, no build step. Each class is documented in
+   readme.md and demonstrated in foundations/ and components/.
+   ══════════════════════════════════════════════════════════════════════ */
+
+*, *::before, *::after { box-sizing: border-box; }
+body { margin: 0; font-size: 15px; line-height: 1.55; font-weight: 400; }
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading); font-weight: var(--font-heading-weight);
+  line-height: 1.12; letter-spacing: -0.015em; margin: 0 0 var(--space-2);
+}
+h1 { font-size: 42px; }
+h2 { font-size: 32px; }
+h3 { font-size: 25px; }
+h4 { font-size: 20px; }
+h5 { font-size: 16px; }
+h6 { font-size: 13px; }
+h6 { letter-spacing: 0.08em; text-transform: uppercase; }
+p { margin: 0 0 var(--space-3); }
+a { color: var(--color-accent); text-underline-offset: 3px; }
+img { display: block; max-width: 100%; }
+figure { margin: 0; }
+figcaption {
+  font-size: 11px; margin-top: var(--space-1);
+  color: color-mix(in srgb, var(--color-text) 55%, transparent);
+}
+.text-muted { color: color-mix(in srgb, var(--color-text) 55%, transparent); }
+:focus { outline: none; }
+:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 2px; }
+::selection { background: color-mix(in srgb, var(--color-accent) 30%, transparent); }
+
+/* — rules — */
+.hr {
+  height: 1px; border: 0; margin: var(--space-4) 0;
+  background: var(--color-divider);
+}
+
+/* — buttons — */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+  cursor: pointer; text-decoration: none;
+  font-family: var(--font-heading); font-weight: var(--font-heading-weight);
+  font-size: 14px; line-height: 1.2; color: var(--color-text); /* matches the .input's 14px —
+     the pair sits side by side in sign-up rows */
+  background: transparent; border: 1px solid transparent;
+  padding: var(--space-2) calc(var(--space-3) * 1.2);
+  border-radius: var(--radius-md);
+}
+.btn svg { display: block; }
+.btn:disabled { opacity: 0.45; cursor: not-allowed; }
+.btn-primary { background: var(--color-accent); color: var(--color-bg); }
+.btn-primary:hover { background: var(--color-accent-600); }
+.btn-primary:active { background: var(--color-accent-700); }
+.btn-secondary { border-color: var(--color-divider); }
+.btn-secondary:hover { background: color-mix(in srgb, var(--color-text) 7%, transparent); }
+.btn-secondary:active { background: color-mix(in srgb, var(--color-text) 14%, transparent); }
+.btn-ghost { color: var(--color-accent); padding-inline: var(--space-1); }
+.btn-ghost:hover { background: color-mix(in srgb, var(--color-accent) 10%, transparent); }
+.btn-ghost:active { background: color-mix(in srgb, var(--color-accent) 18%, transparent); }
+.btn-icon { width: 36px; height: 36px; padding: 0; }
+.btn-block { width: 100%; margin-top: var(--space-2); }
+
+/* — forms — */
+.field > label {
+  display: block; font-size: 12px; margin-bottom: 5px;
+  color: color-mix(in srgb, var(--color-text) 70%, transparent);
+}
+.input {
+  width: 100%; min-height: 36px; padding: 6px 10px; font: inherit;
+  font-size: 14px; color: var(--color-text); caret-color: var(--color-accent);
+  background: var(--color-surface);
+  border: 1px solid var(--color-divider); border-radius: var(--radius-md);
+}
+.input::placeholder { color: color-mix(in srgb, var(--color-text) 65%, transparent); opacity: 1; }
+  /* explicit, measured: the browser default gray misses the 4.5:1 small-text bar on
+     the surface fill; 65% ink measures 4.8:1 there, still a step quieter than typed
+     text (opacity:1 overrides Firefox's default placeholder fade) */
+.input:hover { border-color: color-mix(in srgb, var(--color-text) 45%, transparent); }
+.input:focus-visible { border-color: var(--color-accent); outline-offset: 0; }
+textarea.input { min-height: 90px; resize: vertical; }
+.radio { display: inline-flex; align-items: center; gap: 8px; cursor: pointer; font-size: 14px; }
+.radio input, .seg-opt input {
+  position: absolute; opacity: 0; width: 0; height: 0; pointer-events: none;
+}
+.radio .dot {
+  width: 16px; height: 16px; flex: none; border-radius: 50%;
+  border: 1.5px solid var(--color-divider);
+}
+.radio:hover .dot { border-color: var(--color-accent); }
+.radio input:checked + .dot {
+  border-color: var(--color-accent); background: var(--color-accent);
+  box-shadow: inset 0 0 0 4px var(--color-bg);
+}
+.radio input:focus-visible + .dot { outline: 2px solid var(--color-accent); outline-offset: 2px; }
+.seg {
+  display: inline-flex; overflow: hidden;
+  border: 1px solid var(--color-divider); border-radius: var(--radius-md);
+}
+.seg-opt {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 7px 12px; font-size: 13px; cursor: pointer;
+}
+.seg-opt + .seg-opt { border-left: 1px solid var(--color-divider); }
+.seg-opt:has(input:checked) { background: var(--color-accent); color: var(--color-bg); }
+.seg-opt:not(:has(input:checked)):hover { background: color-mix(in srgb, var(--color-text) 7%, transparent); }
+.seg-opt:has(input:focus-visible) { outline: 2px solid var(--color-accent); outline-offset: -2px; }
+
+/* — cards — */
+.card {
+  display: flex; flex-direction: column; gap: var(--space-2);
+  padding: var(--space-3); border-radius: var(--radius-md); background: var(--color-surface);
+}
+.card-kicker { font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-accent); }
+.card-title {
+  font-family: var(--font-heading); font-weight: var(--font-heading-weight);
+  font-size: 17px; line-height: 1.2;
+}
+.card-body { margin: 0; font-size: 13px; opacity: 0.8; flex: 1; }
+.card-meta {
+  display: flex; align-items: center; gap: 6px; font-size: 11px;
+  color: color-mix(in srgb, var(--color-text) 50%, transparent);
+}
+.elev-sm { box-shadow: var(--shadow-sm); }
+.elev-md { box-shadow: var(--shadow-md); }
+.elev-lg { box-shadow: var(--shadow-lg); }
+
+/* — tags — */
+.tag {
+  display: inline-flex; align-items: center; font-size: 11px;
+  letter-spacing: 0.02em; padding: 3px 10px;
+  border-radius: calc(var(--radius-md) * 0.75);
+}
+.tag-accent { background: var(--color-accent-100); color: var(--color-accent-800); }
+.tag-accent-2 { background: var(--color-accent-2-100); color: var(--color-accent-2-800); }
+.tag-neutral { background: var(--color-neutral-100); color: var(--color-neutral-800); }
+.tag-outline { border: 1px solid var(--color-accent); color: var(--color-accent); }
+
+/* — navigation — */
+.nav {
+  display: flex; align-items: center; gap: var(--space-4);
+  padding: var(--space-3) var(--space-4);
+  border-bottom: none;
+}
+.nav-brand {
+  font-family: var(--font-heading); font-weight: var(--font-heading-weight);
+  font-size: 18px; margin-right: auto;
+}
+.nav a { color: inherit; text-decoration: none; font-size: 14px; }
+.nav a:hover, .nav a[aria-current='page'] { color: var(--color-accent); }
+
+/* — tables — */
+.table { width: 100%; border-collapse: collapse; font-size: 14px; }
+.table th {
+  text-align: left; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase;
+  color: color-mix(in srgb, var(--color-text) 60%, transparent);
+  padding: var(--space-2); border-bottom: 1px solid var(--color-divider);
+}
+.table td {
+  padding: var(--space-2);
+  border-bottom: 1px solid color-mix(in srgb, var(--color-text) 8%, transparent);
+}
+.table tbody tr:hover { background: color-mix(in srgb, var(--color-text) 4%, transparent); }
+
+/* — dialog — */
+.dialog-backdrop {
+  position: fixed; inset: 0; display: grid; place-items: center;
+  padding: var(--space-4);
+  background: color-mix(in srgb, var(--color-neutral-900) 50%, transparent);
+}
+.dialog {
+  width: min(440px, 100%); display: flex; flex-direction: column; gap: var(--space-3);
+  padding: var(--space-4); border-radius: var(--radius-lg);
+  background: var(--color-surface); box-shadow: var(--shadow-lg);
+}
+.dialog-title {
+  font-family: var(--font-heading); font-weight: var(--font-heading-weight);
+  font-size: 20px;
+}
+.dialog-body { font-size: 14px; opacity: 0.85; }
+.dialog-actions { display: flex; justify-content: flex-end; gap: var(--space-2); margin-top: var(--space-2); }
+
+</style>
+  <script src="js/broadsheet.js"></script>
+  <style>
+    html { scroll-behavior: smooth; }
+    body { margin: 0; background: var(--color-bg); color: var(--color-text); font-family: var(--font-body); text-wrap: pretty; }
+    a { color: var(--color-accent-700); }
+    a:hover { color: var(--color-accent-600); }
+    @keyframes rise { from { opacity: 0; transform: translateY(36px); } to { opacity: 1; transform: none; } }
+    @keyframes fadein { from { opacity: 0; } to { opacity: 1; } }
+    @supports (animation-timeline: view()) {
+      [data-reveal] { animation: rise 1s cubic-bezier(0.2, 0.6, 0.2, 1) both; animation-timeline: view(); animation-range: entry 0% entry 35%; }
+    }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { animation: none !important; } }
+  </style>
+</helmet>
+<nav class="nav" style="padding-inline: max(clamp(20px, 5vw, 72px), calc((100% - 1200px) / 2 + clamp(20px, 5vw, 72px)))">
+  <span class="nav-brand">Zein Dergham</span>
+  <a href="#experience">Experience</a>
+  <a href="#projects">Projects</a>
+  <a href="#skills">Skills</a>
+  <a href="#contact">Contact</a>
+  <a class="btn btn-primary" href="mailto:z.dergham@lancaster.ac.uk" style="text-decoration: none">Write to the editor</a>
 </nav>
-<button id="theme" type="button" aria-label="Toggle dark and light theme">
-<svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
-<svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
-</button>
-</div>
-</header>
+<div style="max-width: 1200px; margin: 0 auto; padding: 0 clamp(20px, 5vw, 72px)">
 
-<main id="main">
-<div class="wrap">
+  <section data-screen-label="Skills" style="padding: 42px 0 84px" data-reveal="">
+    <span style="display: block; font-size: 13px; line-height: 14px; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(32, 30, 29, 0.7); margin: 0 0 14px">Toolbox</span>
+    <h2 style="font-family: var(--font-heading); font-weight: 600; font-size: clamp(30px, 3.2vw, 44px); line-height: 1.15; letter-spacing: -0.015em; margin: 0">The composing room</h2>
+    <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 42px clamp(20px, 3vw, 48px); margin-top: 42px">
+      <div>
+        <h3 style="font-family: var(--font-heading); font-weight: 600; font-size: 20px; line-height: 24px; letter-spacing: -0.01em; margin: 0">Machine Learning</h3>
+        <p style="font-size: 15px; line-height: 26px; margin: 14px 0 0; color: rgba(32, 30, 29, 0.78)">PyTorch, transformer architectures from scratch, LoRA diffusion fine-tuning, ControlNet, RAG (BM25 + dense vector fusion), scikit-learn, NumPy.</p>
+      </div>
+      <div>
+        <h3 style="font-family: var(--font-heading); font-weight: 600; font-size: 20px; line-height: 24px; letter-spacing: -0.01em; margin: 0">Data &amp; Analytics</h3>
+        <p style="font-size: 15px; line-height: 26px; margin: 14px 0 0; color: rgba(32, 30, 29, 0.78)">Python, SQL, PostgreSQL, relational data modelling, operational KPI telemetry, automated leak detection, branch comparisons, pandas.</p>
+      </div>
+      <div>
+        <h3 style="font-family: var(--font-heading); font-weight: 600; font-size: 20px; line-height: 24px; letter-spacing: -0.01em; margin: 0">Engineering</h3>
+        <p style="font-size: 15px; line-height: 26px; margin: 14px 0 0; color: rgba(32, 30, 29, 0.78)">TypeScript, Next.js, React Native / Expo, Supabase (Row-Level Security), Django, Rust (LSM-tree KV engine), REST APIs, Git, pytest, Jest.</p>
+      </div>
+      <div>
+        <h3 style="font-family: var(--font-heading); font-weight: 600; font-size: 20px; line-height: 24px; letter-spacing: -0.01em; margin: 0">Systems &amp; Tongues</h3>
+        <p style="font-size: 15px; line-height: 26px; margin: 14px 0 0; color: rgba(32, 30, 29, 0.78)">Bare-metal Ubuntu Linux, Docker, Coolify, Tailscale mesh. English (C1), French (C1), Arabic (Native), German (A1, actively learning).</p>
+      </div>
+    </div>
+  </section>
 
-<section class="hero" id="top">
-<p class="status"><span class="dot" aria-hidden="true"></span>M.Sc. Data Science @ Lancaster University Leipzig · Seeking Working Student (20h/wk) roles in Germany</p>
-<h1>Zein Dergham</h1>
-<p class="lead">Data science student and engineer in <strong>Leipzig</strong>. I build ML systems from first principles, ship production apps with real users, and run my own infrastructure. Looking for a <strong>Werkstudent</strong> role in Machine Learning, Data Science or Python/Data Engineering, in Leipzig or remote in Germany.</p>
-<div class="cta">
-<a class="btn pri" href="mailto:z.dergham@lancaster.ac.uk"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 5h18a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1zm9 7.2L4 7.3V17h16V7.3l-8 4.9zM19.3 7H4.7L12 11.5 19.3 7z"/></svg>Email me</a>
-<a class="btn" href="https://github.com/ZeroTrustZein" rel="me"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .5a11.5 11.5 0 0 0-3.6 22.4c.6.1.8-.3.8-.6v-2c-3.2.7-3.9-1.5-3.9-1.5-.5-1.3-1.3-1.7-1.3-1.7-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.7 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.2 1.2a11 11 0 0 1 5.8 0c2.2-1.5 3.2-1.2 3.2-1.2.6 1.6.2 2.8.1 3.1.8.8 1.2 1.8 1.2 3.1 0 4.4-2.7 5.4-5.3 5.7.4.4.8 1.1.8 2.2v3.2c0 .3.2.7.8.6A11.5 11.5 0 0 0 12 .5z"/></svg>GitHub</a>
-<a class="btn" href="https://linkedin.com/in/zein-dergham" rel="me"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.4 20.5h-3.6v-5.6c0-1.3 0-3-1.8-3s-2.1 1.4-2.1 2.9v5.7H9.3V9h3.4v1.6c.5-.9 1.6-1.8 3.4-1.8 3.6 0 4.3 2.4 4.3 5.5v6.2zM5.3 7.4a2.1 2.1 0 1 1 0-4.2 2.1 2.1 0 0 1 0 4.2zM7.1 20.5H3.5V9h3.6v11.5zM22.2 0H1.8C.8 0 0 .8 0 1.7v20.6c0 .9.8 1.7 1.8 1.7h20.4c1 0 1.8-.8 1.8-1.7V1.7C24 .8 23.2 0 22.2 0z"/></svg>LinkedIn</a>
-</div>
-</section>
+  <section id="education" data-screen-label="Education" style="padding: 42px 0 84px" data-reveal="">
+    <span style="display: block; font-size: 13px; line-height: 14px; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(32, 30, 29, 0.7); margin: 0 0 42px">Education</span>
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 42px clamp(32px, 5vw, 88px)">
+      <div>
+        <h3 style="font-family: var(--font-heading); font-weight: 600; font-size: 24px; line-height: 28px; margin: 0">M.Sc. Data Science</h3>
+        <p style="font-size: 13px; line-height: 14px; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(32, 30, 29, 0.7); margin: 14px 0 0">Lancaster University Leipzig · Jan 2026 – present</p>
+        <p style="font-size: 15.5px; line-height: 28px; margin: 14px 0 0; color: rgba(32, 30, 29, 0.78)">Data-driven decision making, predictive analytics, enterprise data modelling.</p>
+      </div>
+      <div>
+        <h3 style="font-family: var(--font-heading); font-weight: 600; font-size: 24px; line-height: 28px; margin: 0">B.Sc. Business Information Technology Management</h3>
+        <p style="font-size: 13px; line-height: 14px; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(32, 30, 29, 0.7); margin: 14px 0 0">Lebanese American University, Beirut · 2021 – 2025</p>
+        <p style="font-size: 15.5px; line-height: 28px; margin: 14px 0 0; color: rgba(32, 30, 29, 0.78)">ERP &amp; process management, systems analysis, digital transformation.</p>
+      </div>
+    </div>
+  </section>
 
-<section id="projects" aria-labelledby="h-projects">
-<p class="kicker">01 / Work</p>
-<h2 id="h-projects">Selected projects</h2>
-<p class="sub">ML from scratch, production apps, storage engines and the infrastructure that runs them.</p>
-<div class="grid">
+  <section id="contact" data-screen-label="Contact" style="padding: 70px 0 84px" data-reveal="">
+    <hr style="height: 5px; border: 0; margin: 0 0 56px; border-top: 2px solid var(--color-text); border-bottom: 1px solid var(--color-text)">
+    <div style="display: grid; grid-template-columns: 1.2fr 1fr; gap: 42px clamp(32px, 5vw, 88px)">
+      <div>
+        <span style="display: block; font-size: 13px; line-height: 14px; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(32, 30, 29, 0.7); margin: 0 0 14px">Write to the editor</span>
+        <h2 style="font-family: var(--font-heading); font-weight: 600; font-size: clamp(30px, 3.4vw, 48px); line-height: 1.15; letter-spacing: -0.015em; margin: 0">The next edition is written with your team on it.</h2>
+        <p style="font-size: 16.5px; line-height: 28px; max-width: 52ch; margin: 24px 0 0; color: rgba(32, 30, 29, 0.85)">Available as a <strong>Werkstudent</strong> at <strong>20 hours a week</strong> in machine learning, data science, or Python data engineering alongside my M.Sc. at Lancaster University Leipzig. <strong>Eligible to work in Germany without visa sponsorship.</strong></p>
+      </div>
+      <div style="display: flex; flex-direction: column; justify-content: flex-end; gap: 14px">
+        <p style="font-size: 15.5px; line-height: 24px; margin: 0"><strong style="display: inline-block; width: 90px; text-transform: uppercase; font-size: 12px; letter-spacing: 0.08em; color: rgba(32, 30, 29, 0.6)">Email</strong> <a href="mailto:z.dergham@lancaster.ac.uk" style="color: var(--color-text); text-decoration: underline; text-underline-offset: 3px">z.dergham@lancaster.ac.uk</a></p>
+        <p style="font-size: 15.5px; line-height: 24px; margin: 0"><strong style="display: inline-block; width: 90px; text-transform: uppercase; font-size: 12px; letter-spacing: 0.08em; color: rgba(32, 30, 29, 0.6)">LinkedIn</strong> <a href="https://linkedin.com/in/zein-dergham" target="_blank" rel="noopener" style="color: var(--color-text); text-decoration: underline; text-underline-offset: 3px">linkedin.com/in/zein-dergham</a></p>
+        <p style="font-size: 15.5px; line-height: 24px; margin: 0"><strong style="display: inline-block; width: 90px; text-transform: uppercase; font-size: 12px; letter-spacing: 0.08em; color: rgba(32, 30, 29, 0.6)">GitHub</strong> <a href="https://github.com/ZeroTrustZein" target="_blank" rel="noopener" style="color: var(--color-text); text-decoration: underline; text-underline-offset: 3px">github.com/ZeroTrustZein</a></p>
+        <p style="font-size: 15.5px; line-height: 24px; margin: 0"><strong style="display: inline-block; width: 90px; text-transform: uppercase; font-size: 12px; letter-spacing: 0.08em; color: rgba(32, 30, 29, 0.6)">Telephone</strong> <span style="color: var(--color-text)">+49 152 29227743</span></p>
+        <p style="font-size: 13px; line-height: 20px; margin: 14px 0 0; color: rgba(32, 30, 29, 0.6)">Set in Source Serif 4, printed in four process inks. &copy; 2026 Zein Dergham &middot; Leipzig, Germany</p>
+      </div>
+    </div>
+  </section>
+</div>
 
-<article class="card feat">
-<div>
-<h3>pico-gpt</h3>
-<p class="meta">Language model from scratch</p>
-<p>A minimal GPT-style transformer written from the ground up in PyTorch. Attention, training loop, tokenizer and decoding are hand-written.</p>
-</div>
-<ul class="pts">
-<li>Custom byte-level BPE tokenizer</li>
-<li>KV-cache for fast autoregressive decoding</li>
-<li>34 verified tests</li>
-</ul>
-<div class="ft">
-<ul class="tags"><li>Python</li><li>PyTorch</li><li>Transformers</li><li>pytest</li></ul>
-<a class="link" href="https://github.com/ZeroTrustZein/pico-gpt">Source &rarr;</a>
-</div>
-</article>
-
-<article class="card">
-<h3>Luka</h3>
-<p class="meta">Mobile app · private beta · investor-backed</p>
-<p>Memory safekeeping app for families. Data is isolated per family through Row-Level Security policies enforced in the database, not the client.</p>
-<ul class="pts">
-<li>546 automated tests across 50 suites</li>
-<li>Family-scoped Postgres RLS</li>
-</ul>
-<div class="ft">
-<ul class="tags"><li>React Native</li><li>Expo</li><li>Supabase</li><li>TypeScript</li></ul>
-<span class="priv">Private repo</span>
-</div>
-</article>
-
-<article class="card">
-<h3>YomYom: Restaurant Operations SaaS</h3>
-<p class="meta">Multi-branch analytics</p>
-<p>Turns daily POS exports from several branches into KPIs, alerts and profit-leak detection, so owners see problems the same day instead of at month end.</p>
-<div class="ft">
-<ul class="tags"><li>Next.js</li><li>Python</li><li>PostgreSQL</li><li>Supabase</li></ul>
-<span class="priv">Private repo</span>
-</div>
-</article>
-
-<article class="card">
-<h3>FLUX.1-dev LoRA for Dergham Design &amp; Build</h3>
-<p class="meta">Diffusion fine-tuning · in production</p>
-<p>LoRA trained on a curated 784-image dataset, served through a 5-stage generation pipeline with ControlNet conditioning. Deployed to a live production site.</p>
-<div class="ft">
-<ul class="tags"><li>FLUX.1-dev</li><li>LoRA</li><li>ControlNet</li><li>Diffusers</li></ul>
-<span class="priv">Client work</span>
-</div>
-</article>
-
-<article class="card">
-<h3>flash-store</h3>
-<p class="meta">Storage engine</p>
-<p>Embedded, thread-safe key-value store built on a Log-Structured Merge-tree. Written in safe Rust.</p>
-<div class="ft">
-<ul class="tags"><li>Rust</li><li>LSM-Tree</li><li>Concurrency</li></ul>
-<a class="link" href="https://github.com/ZeroTrustZein/flash-store">Source &rarr;</a>
-</div>
-</article>
-
-<article class="card">
-<h3>multi-modal-financial</h3>
-<p class="meta">Retrieval-augmented generation</p>
-<p>RAG over financial documents. Combines BM25 sparse search with dense embeddings and merges both result lists with reciprocal rank fusion.</p>
-<div class="ft">
-<ul class="tags"><li>Python</li><li>BM25</li><li>Embeddings</li><li>RRF</li></ul>
-<a class="link" href="https://github.com/ZeroTrustZein/multi-modal-financial">Source &rarr;</a>
-</div>
-</article>
-
-<article class="card">
-<h3>Self-hosted infrastructure</h3>
-<p class="meta">Bare metal · homelab</p>
-<p>Ubuntu server on a Tailscale mesh running containerized services through Coolify, including an AI model routing gateway, uptime monitoring and system metrics.</p>
-<div class="ft">
-<ul class="tags"><li>Linux</li><li>Docker</li><li>Coolify</li><li>Tailscale</li></ul>
-</div>
-</article>
-
-</div>
-</section>
-
-<section id="experience" aria-labelledby="h-exp">
-<p class="kicker">02 / Path</p>
-<h2 id="h-exp">Experience &amp; education</h2>
-<p class="sub">Where I study and teach.</p>
-<div class="tl">
-<div class="row">
-<div class="when">Current</div>
-<div>
-<h3>Graduate Lab Demonstrator</h3>
-<p class="org">Lancaster University Leipzig</p>
-<p>Run lab sessions for third-year Computer Science students in Deep Learning, compiler basics and software testing.</p>
-</div>
-</div>
-<div class="row">
-<div class="when">Current</div>
-<div>
-<h3>M.Sc. Data Science</h3>
-<p class="org">Lancaster University Leipzig</p>
-<p>Postgraduate degree in Leipzig, focused on machine learning and data engineering.</p>
-</div>
-</div>
-</div>
-</section>
-
-<section id="skills" aria-labelledby="h-skills">
-<p class="kicker">03 / Toolbox</p>
-<h2 id="h-skills">Skills &amp; languages</h2>
-<p class="sub">Tools I have shipped real work with.</p>
-<div class="cols">
-<div>
-<h3>ML &amp; data</h3>
-<ul class="tags"><li>Python</li><li>PyTorch</li><li>NumPy</li><li>pandas</li><li>Diffusers</li><li>RAG</li><li>LoRA</li><li>SQL</li></ul>
-</div>
-<div>
-<h3>Engineering</h3>
-<ul class="tags"><li>Rust</li><li>TypeScript</li><li>Next.js</li><li>React Native</li><li>PostgreSQL</li><li>Supabase</li><li>Git</li><li>pytest</li></ul>
-</div>
-<div>
-<h3>Infrastructure</h3>
-<ul class="tags"><li>Linux</li><li>Docker</li><li>Coolify</li><li>Tailscale</li><li>CI/CD</li></ul>
-</div>
-<div>
-<h3>Languages</h3>
-<ul class="lang">
-<li>Arabic <span>Native</span></li>
-<li>English <span>C1</span></li>
-<li>French <span>C1</span></li>
-<li>German <span>A1, learning</span></li>
-</ul>
-</div>
-</div>
-</section>
-
-<section id="contact" class="contact" aria-labelledby="h-contact">
-<p class="kicker">04 / Contact</p>
-<h2 id="h-contact">Let's talk</h2>
-<p>Available for 20 hours per week alongside my studies, in Leipzig or remote within Germany. The fastest way to reach me is email.</p>
-<div class="cta">
-<a class="btn pri" href="mailto:z.dergham@lancaster.ac.uk">z.dergham@lancaster.ac.uk</a>
-<a class="btn" href="https://github.com/ZeroTrustZein">github.com/ZeroTrustZein</a>
-<a class="btn" href="https://linkedin.com/in/zein-dergham">LinkedIn</a>
-</div>
-</section>
-
-</div>
-</main>
-
-<footer>
-<div class="wrap">
-<span>&copy; <span id="y">2026</span> Zein Dergham · Leipzig, Germany</span>
-<span class="mono">Hand-written HTML &amp; CSS. No trackers.</span>
-</div>
-</footer>
-
-<script>
-(function(){var r=document.documentElement,m=matchMedia("(prefers-color-scheme: dark)");
-document.getElementById("theme").onclick=function(){var d=(r.dataset.theme||(m.matches?"dark":"light"))==="dark"?"light":"dark";r.dataset.theme=d;try{localStorage.setItem("theme",d)}catch(e){}};
-document.getElementById("y").textContent=new Date().getFullYear()})();
+</x-dc>
+<script type="text/x-dc" data-dc-script="" data-props="{&quot;showPhone&quot;: {&quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: true, &quot;tsType&quot;: &quot;boolean&quot;, &quot;section&quot;: &quot;Contact&quot;}}">
+class Component extends DCLogic {
+  state = { edition: null };
+  renderVals() {
+    return { showPhone: this.props.showPhone ?? true };
+  }
+  _legacy() {
+    const EDITIONS = [
+      { key: 'ai', num: '01', tab: 'AI in Business', title: 'The AI operator', best: 'AI operations \u00b7 automation \u00b7 AI-in-business roles',
+        lede: 'Builds AI into real workflows, not demos: copilots that sit on top of deterministic logic, content pipelines that publish themselves, and daily working fluency with the current generation of AI tools.',
+        highlights: [
+          'YomYom\u2019s copilot panel explains why a number was flagged and suggests the next check \u2014 layered over deterministic KPI logic, never a loose chatbot.',
+          'A hands-free content pipeline at Dergham Design Studio: Sanity webhook \u2192 AI agent writes and structures the post \u2192 AutoReels renders the video.',
+          'Claude, ChatGPT and Perplexity as daily instruments \u2014 for coding, outreach drafting, research and documentation.'
+        ] },
+      { key: 'data', num: '02', tab: 'Data Science', title: 'The analyst', best: 'data science \u00b7 analytics \u00b7 BI working-student roles',
+        lede: 'A Data Science master\u2019s student who has already shipped analytics people rely on: raw operational exports turned into KPIs, alerts and comparisons that executives act on the same morning.',
+        highlights: [
+          'YomYom converts daily multi-branch CSV exports into KPIs, profit-leak indicators and branch comparisons \u2014 review in minutes, not spreadsheets.',
+          'Relational data modelling and SQL across PostgreSQL and Supabase-backed systems, with data-quality checks designed into the workflow.',
+          'A traffic enforcement platform in C++, Django and PostgreSQL: time-series event logging, violations and a management dashboard.'
+        ] },
+      { key: 'it', num: '03', tab: 'Business IT & Ops', title: 'The operator', best: 'IT operations \u00b7 digital transformation \u00b7 business IT roles',
+        lede: 'Took a paper-based Beirut studio to a high-tech office end to end \u2014 built the machines, laid the network, kept the lights on through a national power crisis, and joined the software up.',
+        highlights: [
+          'Full infrastructure from scratch: workstation PCs assembled, laptops provisioned, office network deployed, NAS for centralised storage and backup.',
+          'Business continuity through Lebanon\u2019s electricity crisis: battery backup plus NAS won back four working hours a day.',
+          'Website, CRM, LinkedIn presence and Resend outreach sequences \u2014 built, integrated and run end to end.'
+        ] }
+    ];
+    const defIdx = { ai: 0, data: 1, it: 2 }[this.props.defaultEdition] ?? 0;
+    const idx = this.state.edition ?? defIdx;
+    return {
+      ed: EDITIONS[idx],
+      tabs: EDITIONS.map((e, i) => ({ label: e.tab, cls: i === idx ? 'btn btn-primary' : 'btn btn-ghost', pick: () => this.setState({ edition: i }) })),
+      showPhone: this.props.showPhone ?? true
+    };
+  }
+}
 </script>
-</body>
-</html>
+
+
+</body></html>
