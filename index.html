@@ -568,7 +568,7 @@ textarea.input { min-height: 90px; resize: vertical; }
 </style>
   <script src="js/broadsheet.js"></script>
   <style>
-    html { scroll-behavior: smooth; }
+    html { scroll-behavior: smooth; scroll-padding-top: 44px; }
     body { margin: 0; background: var(--color-bg); color: var(--color-text); font-family: var(--font-body); text-wrap: pretty; }
     a { color: var(--color-accent-700); }
     a:hover { color: var(--color-accent-600); }
@@ -576,12 +576,119 @@ textarea.input { min-height: 90px; resize: vertical; }
     @keyframes fadein { from { opacity: 0; } to { opacity: 1; } }
     @supports (animation-timeline: view()) {
       [data-reveal] { animation: rise 1s cubic-bezier(0.2, 0.6, 0.2, 1) both; animation-timeline: view(); animation-range: entry 0% entry 35%; }
+      .press-card { animation: rise 0.9s cubic-bezier(0.2, 0.6, 0.2, 1) both; animation-timeline: view(); animation-range: entry 0% entry 45%; }
     }
+    /* reveal fallback where scroll-timelines are missing: the page script
+       tags [data-reveal]/.press-card with .reveal-out and flips .reveal-in
+       on intersection, staggering siblings via --reveal-delay */
+    .reveal-out { opacity: 0; transform: translateY(28px); }
+    .reveal-out.reveal-in { opacity: 1; transform: none;
+      transition: opacity 0.9s cubic-bezier(0.2, 0.6, 0.2, 1) var(--reveal-delay, 0s),
+                  transform 0.9s cubic-bezier(0.2, 0.6, 0.2, 1) var(--reveal-delay, 0s); }
     @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { animation: none !important; } }
+
+    /* the hero portrait as a plated sheet: a paper margin and hairline trim
+       around the halftone, registration crop marks in the corners (the
+       figure's own halftone ::after still screens the whole sheet) */
+    .press-frame { position: relative; overflow: hidden; padding: 12px;
+      background: var(--color-bg); border: 1px solid var(--color-divider);
+      transition: border-color 0.4s ease; }
+    .press-frame:hover { border-color: color-mix(in srgb, var(--color-text) 45%, transparent); }
+    .press-frame::before { content: ""; position: absolute; inset: 0; z-index: 3; pointer-events: none; opacity: 0.55;
+      background-repeat: no-repeat;
+      background-image:
+        linear-gradient(var(--color-text), var(--color-text)), linear-gradient(var(--color-text), var(--color-text)),
+        linear-gradient(var(--color-text), var(--color-text)), linear-gradient(var(--color-text), var(--color-text)),
+        linear-gradient(var(--color-text), var(--color-text)), linear-gradient(var(--color-text), var(--color-text)),
+        linear-gradient(var(--color-text), var(--color-text)), linear-gradient(var(--color-text), var(--color-text));
+      background-size: 9px 1px, 1px 9px, 9px 1px, 1px 9px, 9px 1px, 1px 9px, 9px 1px, 1px 9px;
+      background-position: left 4px top 4px, left 4px top 4px, right 4px top 4px, right 4px top 4px,
+        left 4px bottom 4px, left 4px bottom 4px, right 4px bottom 4px, right 4px bottom 4px; }
+
+    
+    /* Interactive calibration and arrow hover animations */
+    .cmyk-calib { transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease; }
+    .cmyk-calib:hover { border-color: var(--color-text); transform: scale(1.05); }
+    .cmyk-calib:active { transform: scale(0.95); }
+    .cmyk-calib.calibrating { animation: calib-pulse 0.7s cubic-bezier(0.2, 0.6, 0.2, 1); }
+    @keyframes calib-pulse {
+      0% { transform: scale(1); }
+      30% { transform: scale(1.15); box-shadow: 2px 2px 0 var(--color-accent), -2px -2px 0 var(--color-accent-2); }
+      100% { transform: scale(1); }
+    }
+    
+    .press-card a .arrow { display: inline-block; transition: transform 0.25s cubic-bezier(0.2, 0.6, 0.2, 1); }
+    .press-card:hover a .arrow { transform: translateX(5px); }
+    
+    /* Interactive plate shake on calibration */
+    body.press-calibrate .cmyk-head .plate-c { translate: -4px -2px; }
+    body.press-calibrate .cmyk-head .plate-m { translate: 4px 2px; }
+    body.press-calibrate .cmyk-head .plate-y { translate: 0px -3px; }
+    body.press-calibrate .press-frame { box-shadow: 4px 4px 0 var(--color-accent), -4px -4px 0 var(--color-accent-2); }
+
+    /* headline plate registration: hover — or the pointer merely closing
+       in (.near, set by the page script) — pulls the C/M/Y plates into
+       register and lifts the paper union's backing shadows. The driver's
+       pointer-lean vars still feed the resting translate, so the plates
+       breathe with the cursor until they converge. */
+    .cmyk-head .paper, .cmyk-head .plate { transition: translate 0.5s cubic-bezier(0.2, 0.6, 0.2, 1), text-shadow 0.5s cubic-bezier(0.2, 0.6, 0.2, 1); }
+    .cmyk-head:hover .plate-m, .cmyk-head.near .plate-m { translate: 0 0; }
+    .cmyk-head:hover .plate-y, .cmyk-head.near .plate-y { translate: 0 0; }
+    .cmyk-head:hover .paper, .cmyk-head.near .paper { text-shadow: none; }
+
+    /* project features: resting geometry unchanged (the padding is bought
+       back with the negative margin); hover lays an ink-press plate shadow
+       in the process inks, draws an accent rule across the top, inks the
+       title. No transform on the card itself — the rise animation's fill
+       would pin it. */
+    .press-card { position: relative; padding: var(--space-3); margin: calc(-1 * var(--space-3));
+      border: 1px solid transparent; border-radius: var(--radius-md);
+      transition: border-color 0.35s ease, box-shadow 0.35s ease, background-color 0.35s ease; }
+    .press-card::before { content: ""; position: absolute; left: var(--space-3); right: var(--space-3); top: 6px; height: 2px;
+      background: var(--color-accent); transform: scaleX(0); transform-origin: left;
+      transition: transform 0.45s cubic-bezier(0.2, 0.6, 0.2, 1); }
+    .press-card:hover { border-color: var(--color-divider); background: color-mix(in srgb, var(--color-text) 2.5%, transparent);
+      box-shadow: 3px 3px 0 color-mix(in srgb, var(--color-accent) 28%, transparent), 6px 6px 0 color-mix(in srgb, var(--color-accent-2) 12%, transparent); }
+    .press-card:hover::before { transform: scaleX(1); }
+    .press-card h3 { transition: color 0.3s ease; }
+    .press-card:hover h3 { color: var(--color-accent-700); }
+
+    /* by-the-numbers: dotted leaders draw in on reveal (script-driven
+       scaleX) and answer the row hover; numerals count up, tabular so the
+       line never jitters */
+    .leader-num { font-variant-numeric: tabular-nums; transition: color 0.3s ease; }
+    .leader-row .leader-bar { transform-origin: left; transition: transform 0.8s cubic-bezier(0.2, 0.6, 0.2, 1), border-color 0.3s ease; }
+    .leader-row:hover .leader-bar { border-bottom-color: var(--color-accent-700); }
+    .leader-row:hover .leader-num { color: var(--color-accent-2-600); }
+
+    /* the running head — a fixed folio line that slides in once the front
+       page is scrolled past, naming the section in view (script-built) */
+    .press-header { position: fixed; top: 0; left: 0; right: 0; z-index: 50;
+      display: flex; justify-content: space-between; gap: 16px;
+      padding: 7px clamp(20px, 5vw, 72px) 6px;
+      font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase;
+      color: color-mix(in srgb, var(--color-text) 65%, transparent);
+      background: color-mix(in srgb, var(--color-bg) 93%, transparent);
+      backdrop-filter: blur(3px);
+      border-bottom: 1px solid var(--color-text);
+      box-shadow: 0 1px 0 color-mix(in srgb, var(--color-text) 30%, transparent);
+      transform: translateY(-110%); transition: transform 0.45s cubic-bezier(0.2, 0.6, 0.2, 1); }
+    .press-header.on { transform: none; }
+    .press-header .ph-dot { color: var(--color-accent-2); }
+    .press-header .ph-sec { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
   </style>
+
 </helmet>
 <nav class="nav" style="padding-inline: max(clamp(20px, 5vw, 72px), calc((100% - 1200px) / 2 + clamp(20px, 5vw, 72px)))">
-  <span class="nav-brand">Zein Dergham</span>
+  <div style="display: flex; align-items: baseline; gap: 14px">
+    <span class="nav-brand">Zein Dergham</span>
+    <span class="cmyk-calib" title="Click to test press registration calibration" style="display: inline-flex; gap: 3px; font-size: 10px; font-weight: 700; cursor: pointer; user-select: none; padding: 2px 6px; border: 1px solid var(--color-divider); border-radius: 2px">
+      <span style="color: var(--color-accent)">C</span>
+      <span style="color: var(--color-accent-2)">M</span>
+      <span style="color: var(--color-process-yellow)">Y</span>
+      <span style="color: var(--color-text)">K</span>
+    </span>
+  </div>
   <a href="#experience">Experience</a>
   <a href="#projects">Projects</a>
   <a href="#skills">Skills</a>
@@ -590,7 +697,7 @@ textarea.input { min-height: 90px; resize: vertical; }
 </nav>
 <div style="max-width: 1200px; margin: 0 auto; padding: 0 clamp(20px, 5vw, 72px)">
 
-  <section style="display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 4fr); gap: 28px clamp(32px, 5vw, 88px); align-items: center; padding: clamp(56px, 8vw, 112px) 0 84px">
+  <section style="display: grid; grid-template-columns: minmax(0, 6fr) minmax(0, 5fr); gap: 28px clamp(32px, 5vw, 88px); align-items: center; padding: clamp(56px, 8vw, 112px) 0 84px">
     <div>
       <h1 style="font-family: var(--font-heading); font-weight: var(--font-heading-weight); font-size: clamp(40px, 5.6vw, 76px); line-height: 1.08; letter-spacing: -0.02em; margin: 0 0 0 -0.035em">
         <span class="cmyk-head" style="display: block; animation: rise 0.9s cubic-bezier(0.2, 0.6, 0.2, 1) 0.05s both"><span class="paper">Runs on AI.</span><span class="plate plate-c" aria-hidden="true">Runs on AI.</span><span class="plate plate-m" aria-hidden="true">Runs on AI.</span><span class="plate plate-y" aria-hidden="true">Runs on AI.</span></span>
@@ -602,10 +709,14 @@ textarea.input { min-height: 90px; resize: vertical; }
         <a class="btn btn-ghost" href="mailto:z.dergham@lancaster.ac.uk" style="text-decoration: none">Write to the editor</a>
       </div>
     </div>
-    <figure class="cmyk" style="margin: 0; overflow: visible; animation: fadein 1.2s ease 0.35s both">
+    <figure class="cmyk press-frame" style="margin: 0; animation: rise 1.2s cubic-bezier(0.2, 0.6, 0.2, 1) 0.35s both">
       <div class="print" style="aspect-ratio: 1122 / 1402">
         <img src="portrait.png" alt="Portrait of Zein Dergham, printed as four process plates" style="width: 100%; height: 100%; object-fit: cover; display: block; opacity: 1">
       </div>
+      <figcaption style="position: relative; z-index: 2; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 4px 12px; margin: 10px 0 0; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; white-space: nowrap">
+        <span>Zein Dergham, Leipzig</span>
+        <span aria-hidden="true"><span style="color: var(--color-accent)">■</span> <span style="color: var(--color-accent-2)">■</span> <span style="color: var(--color-process-yellow)">■</span> <span style="color: var(--color-text)">■</span> Hover to register</span>
+      </figcaption>
     </figure>
   </section>
 
@@ -614,15 +725,20 @@ textarea.input { min-height: 90px; resize: vertical; }
     <p style="display: flex; justify-content: space-between; flex-wrap: wrap; gap: 14px 28px; margin: 0; padding: 14px 0; font-size: 13px; line-height: 14px; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(32, 30, 29, 0.7)">
       <span>Leipzig, Germany</span>
       <span>M.Sc. Data Science, Lancaster University</span>
-      <span>Open to working-student roles</span>
-      <span>Remote-friendly</span>
+      <span>Graduate Lab Demonstrator</span>
+      <span>Seeking Werkstudent · 20h/week</span>
+      <span>No visa sponsorship needed</span>
     </p>
     <hr style="height: 0; border: 0; border-top: 1px solid var(--color-text); margin: 0">
-    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px 70px; padding: 14px 0 28px">
-      <p style="display: flex; align-items: baseline; gap: 8px; margin: 0; font-size: 15.5px; line-height: 28px"><span>Office hours won back daily, mid power crisis</span><span style="flex: 1; min-width: 28px; align-self: flex-end; margin-bottom: 0.34em; border-bottom: 1px dotted rgba(32, 30, 29, 0.45)"></span><span style="font-family: var(--font-heading); font-weight: 600; font-size: 17px; color: var(--color-accent-700)">+4</span></p>
-      <p style="display: flex; align-items: baseline; gap: 8px; margin: 0; font-size: 15.5px; line-height: 28px"><span>Projected cost &amp; efficiency gain, YomYom</span><span style="flex: 1; min-width: 28px; align-self: flex-end; margin-bottom: 0.34em; border-bottom: 1px dotted rgba(32, 30, 29, 0.45)"></span><span style="font-family: var(--font-heading); font-weight: 600; font-size: 17px">≥10%</span></p>
-      <p style="display: flex; align-items: baseline; gap: 8px; margin: 0; font-size: 15.5px; line-height: 28px"><span>Years running a studio’s entire IT</span><span style="flex: 1; min-width: 28px; align-self: flex-end; margin-bottom: 0.34em; border-bottom: 1px dotted rgba(32, 30, 29, 0.45)"></span><span style="font-family: var(--font-heading); font-weight: 600; font-size: 17px">2</span></p>
-      <p style="display: flex; align-items: baseline; gap: 8px; margin: 0; font-size: 15.5px; line-height: 28px"><span>Languages on the desk</span><span style="flex: 1; min-width: 28px; align-self: flex-end; margin-bottom: 0.34em; border-bottom: 1px dotted rgba(32, 30, 29, 0.45)"></span><span style="font-family: var(--font-heading); font-weight: 600; font-size: 17px">4</span></p>
+    <div class="leader-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px 70px; padding: 14px 0 28px">
+      <p class="leader-row" style="display: flex; align-items: baseline; gap: 8px; margin: 0; font-size: 15.5px; line-height: 28px"><span>Office hours won back daily, mid power crisis</span><span class="leader-bar" style="flex: 1; min-width: 28px; align-self: flex-end; margin-bottom: 0.34em; border-bottom: 1px dotted rgba(32, 30, 29, 0.45)"></span><span class="leader-num" data-to="4" data-prefix="+" data-suffix="" style="font-family: var(--font-heading); font-weight: 600; font-size: 17px; color: var(--color-accent-700)">+4</span></p>
+      <p class="leader-row" style="display: flex; align-items: baseline; gap: 8px; margin: 0; font-size: 15.5px; line-height: 28px"><span>Projected cost &amp; efficiency gain, YomYom</span><span class="leader-bar" style="flex: 1; min-width: 28px; align-self: flex-end; margin-bottom: 0.34em; border-bottom: 1px dotted rgba(32, 30, 29, 0.45)"></span><span class="leader-num" data-to="10" data-prefix="&#8805;" data-suffix="%" style="font-family: var(--font-heading); font-weight: 600; font-size: 17px">&#8805;10%</span></p>
+      <p class="leader-row" style="display: flex; align-items: baseline; gap: 8px; margin: 0; font-size: 15.5px; line-height: 28px"><span>Automated tests guarding Luka</span><span class="leader-bar" style="flex: 1; min-width: 28px; align-self: flex-end; margin-bottom: 0.34em; border-bottom: 1px dotted rgba(32, 30, 29, 0.45)"></span><span class="leader-num" data-to="546" data-prefix="" data-suffix="" style="font-family: var(--font-heading); font-weight: 600; font-size: 17px; color: var(--color-accent-700)">546</span></p>
+      <p class="leader-row" style="display: flex; align-items: baseline; gap: 8px; margin: 0; font-size: 15.5px; line-height: 28px"><span>Unit tests on pico-gpt, from scratch</span><span class="leader-bar" style="flex: 1; min-width: 28px; align-self: flex-end; margin-bottom: 0.34em; border-bottom: 1px dotted rgba(32, 30, 29, 0.45)"></span><span class="leader-num" data-to="34" data-prefix="" data-suffix="" style="font-family: var(--font-heading); font-weight: 600; font-size: 17px">34</span></p>
+      <p class="leader-row" style="display: flex; align-items: baseline; gap: 8px; margin: 0; font-size: 15.5px; line-height: 28px"><span>Third-year CS courses demonstrated</span><span class="leader-bar" style="flex: 1; min-width: 28px; align-self: flex-end; margin-bottom: 0.34em; border-bottom: 1px dotted rgba(32, 30, 29, 0.45)"></span><span class="leader-num" data-to="3" data-prefix="" data-suffix="" style="font-family: var(--font-heading); font-weight: 600; font-size: 17px">3</span></p>
+      <p class="leader-row" style="display: flex; align-items: baseline; gap: 8px; margin: 0; font-size: 15.5px; line-height: 28px"><span>Years running a studio&#8217;s entire IT</span><span class="leader-bar" style="flex: 1; min-width: 28px; align-self: flex-end; margin-bottom: 0.34em; border-bottom: 1px dotted rgba(32, 30, 29, 0.45)"></span><span class="leader-num" data-to="2" data-prefix="" data-suffix="" style="font-family: var(--font-heading); font-weight: 600; font-size: 17px">2</span></p>
+      <p class="leader-row" style="display: flex; align-items: baseline; gap: 8px; margin: 0; font-size: 15.5px; line-height: 28px"><span>Languages on the desk</span><span class="leader-bar" style="flex: 1; min-width: 28px; align-self: flex-end; margin-bottom: 0.34em; border-bottom: 1px dotted rgba(32, 30, 29, 0.45)"></span><span class="leader-num" data-to="4" data-prefix="" data-suffix="" style="font-family: var(--font-heading); font-weight: 600; font-size: 17px">4</span></p>
+      <p class="leader-row" style="display: flex; align-items: baseline; gap: 8px; margin: 0; font-size: 15.5px; line-height: 28px"><span>Hours a week, as a Werkstudent</span><span class="leader-bar" style="flex: 1; min-width: 28px; align-self: flex-end; margin-bottom: 0.34em; border-bottom: 1px dotted rgba(32, 30, 29, 0.45)"></span><span class="leader-num" data-to="20" data-prefix="" data-suffix="" style="font-family: var(--font-heading); font-weight: 600; font-size: 17px; color: var(--color-accent-700)">20</span></p>
     </div>
     <hr style="height: 0; border: 0; border-top: 1px solid var(--color-text); margin: 0">
   </section>
@@ -669,36 +785,75 @@ textarea.input { min-height: 90px; resize: vertical; }
   </section>
 
   <section id="projects" data-screen-label="Projects" style="padding: 42px 0 84px" data-reveal="">
-    <span style="display: block; font-size: 13px; line-height: 14px; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(32, 30, 29, 0.7); margin: 0 0 42px">Projects</span>
-    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 56px clamp(32px, 5vw, 88px)">
-      <div>
+    <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 42px">
+      <span style="font-size: 13px; line-height: 14px; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(32, 30, 29, 0.7)">Projects &middot; Filed &amp; Verified</span>
+      <span style="font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; color: rgba(32, 30, 29, 0.5)">All metrics verifiable in source</span>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 48px clamp(28px, 4vw, 56px)">
+      <!-- 1. YomYom -->
+      <div class="press-card">
         <div style="display: flex; gap: var(--space-2); align-items: baseline; flex-wrap: wrap">
-          <h3 style="font-family: var(--font-heading); font-weight: 600; font-size: 28px; line-height: 28px; letter-spacing: -0.01em; margin: 0">YomYom</h3>
-          <span class="tag tag-accent">Flagship</span>
+          <h3 style="font-family: var(--font-heading); font-weight: 600; font-size: 26px; line-height: 28px; letter-spacing: -0.01em; margin: 0">YomYom</h3>
+          <span class="tag tag-accent">Flagship SaaS</span>
         </div>
-        <p style="font-size: 13px; line-height: 14px; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(32, 30, 29, 0.7); margin: 14px 0 0">Restaurant operations SaaS · Next.js · TypeScript · Supabase · PostgreSQL</p>
-        <p style="font-size: 15.5px; line-height: 28px; margin: 14px 0 0; color: rgba(32, 30, 29, 0.78); text-align: justify; hyphens: auto">An owner-first control room for multi-branch restaurants: daily CSV exports become KPIs, alerts, profit-leak indicators and branch comparisons. An AI copilot panel sits on top of the deterministic logic — it explains why something is flagged and suggests the next check, instead of chatting. Projected to cut costs and lift efficiency by at least 10%.</p>
+        <p style="font-size: 13px; line-height: 14px; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(32, 30, 29, 0.7); margin: 14px 0 0">Restaurant Operations SaaS &middot; Next.js &middot; Supabase &middot; Python &middot; PostgreSQL</p>
+        <p style="font-size: 15.5px; line-height: 28px; margin: 14px 0 0; color: rgba(32, 30, 29, 0.78); text-align: justify; hyphens: auto">An owner-first control room for multi-branch restaurants. Daily POS exports become actionable operating KPIs, void/comp tracking, and automated profit-leak alerts. An AI copilot sits on top of deterministic logic to diagnose operational variance rather than chat. Projected to lift efficiency by &ge;10%.</p>
       </div>
-      <div>
+
+      <!-- 2. Luka -->
+      <div class="press-card">
         <div style="display: flex; gap: var(--space-2); align-items: baseline; flex-wrap: wrap">
-          <h3 style="font-family: var(--font-heading); font-weight: 600; font-size: 28px; line-height: 28px; letter-spacing: -0.01em; margin: 0">Luka</h3>
+          <h3 style="font-family: var(--font-heading); font-weight: 600; font-size: 26px; line-height: 28px; letter-spacing: -0.01em; margin: 0">Luka</h3>
           <span class="tag tag-neutral">Private Beta</span>
         </div>
-        <p style="font-size: 13px; line-height: 14px; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(32, 30, 29, 0.7); margin: 14px 0 0">Memory archive &middot; React Native &middot; Expo &middot; PostgreSQL RLS &middot; 546 Tests</p>
-        <p style="font-size: 15.5px; line-height: 28px; margin: 14px 0 0; color: rgba(32, 30, 29, 0.78); text-align: justify; hyphens: auto">A memory safekeeping application for families. Privacy is enforced at the database level rather than left to the interface: family-scoped Postgres Row-Level Security ensures a query only ever sees its own household rows. 546 automated tests across 50 test suites verify integrity on every release.</p>
+        <p style="font-size: 13px; line-height: 14px; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(32, 30, 29, 0.7); margin: 14px 0 0">Memory Archive &middot; React Native Expo &middot; PostgreSQL RLS &middot; 546 Tests</p>
+        <p style="font-size: 15.5px; line-height: 28px; margin: 14px 0 0; color: rgba(32, 30, 29, 0.78); text-align: justify; hyphens: auto">A cross-platform mobile archive for family memory preservation. Privacy is enforced at the database layer through family-scoped Postgres Row Level Security and signed temporary storage URLs. Backed by 546 automated tests across 50 test suites verifying multi-tenant isolation on every commit.</p>
       </div>
-      <div>
-        <h3 style="font-family: var(--font-heading); font-weight: 600; font-size: 28px; line-height: 28px; letter-spacing: -0.01em; margin: 0">Traffic enforcement system</h3>
-        <p style="font-size: 13px; line-height: 14px; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(32, 30, 29, 0.7); margin: 14px 0 0">Event-logging platform · C++ · Django · PostgreSQL</p>
-        <p style="font-size: 15.5px; line-height: 28px; margin: 14px 0 0; color: rgba(32, 30, 29, 0.78); text-align: justify; hyphens: auto">A tracking and event-logging platform recording vehicles, events and violations — time-series-style data streams, relational modelling, and a management dashboard for analysing operational patterns.</p>
-      </div>
-      <div>
-        <div style="display: flex; gap: var(--space-2); align-items: baseline; flex-wrap: wrap">
-          <h3 style="font-family: var(--font-heading); font-weight: 600; font-size: 28px; line-height: 28px; letter-spacing: -0.01em; margin: 0">pico-gpt</h3>
-          <span class="tag tag-accent">From Scratch</span>
+
+      <!-- 3. pico-gpt -->
+      <div class="press-card">
+        <div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap">
+          <div style="display: flex; gap: var(--space-2); align-items: baseline">
+            <h3 style="font-family: var(--font-heading); font-weight: 600; font-size: 26px; line-height: 28px; letter-spacing: -0.01em; margin: 0">pico-gpt</h3>
+            <span class="tag tag-accent">From Scratch</span>
+          </div>
+          <a href="https://github.com/ZeroTrustZein/pico-gpt" target="_blank" rel="noopener" style="font-size: 13px; text-decoration: none; font-weight: 600">Repo <span class="arrow">&rarr;</span></a>
         </div>
-        <p style="font-size: 13px; line-height: 14px; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(32, 30, 29, 0.7); margin: 14px 0 0">Language Model &middot; PyTorch &middot; BPE Tokenizer &middot; KV-Cache &middot; 34 Tests</p>
-        <p style="font-size: 15.5px; line-height: 28px; margin: 14px 0 0; color: rgba(32, 30, 29, 0.78); text-align: justify; hyphens: auto">A minimal GPT transformer language model written from first principles in PyTorch. Self-attention is hand-coded without high-level library shortcuts, paired with a custom byte-level BPE tokenizer and KV-cache decoding for accelerated autoregression. 34 unit tests cover every component.</p>
+        <p style="font-size: 13px; line-height: 14px; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(32, 30, 29, 0.7); margin: 14px 0 0">Transformer Language Model &middot; PyTorch &middot; BPE Tokenizer &middot; KV-Cache &middot; 34 Tests</p>
+        <p style="font-size: 15.5px; line-height: 28px; margin: 14px 0 0; color: rgba(32, 30, 29, 0.78); text-align: justify; hyphens: auto">A minimal GPT transformer built from first principles in PyTorch. Implements hand-coded multi-head self-attention without framework shortcuts, paired with a custom byte-level Byte Pair Encoding (BPE) tokenizer and KV-cache decoding for fast autoregressive generation. 34 unit tests cover every layer.</p>
+      </div>
+
+      <!-- 4. FLUX.1-dev LoRA -->
+      <div class="press-card">
+        <div style="display: flex; gap: var(--space-2); align-items: baseline; flex-wrap: wrap">
+          <h3 style="font-family: var(--font-heading); font-weight: 600; font-size: 26px; line-height: 28px; letter-spacing: -0.01em; margin: 0">FLUX.1-dev LoRA</h3>
+          <span class="tag tag-accent-2">In Production</span>
+        </div>
+        <p style="font-size: 13px; line-height: 14px; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(32, 30, 29, 0.7); margin: 14px 0 0">Diffusion Fine-Tune &middot; 784-Image Corpus &middot; ControlNet &middot; Dergham Design</p>
+        <p style="font-size: 15.5px; line-height: 28px; margin: 14px 0 0; color: rgba(32, 30, 29, 0.78); text-align: justify; hyphens: auto">An architectural diffusion model fine-tuned on a curated 784-image portfolio dataset to render in the firm's limestone and cantilevered-concrete signature style. Conditioned on 2D elevations and SketchUp massing via ControlNet and deployed directly to live production for the studio's architects.</p>
+      </div>
+
+      <!-- 5. Jev Assist (Browser Agent) -->
+      <div class="press-card">
+        <div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap">
+          <div style="display: flex; gap: var(--space-2); align-items: baseline">
+            <h3 style="font-family: var(--font-heading); font-weight: 600; font-size: 26px; line-height: 28px; letter-spacing: -0.01em; margin: 0">Jev Assist</h3>
+            <span class="tag tag-accent">CUDA Agent</span>
+          </div>
+          <a href="https://github.com/ZeroTrustZein/open-browser-automation" target="_blank" rel="noopener" style="font-size: 13px; text-decoration: none; font-weight: 600">Repo <span class="arrow">&rarr;</span></a>
+        </div>
+        <p style="font-size: 13px; line-height: 14px; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(32, 30, 29, 0.7); margin: 14px 0 0">Browser Automation Agent &middot; 322M Distilled Model &middot; Chrome DevTools Protocol &middot; Manifest V3</p>
+        <p style="font-size: 15.5px; line-height: 28px; margin: 14px 0 0; color: rgba(32, 30, 29, 0.78); text-align: justify; hyphens: auto">A hybrid on-device browser automation agent. Distilled and fine-tuned a 322M parameter decision model on local CUDA (RTX 4070 Ti) delivering sub-75ms DOM action predictions, backed by an autonomous VLM fallback for unlabelled UI. Drives active tabs via CDP through a custom Manifest V3 Brave side panel.</p>
+      </div>
+
+      <!-- 6. Homelab & Deployment Platform -->
+      <div class="press-card">
+        <div style="display: flex; gap: var(--space-2); align-items: baseline; flex-wrap: wrap">
+          <h3 style="font-family: var(--font-heading); font-weight: 600; font-size: 26px; line-height: 28px; letter-spacing: -0.01em; margin: 0">Self-Hosted Homelab</h3>
+          <span class="tag tag-neutral">Infrastructure</span>
+        </div>
+        <p style="font-size: 13px; line-height: 14px; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(32, 30, 29, 0.7); margin: 14px 0 0">Bare-Metal Ubuntu Server &middot; Docker &middot; Coolify &middot; Tailscale Mesh &middot; Model Gateway</p>
+        <p style="font-size: 15.5px; line-height: 28px; margin: 14px 0 0; color: rgba(32, 30, 29, 0.78); text-align: justify; hyphens: auto">A self-hosted bare-metal production server operating five continuous services under Coolify and Docker. Connected over an encrypted Tailscale mesh with SSH key access, serving containerised Django backends and the OpenAI-compatible model gateway that powers this very automated workflow.</p>
       </div>
     </div>
   </section>
@@ -798,6 +953,129 @@ class Component extends DCLogic {
   }
 }
 </script>
+  <script>
+  (() => {
+    const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const fine = matchMedia('(hover: hover) and (pointer: fine)').matches;
+    const cssTimeline = !!(window.CSS && CSS.supports && CSS.supports('animation-timeline: view()'));
+    const boot = () => {
+      // scroll reveal fallback (only where animation-timeline: view() is missing)
+      if (!cssTimeline && !reduce && 'IntersectionObserver' in window) {
+        const els = [...document.querySelectorAll('[data-reveal], .press-card')];
+        els.forEach(el => el.classList.add('reveal-out'));
+        const io = new IntersectionObserver(entries => entries.forEach(en => {
+          if (!en.isIntersecting) return;
+          const el = en.target;
+          const sibs = [...el.parentElement.children].filter(c => c.classList.contains('reveal-out'));
+          el.style.setProperty('--reveal-delay', (Math.max(0, sibs.indexOf(el)) * 0.09) + 's');
+          el.classList.add('reveal-in');
+          io.unobserve(el);
+        }), { rootMargin: '0px 0px -8% 0px', threshold: 0.05 });
+        els.forEach(el => io.observe(el));
+      }
+      // by-the-numbers: leader draw-in + counting numerals, once, on approach
+      const grid = document.querySelector('.leader-grid');
+      if (grid && !reduce) {
+        const run = () => {
+          grid.querySelectorAll('.leader-bar').forEach((b, i) => {
+            b.style.transitionDelay = (i * 0.08) + 's';
+            b.style.transform = 'scaleX(0)';
+            requestAnimationFrame(() => requestAnimationFrame(() => { b.style.transform = 'scaleX(1)'; }));
+            setTimeout(() => { b.style.transitionDelay = ''; }, 1200 + i * 80); // hand hover transitions back to 0s delay
+          });
+          grid.querySelectorAll('.leader-num').forEach(el => {
+            const to = parseFloat(el.dataset.to || '0'), pre = el.dataset.prefix || '', suf = el.dataset.suffix || '';
+            const t0 = performance.now(), dur = 1500;
+            const step = now => {
+              const t = Math.min(1, (now - t0) / dur);
+              el.textContent = pre + Math.round(to * (1 - Math.pow(1 - t, 3))) + suf;
+              if (t < 1) requestAnimationFrame(step);
+            };
+            requestAnimationFrame(step);
+          });
+        };
+        if ('IntersectionObserver' in window) {
+          const io2 = new IntersectionObserver(es => { if (es.some(e => e.isIntersecting)) { io2.disconnect(); run(); } }, { threshold: 0.3 });
+          io2.observe(grid);
+        } else run();
+      }
+      // headline plates resolve as the pointer closes in (hover itself is pure CSS)
+      // interactive calibration button
+      const calib = document.querySelector('.cmyk-calib');
+      if (calib) {
+        calib.addEventListener('click', () => {
+          calib.classList.add('calibrating');
+          document.body.classList.add('press-calibrate');
+          setTimeout(() => {
+            document.body.classList.remove('press-calibrate');
+            calib.classList.remove('calibrating');
+          }, 800);
+        });
+      }
 
+      // mouse parallax across hero section
+      const hero = document.querySelector('section');
+      const platesC = [...document.querySelectorAll('.plate-c')];
+      const platesM = [...document.querySelectorAll('.plate-m')];
+      const portraitFrame = document.querySelector('.press-frame');
+      if (hero && !reduce && fine) {
+        hero.addEventListener('pointermove', e => {
+          const rect = hero.getBoundingClientRect();
+          const normX = (e.clientX - rect.left) / rect.width - 0.5;
+          const normY = (e.clientY - rect.top) / rect.height - 0.5;
+          if (!document.body.classList.contains('press-calibrate')) {
+            platesC.forEach(p => p.style.translate = `${normX * -3}px ${normY * -2}px`);
+            platesM.forEach(p => p.style.translate = `${normX * 3}px ${normY * 2}px`);
+            if (portraitFrame) {
+              portraitFrame.style.transform = `perspective(1000px) rotateY(${normX * 3}deg) rotateX(${-normY * 3}deg)`;
+            }
+          }
+        }, { passive: true });
+        hero.addEventListener('pointerleave', () => {
+          platesC.forEach(p => p.style.translate = '');
+          platesM.forEach(p => p.style.translate = '');
+          if (portraitFrame) portraitFrame.style.transform = '';
+        });
+      }
 
+      const heads = [...document.querySelectorAll('.cmyk-head')];
+      if (heads.length && !reduce && fine) {
+        addEventListener('pointermove', e => {
+          heads.forEach(hd => {
+            const r = hd.getBoundingClientRect();
+            const dx = Math.max(r.left - e.clientX, 0, e.clientX - r.right);
+            const dy = Math.max(r.top - e.clientY, 0, e.clientY - r.bottom);
+            hd.classList.toggle('near', Math.hypot(dx, dy) < 240);
+          });
+        }, { passive: true });
+      }
+      // the running head
+      const sections = [...document.querySelectorAll('[data-screen-label]')];
+      if (sections.length) {
+        const bar = document.createElement('div');
+        bar.className = 'press-header';
+        bar.innerHTML = '<span>Zein Dergham <span class="ph-dot">·</span> Vol. 02</span>' +
+          '<span class="ph-sec"></span>' +
+          '<span>Leipzig <span class="ph-dot">·</span> 2026</span>';
+        document.body.appendChild(bar);
+        const lab = bar.querySelector('.ph-sec');
+        let cur = '';
+        const upd = () => {
+          bar.classList.toggle('on', scrollY > 340);
+          let s = 'Front page';
+          for (const sec of sections) if (sec.getBoundingClientRect().top < 120) s = sec.dataset.screenLabel;
+          if (innerHeight + scrollY >= document.documentElement.scrollHeight - 4) s = sections[sections.length - 1].dataset.screenLabel;
+          if (s !== cur) { cur = s; lab.textContent = s; }
+        };
+        addEventListener('scroll', upd, { passive: true });
+        upd();
+      }
+    };
+    // this runs before dc-runtime swaps the raw <x-dc> template for the
+    // React tree — poll frames until the rendered copy exists in #dc-root
+    let n = 0;
+    const tryBoot = () => { if (document.querySelector('#dc-root figure.cmyk')) boot(); else if (++n < 600) requestAnimationFrame(tryBoot); };
+    requestAnimationFrame(tryBoot);
+  })();
+  </script>
 </body></html>
