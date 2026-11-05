@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="800" height="500" role="img" aria-labelledby="t">
+<title id="t">Power fault-tolerance: municipal grid drops out while battery inverter sustains office storage and network</title>
+<style>
+text{font-family:ui-monospace,Menlo,Consolas,monospace;fill:#201e1d}
+.ink{fill:none;stroke:#201e1d;stroke-width:2}
+.e{fill:none;stroke:#8c8882;stroke-width:2}
+.sm{font-size:13px;fill:#8c8882;letter-spacing:.06em}
+.lb{font-size:15px;font-weight:700}
+.nd{fill:#fff;stroke:#201e1d;stroke-width:2}
+.grid-fail{stroke:#d6006c;animation:gridCut 6s ease-in-out infinite both}
+.ups-flow{stroke:#0088b0;stroke-width:3;stroke-dasharray:8 6;animation:flowPulse 2s linear infinite}
+.badge{animation:bd 6s ease-out infinite both}
+@keyframes gridCut{0%,30%{stroke:#0088b0;opacity:1}35%,75%{stroke:#d6006c;opacity:0.3}80%,100%{stroke:#0088b0;opacity:1}}
+@keyframes flowPulse{to{stroke-dashoffset:-28}}
+@keyframes bd{0%,30%{opacity:0;transform:translateY(8px)}38%,85%{opacity:1;transform:none}92%,100%{opacity:0}}
+@media (prefers-reduced-motion:reduce){.grid-fail,.ups-flow,.badge{animation:none}}
+</style>
+
+<text x="40" y="46" font-size="16" font-weight="700" letter-spacing=".12em">DERGHAM DESIGN · POWER &amp; STORAGE CONTINUITY</text>
+<text x="760" y="46" class="sm" text-anchor="end">BEIRUT CRITICAL INFRASTRUCTURE</text>
+<path class="ink" d="M40 62H760"/>
+
+<!-- Section: Grid -->
+<g transform="translate(60, 110)">
+  <rect class="nd" x="0" y="0" width="180" height="110" rx="4"/>
+  <text x="90" y="32" class="lb" text-anchor="middle">STATE GRID</text>
+  <text x="90" y="54" class="sm" text-anchor="middle">2–4h / DAY</text>
+  <path class="grid-fail" stroke-width="2.5" fill="none" d="M30 82 Q45 62 60 82 T90 82 T120 82 T150 82"/>
+  <text x="90" y="140" class="sm" text-anchor="middle" style="fill:#d6006c">OUTAGE ARBITRAGE</text>
+</g>
+
+<!-- Arrow 1 -->
+<path class="e" d="M240 165 H310" marker-end="url(#arr)"/>
+
+<!-- Section: UPS / Inverter -->
+<g transform="translate(310, 95)">
+  <rect class="nd" x="0" y="0" width="180" height="140" rx="4" style="stroke-width:2.5"/>
+  <text x="90" y="32" class="lb" text-anchor="middle">SMART INVERTER</text>
+  <text x="90" y="52" class="sm" text-anchor="middle">&amp; BATTERY BANK</text>
+  <!-- battery cells -->
+  <rect x="35" y="68" width="22" height="42" fill="#201e1d"/>
+  <rect x="63" y="68" width="22" height="42" fill="#201e1d"/>
+  <rect x="91" y="68" width="22" height="42" fill="#201e1d"/>
+  <rect x="119" y="68" width="22" height="42" fill="#0088b0"/>
+  <text x="90" y="130" font-size="11" text-anchor="middle" fill="#0088b0" font-weight="700">FAILOVER &lt; 15ms</text>
+</g>
+
+<!-- Arrow 2: Active delivery -->
+<path class="ups-flow" fill="none" d="M490 165 H560"/>
+
+<!-- Section: Critical Loads -->
+<g transform="translate(560, 100)">
+  <rect class="nd" x="0" y="0" width="180" height="130" rx="4"/>
+  <text x="90" y="28" class="lb" text-anchor="middle">PROTECTED BUS</text>
+  <line class="ink" x1="16" y1="42" x2="164" y2="42"/>
+  <text x="24" y="66" font-size="13" font-weight="700">· SYNOLOGY NAS</text>
+  <text x="24" y="88" font-size="13" font-weight="700">· GIGABIT LAN</text>
+  <text x="24" y="110" font-size="13" font-weight="700">· CAD DESKTOPS</text>
+</g>
+
+<!-- Status readout banner -->
+<g class="badge">
+  <rect x="60" y="300" width="680" height="52" fill="#201e1d" rx="2"/>
+  <text x="80" y="332" font-size="15" font-weight="700" fill="#fff" letter-spacing=".08em">MEASURED CONTINUITY: +4.2 HOURS BILLABLE RUNTIME / WORKDAY</text>
+  <circle cx="712" cy="326" r="6" fill="#0088b0"/>
+</g>
+
+<!-- Lower timeline wire -->
+<path class="ink" d="M40 420H760"/>
+<text x="40" y="452" class="sm">SCHEDULED NAS BACKUPS REMAIN UNINTERRUPTED DURING GRID DROP</text>
+<text x="760" y="452" class="sm" text-anchor="end">ZERO CAD WORK LOSS</text>
+</svg>

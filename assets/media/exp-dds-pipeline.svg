@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="800" height="500" role="img" aria-labelledby="t">
+<title id="t">Automation pipeline: Sanity CMS project publish triggers webhook to LLM copy engine and AutoReels video render</title>
+<style>
+text{font-family:ui-monospace,Menlo,Consolas,monospace;fill:#201e1d}
+.ink{fill:none;stroke:#201e1d;stroke-width:2}
+.e{fill:none;stroke:#8c8882;stroke-width:2}
+.sm{font-size:13px;fill:#8c8882;letter-spacing:.06em}
+.lb{font-size:15px;font-weight:700}
+.nd{fill:#fff;stroke:#201e1d;stroke-width:2}
+.pulse-wire{stroke:#0088b0;stroke-width:3;stroke-dasharray:6 6;animation:dash 1.8s linear infinite}
+.pkt{fill:#d6006c;animation:packetMove 4s ease-in-out infinite both}
+.badge{animation:bd 4s ease-out infinite both}
+@keyframes dash{to{stroke-dashoffset:-24}}
+@keyframes packetMove{
+  0%{transform:translate(180px,160px);opacity:0}
+  15%{transform:translate(270px,160px);opacity:1}
+  45%{transform:translate(450px,160px);opacity:1}
+  80%{transform:translate(630px,160px);opacity:1}
+  95%,100%{transform:translate(690px,160px);opacity:0}
+}
+@keyframes bd{0%,40%{opacity:0;transform:translateY(8px)}50%,90%{opacity:1;transform:none}96%,100%{opacity:0}}
+@media (prefers-reduced-motion:reduce){.pulse-wire,.pkt,.badge{animation:none}}
+</style>
+
+<text x="40" y="46" font-size="16" font-weight="700" letter-spacing=".12em">DERGHAM DESIGN · MEDIA OUTREACH AUTOMATION</text>
+<text x="760" y="46" class="sm" text-anchor="end">EVENT-DRIVEN DISPATCH</text>
+<path class="ink" d="M40 62H760"/>
+
+<!-- Stage 1: Sanity Studio -->
+<g transform="translate(60, 105)">
+  <rect class="nd" x="0" y="0" width="150" height="110" rx="4"/>
+  <text x="75" y="32" class="lb" text-anchor="middle">SANITY CMS</text>
+  <line class="e" x1="15" y1="45" x2="135" y2="45"/>
+  <text x="75" y="72" class="sm" text-anchor="middle">Publish Monograph</text>
+  <text x="75" y="94" font-size="11" text-anchor="middle" fill="#0088b0" font-weight="700">JSON PAYLOAD</text>
+</g>
+
+<!-- Line 1 -->
+<path class="pulse-wire" d="M210 160 H280"/>
+
+<!-- Stage 2: Webhook router / Worker -->
+<g transform="translate(280, 105)">
+  <rect class="nd" x="0" y="0" width="160" height="110" rx="4"/>
+  <text x="80" y="32" class="lb" text-anchor="middle">WEBHOOK</text>
+  <line class="e" x1="15" y1="45" x2="145" y2="45"/>
+  <text x="80" y="72" class="sm" text-anchor="middle">Edge Dispatch</text>
+  <text x="80" y="94" font-size="11" text-anchor="middle" fill="#201e1d">POST /v1/publish</text>
+</g>
+
+<!-- Line 2 -->
+<path class="pulse-wire" d="M440 160 H510"/>
+
+<!-- Stage 3: LLM & AutoReels -->
+<g transform="translate(510, 95)">
+  <rect class="nd" x="0" y="0" width="230" height="130" rx="4" style="stroke-width:2.5"/>
+  <text x="115" y="30" class="lb" text-anchor="middle">DISTRIBUTION</text>
+  <line class="ink" x1="15" y1="42" x2="215" y2="42"/>
+  <text x="25" y="66" font-size="13" font-weight="700">· LLM Copy Synthesis</text>
+  <text x="25" y="88" font-size="13" font-weight="700">· AutoReels Video Render</text>
+  <text x="25" y="110" font-size="13" font-weight="700" fill="#0088b0">· LinkedIn &amp; Newsletter</text>
+</g>
+
+<!-- Dynamic moving data packet -->
+<circle class="pkt" cx="0" cy="0" r="6"/>
+
+<!-- Status badge -->
+<g class="badge">
+  <rect x="60" y="295" width="680" height="52" fill="#201e1d" rx="2"/>
+  <text x="80" y="327" font-size="14" font-weight="700" fill="#fff" letter-spacing=".08em">ZERO-TOUCH LISTING: FROM CAD UPLOAD TO SOCIAL CAMPAIGN IN &lt; 90s</text>
+  <circle cx="712" cy="321" r="6" fill="#d6006c"/>
+</g>
+
+<path class="ink" d="M40 420H760"/>
+<text x="40" y="452" class="sm">ELIMINATED MANUAL REFORMATTING &amp; MULTI-PLATFORM ASSET ADAPTATION</text>
+<text x="760" y="452" class="sm" text-anchor="end">AUTOMATED PIPELINE</text>
+</svg>

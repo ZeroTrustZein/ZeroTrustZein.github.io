@@ -823,11 +823,21 @@ textarea.input { min-height: 90px; resize: vertical; }
     <div class="cols-2" style="gap: 28px clamp(28px, 4vw, 56px); margin-top: 36px">
       <figure class="press-plate" style="margin: 0">
         <div class="press-plate-view" style="aspect-ratio: 16 / 9"><img src="assets/media/exp-dergham-villa.webp" alt="The coastal villa, a Dergham Design Studio monograph plate" loading="lazy" width="1000" height="563"></div>
-        <figcaption class="press-caption"><span class="fig-id">FIG. 02A</span><span class="fig-kicker">The coastal villa · monograph plate · Beirut</span><span class="fig-cmyk">CMYK · Process proof</span></figcaption>
+        <figcaption class="press-caption"><span class="fig-id">FIG. 02A</span><span class="fig-kicker">The coastal villa · monograph plate</span><span class="fig-cmyk">CMYK · Process proof</span></figcaption>
       </figure>
       <figure class="press-plate" style="margin: 0">
         <div class="press-plate-view" style="aspect-ratio: 16 / 9"><video src="assets/media/exp-derghamds-scroll.mp4" poster="assets/media/exp-derghamds-scroll.webp" autoplay loop muted playsinline preload="metadata" aria-label="derghamds.com scrolled top to bottom: the studio website I built"></video></div>
         <figcaption class="press-caption"><span class="fig-id">FIG. 02B</span><span class="fig-kicker">derghamds.com · live digital build-out</span><span class="fig-cmyk">CMYK · Process proof</span></figcaption>
+      </figure>
+    </div>
+    <div class="cols-2" style="gap: 28px clamp(28px, 4vw, 56px); margin-top: 28px">
+      <figure class="press-plate" style="margin: 0">
+        <div class="press-plate-view" style="aspect-ratio: 16 / 10"><img src="assets/media/exp-dds-power.svg" alt="Dergham Design Studio power &amp; storage continuity schematic" loading="lazy"></div>
+        <figcaption class="press-caption"><span class="fig-id">FIG. 02C</span><span class="fig-kicker">Power continuity · battery/UPS arbitrage (+4.2h/day)</span><span class="fig-cmyk">CMYK · Schematic</span></figcaption>
+      </figure>
+      <figure class="press-plate" style="margin: 0">
+        <div class="press-plate-view" style="aspect-ratio: 16 / 10"><img src="assets/media/exp-dds-pipeline.svg" alt="Dergham Design Studio automated publishing pipeline" loading="lazy"></div>
+        <figcaption class="press-caption"><span class="fig-id">FIG. 02D</span><span class="fig-kicker">Publishing pipeline · Sanity to AutoReels dispatch</span><span class="fig-cmyk">CMYK · Schematic</span></figcaption>
       </figure>
     </div>
     <div class="cols-3" style="gap: 42px clamp(28px, 4vw, 64px); margin-top: 56px">
@@ -971,37 +981,76 @@ textarea.input { min-height: 90px; resize: vertical; }
         <p style="font-size: 13px; line-height: 14px; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(32, 30, 29, 0.7); margin: 14px 0 0">Bare-Metal Ubuntu Server &middot; Docker &middot; Coolify &middot; Tailscale Mesh &middot; Model Gateway</p>
         <p style="font-size: 15.5px; line-height: 28px; margin: 14px 0 0; color: rgba(32, 30, 29, 0.78); text-align: justify; hyphens: auto">One Ubuntu machine at home running five long-lived services in Docker, deployed through Coolify. Nothing is exposed to the public internet: my laptops reach it over Tailscale with SSH keys only. It hosts Django backends and an OpenAI-compatible gateway that routes my coding tools across several model providers and falls back when one runs out of quota.</p>
         <figure class="press-plate">
-          <div class="press-plate-view"><pre class="press-code" aria-label="Homelab deployment and tailscale mesh status"><span class="l c"># tailscale status · overlay mesh (no public ports)</span><span class="l"><span class="k">100.122.26.61</span>  coolify-server   linux    active  [Ubuntu 26.04]</span><span class="l"><span class="k">100.99.44.2</span>    zeins-pc         windows  active  [RTX 4070 Ti]</span><span class="l"> </span><span class="l c"># docker ps · coolify stack</span><span class="l">omniroute   :20128  UP  LLM router (claude / deepseek / gemini)</span><span class="l">coolify     :8000   UP  App deployment &amp; Postgres engine</span><span class="l">beszel-hub  :8090   UP  Host telemetrics agent</span></pre></div>
-          <figcaption class="press-caption"><span class="fig-id">FIG. 09</span><span class="fig-kicker">Homelab overlay mesh · private subnet dispatch</span><span class="fig-cmyk">K plate · Composing room</span></figcaption>
+          <div class="press-plate-view" style="aspect-ratio: 16 / 9"><img src="assets/media/proj-homelab-beszel.webp" alt="Live Beszel telemetrics for coolify-server homelab node" loading="lazy" width="1280" height="720"></div>
+          <figcaption class="press-caption"><span class="fig-id">FIG. 09A</span><span class="fig-kicker">Live telemetrics · coolify-server node (Beszel Hub)</span><span class="fig-cmyk">CMYK · Process proof</span></figcaption>
+        </figure>
+        <figure class="press-plate">
+          <div class="press-plate-view"><pre class="press-code" aria-label="Homelab deployment and tailscale mesh status"><span class="l c"># tailscale · overlay mesh (no public ports)</span><span class="l"><span class="k">coolify-server</span>  [Ubuntu]   active</span><span class="l"><span class="k">zeins-pc</span>        [4070 Ti]  active</span><span class="l"> </span><span class="l c"># docker · production stack</span><span class="l">omniroute   :20128  UP  LLM gateway</span><span class="l">coolify     :8000   UP  App deploy</span><span class="l">beszel-hub  :8090   UP  Telemetry</span></pre></div>
+          <figcaption class="press-caption"><span class="fig-id">FIG. 09B</span><span class="fig-kicker">Homelab overlay mesh · private subnet dispatch</span><span class="fig-cmyk">K plate · Composing room</span></figcaption>
         </figure>
       </div>
     </div>
   </section>
 
   <section id="skills" data-screen-label="Skills" style="padding: 42px 0 84px" data-reveal="">
-    <span style="display: block; font-size: 13px; line-height: 14px; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(32, 30, 29, 0.7); margin: 0 0 42px">The composing room</span>
+    <span style="display: block; font-size: 13px; line-height: 14px; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(32, 30, 29, 0.7); margin: 0 0 28px">The composing room</span>
+    <figure class="press-plate" style="margin: 0 0 42px">
+      <div class="press-plate-view" style="aspect-ratio: 16 / 9"><img src="assets/media/skills-typecase.webp" alt="Wooden letterpress sort drawer and lead rules: the composing room" loading="lazy" width="1080" height="603"></div>
+      <figcaption class="press-caption"><span class="fig-id">FIG. 10</span><span class="fig-kicker">The composing room · lead sorts &amp; craft tooling</span><span class="fig-cmyk">K plate · Flow-generated</span></figcaption>
+    </figure>
     <div class="cols-4" style="gap: 42px clamp(24px, 3vw, 48px)">
       <div>
         <h3 style="font-family: var(--font-heading); font-weight: 600; font-size: 20px; line-height: 28px; margin: 0">AI &amp; automation</h3>
-        <p style="font-size: 15.5px; line-height: 28px; margin: 14px 0 0; color: rgba(32, 30, 29, 0.78)">LLM explanations layered over rule-based logic, prompt design, retrieval (RAG), webhook automation (Sanity, Resend, AutoReels), daily Claude / ChatGPT / Perplexity.</p>
+        <div style="display: flex; flex-wrap: wrap; gap: 6px; margin-top: 14px">
+          <span class="tag tag-accent">LLM Chains</span>
+          <span class="tag tag-neutral">RAG Retrieval</span>
+          <span class="tag tag-neutral">Prompt Design</span>
+          <span class="tag tag-accent-2">AutoReels</span>
+          <span class="tag tag-neutral">Webhooks</span>
+          <span class="tag tag-neutral">Resend</span>
+        </div>
       </div>
       <div>
         <h3 style="font-family: var(--font-heading); font-weight: 600; font-size: 20px; line-height: 28px; margin: 0">Data &amp; analytics</h3>
-        <p style="font-size: 15.5px; line-height: 28px; margin: 14px 0 0; color: rgba(32, 30, 29, 0.78)">Python, SQL, KPI design, dashboarding, relational data modelling, data quality checks, branch comparisons, operations reporting.</p>
+        <div style="display: flex; flex-wrap: wrap; gap: 6px; margin-top: 14px">
+          <span class="tag tag-accent">Python</span>
+          <span class="tag tag-accent">SQL</span>
+          <span class="tag tag-neutral">KPI Design</span>
+          <span class="tag tag-neutral">PostgreSQL</span>
+          <span class="tag tag-neutral">Data Quality</span>
+          <span class="tag tag-neutral">Relational Models</span>
+        </div>
       </div>
       <div>
         <h3 style="font-family: var(--font-heading); font-weight: 600; font-size: 20px; line-height: 28px; margin: 0">Engineering</h3>
-        <p style="font-size: 15.5px; line-height: 28px; margin: 14px 0 0; color: rgba(32, 30, 29, 0.78)">Next.js, TypeScript, React / Expo, Django, Supabase, PostgreSQL, REST APIs, Git, Docker basics, Vercel.</p>
+        <div style="display: flex; flex-wrap: wrap; gap: 6px; margin-top: 14px">
+          <span class="tag tag-accent">Next.js</span>
+          <span class="tag tag-accent">TypeScript</span>
+          <span class="tag tag-neutral">React / Expo</span>
+          <span class="tag tag-neutral">Django</span>
+          <span class="tag tag-neutral">Docker</span>
+          <span class="tag tag-neutral">Git CI/CD</span>
+        </div>
       </div>
       <div>
         <h3 style="font-family: var(--font-heading); font-weight: 600; font-size: 20px; line-height: 28px; margin: 0">Business &amp; languages</h3>
-        <p style="font-size: 15.5px; line-height: 28px; margin: 14px 0 0; color: rgba(32, 30, 29, 0.78)">Requirements gathering, stakeholder communication, process documentation, Jira, Miro. Arabic (native), English (C1), French (C1), German (A1, learning).</p>
+        <div style="display: flex; flex-wrap: wrap; gap: 6px; margin-top: 14px">
+          <span class="tag tag-accent-2">Systems Analysis</span>
+          <span class="tag tag-neutral">English (C1)</span>
+          <span class="tag tag-neutral">French (C1)</span>
+          <span class="tag tag-neutral">Arabic (Native)</span>
+          <span class="tag tag-neutral">German (A1)</span>
+        </div>
       </div>
     </div>
   </section>
 
   <section id="education" data-screen-label="Education" style="padding: 42px 0 84px" data-reveal="">
-    <span style="display: block; font-size: 13px; line-height: 14px; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(32, 30, 29, 0.7); margin: 0 0 42px">Education</span>
+    <span style="display: block; font-size: 13px; line-height: 14px; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(32, 30, 29, 0.7); margin: 0 0 28px">Education</span>
+    <figure class="press-plate" style="margin: 0 0 42px">
+      <div class="press-plate-view" style="aspect-ratio: 16 / 9"><img src="assets/media/gflow-loss-landscape.webp" alt="High-dimensional loss landscape topography: mathematical optimization manifold" loading="lazy" width="1200" height="670"></div>
+      <figcaption class="press-caption"><span class="fig-id">FIG. 11</span><span class="fig-kicker">Optimization manifold · empirical loss landscape study</span><span class="fig-cmyk">K plate · Flow-generated</span></figcaption>
+    </figure>
     <div class="cols-2" style="gap: 42px clamp(32px, 5vw, 88px)">
       <div>
         <h3 style="font-family: var(--font-heading); font-weight: 600; font-size: 24px; line-height: 28px; margin: 0">M.Sc. Data Science</h3>
