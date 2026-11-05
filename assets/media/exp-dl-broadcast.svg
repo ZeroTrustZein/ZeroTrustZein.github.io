@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="800" height="500" role="img" aria-labelledby="t">
+<title id="t">Deep learning: tensor A of shape (B,1) times tensor B of shape (B,) silently broadcasts to a (B,B) grid while the loss curve still declines normally</title>
+<style>
+text{font-family:ui-monospace,Menlo,Consolas,monospace;fill:#201e1d}
+.ink{fill:none;stroke:#201e1d;stroke-width:2}
+.sm{font-size:13px;fill:#8c8882;letter-spacing:.06em}
+.lb{font-size:15px;font-weight:700}
+.t{fill:#fff;stroke:#201e1d;stroke-width:2}
+.g{fill:#fff;stroke:#8c8882;stroke-width:1.5}
+.c{fill:#d6006c;stroke:#201e1d;stroke-width:1.5;animation:c 8s ease-out infinite both}
+.r1{animation-delay:.25s}.r2{animation-delay:.5s}.r3{animation-delay:.75s}
+.ls{fill:none;stroke:#0088b0;stroke-width:3.5;stroke-linecap:round;stroke-dasharray:1 1;animation:ls 8s ease-in-out infinite both}
+.bd{animation:bd 8s ease-out infinite both}
+.op{animation:op 8s ease-in-out infinite both}
+@keyframes c{0%,8%{opacity:0}16%,88%{opacity:.9}96%,100%{opacity:0}}
+@keyframes ls{0%,20%{stroke-dashoffset:1;opacity:1}60%,92%{stroke-dashoffset:0;opacity:1}100%{stroke-dashoffset:0;opacity:0}}
+@keyframes bd{0%,62%{opacity:0;transform:translateY(10px)}67%,92%{opacity:1;transform:none}100%{opacity:0}}
+@keyframes op{0%,4%{opacity:.2}8%,100%{opacity:1}}
+@media (prefers-reduced-motion:reduce){.c,.ls,.bd,.op{animation:none}}
+</style>
+
+<text x="40" y="46" font-size="16" font-weight="700" letter-spacing=".12em">DEEP LEARNING · SILENT BROADCAST DEFECT</text>
+<text x="760" y="46" class="sm" text-anchor="end">SHAPE (B,1) × (B,) → (B,B)</text>
+<path class="ink" d="M40 62H760"/>
+
+<!-- tensor A (B,1): column -->
+<text x="78" y="98" class="lb" text-anchor="middle">A</text>
+<text x="78" y="276" class="sm" text-anchor="middle">(B,1)</text>
+<g class="t"><rect x="60" y="108" width="36" height="36"/><rect x="60" y="144" width="36" height="36"/><rect x="60" y="180" width="36" height="36"/><rect x="60" y="216" width="36" height="36"/></g>
+
+<text x="113" y="186" font-size="20" font-weight="700" text-anchor="middle" class="op">×</text>
+
+<!-- tensor B (B,): row -->
+<g class="t"><rect x="130" y="286" width="36" height="36"/><rect x="166" y="286" width="36" height="36"/><rect x="202" y="286" width="36" height="36"/><rect x="238" y="286" width="36" height="36"/></g>
+<text x="292" y="310" class="lb">B</text>
+<text x="202" y="344" class="sm" text-anchor="middle">(B,)</text>
+
+<!-- result (B,B): outer product nobody asked for -->
+<g class="g"><rect x="130" y="108" width="144" height="144"/><path d="M166 108V252M202 108V252M238 108V252M130 144H274M130 180H274M130 216H274"/></g>
+<g class="c"><rect x="130" y="108" width="36" height="36"/><rect x="166" y="108" width="36" height="36"/><rect x="202" y="108" width="36" height="36"/><rect x="238" y="108" width="36" height="36"/></g>
+<g class="c r1"><rect x="130" y="144" width="36" height="36"/><rect x="166" y="144" width="36" height="36"/><rect x="202" y="144" width="36" height="36"/><rect x="238" y="144" width="36" height="36"/></g>
+<g class="c r2"><rect x="130" y="180" width="36" height="36"/><rect x="166" y="180" width="36" height="36"/><rect x="202" y="180" width="36" height="36"/><rect x="238" y="180" width="36" height="36"/></g>
+<g class="c r3"><rect x="130" y="216" width="36" height="36"/><rect x="166" y="216" width="36" height="36"/><rect x="202" y="216" width="36" height="36"/><rect x="238" y="216" width="36" height="36"/></g>
+<text x="202" y="98" class="lb" text-anchor="middle" style="fill:#d6006c">(B,B)</text>
+
+<!-- loss curve: looks healthy -->
+<text x="440" y="98" class="sm">TRAIN LOSS</text>
+<path class="ink" d="M440 108V300H740"/>
+<path d="M440 160H740M440 220H740M440 280H740" stroke="#8c8882" stroke-width="1" stroke-dasharray="3 6"/>
+<path class="ls" pathLength="1" d="M444 118C480 190 510 228 560 252S660 282 736 288"/>
+<text x="740" y="320" class="sm" text-anchor="end">epoch →</text>
+<text x="736" y="270" font-size="13" text-anchor="end" style="fill:#0088b0">looks fine</text>
+
+<!-- stamp -->
+<g class="bd">
+<rect x="60" y="376" width="680" height="46" fill="#d6006c"/>
+<text x="400" y="405" font-size="16" font-weight="700" text-anchor="middle" letter-spacing=".05em" style="fill:#fff">AUTOGRAD: 0 EXCEPTIONS · SILENT BROADCAST BUG</text>
+</g>
+
+<path class="ink" d="M40 448H760"/>
+<text x="40" y="476" font-size="14" letter-spacing=".04em">expected (B,1) · got (B,B) · grads flow · model trains on garbage</text>
+<circle cx="752" cy="471" r="6" fill="#edbb00" stroke="#201e1d" stroke-width="1.5"/>
+</svg>

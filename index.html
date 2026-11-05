@@ -523,7 +523,7 @@ textarea.input { min-height: 90px; resize: vertical; }
 
 /* — navigation — */
 .nav {
-  display: flex; align-items: center; gap: var(--space-4);
+  display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-2) var(--space-4);
   padding: var(--space-3) var(--space-4);
   border-bottom: none;
 }
@@ -684,10 +684,22 @@ textarea.input { min-height: 90px; resize: vertical; }
     .press-card:hover::before { transform: scaleX(1); }
     .press-card h3 { transition: color 0.3s ease; }
     .press-card:hover h3 { color: var(--color-accent-700); }
-    .proj-grid { grid-template-columns: 1fr; }
+    .proj-grid { grid-template-columns: minmax(0, 1fr); }
     @media (min-width: 760px) {
-      .proj-grid { grid-template-columns: 1fr 1fr; }
+      .proj-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .proj-span2 { grid-row: span 2; }
+    }
+
+    /* section grids: single column on phones, widen at breakpoints */
+    .cols-2, .cols-3, .cols-4, .hero-grid { display: grid; grid-template-columns: 1fr; }
+    @media (min-width: 760px) {
+      .cols-2 { grid-template-columns: 1fr 1fr; }
+      .hero-grid { grid-template-columns: minmax(0, 6fr) minmax(0, 5fr); }
+      .cols-3 { grid-template-columns: repeat(3, 1fr); }
+      .cols-4 { grid-template-columns: 1fr 1fr; }
+    }
+    @media (min-width: 960px) {
+      .cols-4 { grid-template-columns: repeat(4, 1fr); }
     }
 
     /* by-the-numbers: dotted leaders draw in on reveal (script-driven
@@ -734,7 +746,7 @@ textarea.input { min-height: 90px; resize: vertical; }
 </nav>
 <div style="max-width: 1200px; margin: 0 auto; padding: 0 clamp(20px, 5vw, 72px)">
 
-  <section style="display: grid; grid-template-columns: minmax(0, 6fr) minmax(0, 5fr); gap: 28px clamp(32px, 5vw, 88px); align-items: center; padding: clamp(56px, 8vw, 112px) 0 84px">
+  <section class="hero-grid" style="gap: 28px clamp(32px, 5vw, 88px); align-items: center; padding: clamp(56px, 8vw, 112px) 0 84px">
     <div>
       <h1 style="font-family: var(--font-heading); font-weight: var(--font-heading-weight); font-size: clamp(40px, 5.6vw, 76px); line-height: 1.08; letter-spacing: -0.02em; margin: 0 0 0 -0.035em">
         <span class="cmyk-head" style="display: block; animation: rise 0.9s cubic-bezier(0.2, 0.6, 0.2, 1) 0.05s both"><span class="paper">Models, code &amp; data.</span><span class="plate plate-c" aria-hidden="true">Models, code &amp; data.</span><span class="plate plate-m" aria-hidden="true">Models, code &amp; data.</span><span class="plate plate-y" aria-hidden="true">Models, code &amp; data.</span></span>
@@ -767,7 +779,7 @@ textarea.input { min-height: 90px; resize: vertical; }
       <span>No visa sponsorship needed</span>
     </p>
     <hr style="height: 0; border: 0; border-top: 1px solid var(--color-text); margin: 0">
-    <div class="leader-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px 70px; padding: 14px 0 28px">
+    <div class="leader-grid cols-2" style="gap: 14px 70px; padding: 14px 0 28px">
       <p class="leader-row" style="display: flex; align-items: baseline; gap: 8px; margin: 0; font-size: 15.5px; line-height: 28px"><span>Office hours won back daily, mid power crisis</span><span class="leader-bar" style="flex: 1; min-width: 28px; align-self: flex-end; margin-bottom: 0.34em; border-bottom: 1px dotted rgba(32, 30, 29, 0.45)"></span><span class="leader-num" data-to="4" data-prefix="+" data-suffix="" style="font-family: var(--font-heading); font-weight: 600; font-size: 17px; color: var(--color-accent-700)">+4</span></p>
       <p class="leader-row" style="display: flex; align-items: baseline; gap: 8px; margin: 0; font-size: 15.5px; line-height: 28px"><span>Projected cost &amp; efficiency gain, YomYom</span><span class="leader-bar" style="flex: 1; min-width: 28px; align-self: flex-end; margin-bottom: 0.34em; border-bottom: 1px dotted rgba(32, 30, 29, 0.45)"></span><span class="leader-num" data-to="10" data-prefix="&#8805;" data-suffix="%" style="font-family: var(--font-heading); font-weight: 600; font-size: 17px">&#8805;10%</span></p>
       <p class="leader-row" style="display: flex; align-items: baseline; gap: 8px; margin: 0; font-size: 15.5px; line-height: 28px"><span>Automated tests guarding Luka</span><span class="leader-bar" style="flex: 1; min-width: 28px; align-self: flex-end; margin-bottom: 0.34em; border-bottom: 1px dotted rgba(32, 30, 29, 0.45)"></span><span class="leader-num" data-to="546" data-prefix="" data-suffix="" style="font-family: var(--font-heading); font-weight: 600; font-size: 17px; color: var(--color-accent-700)">546</span></p>
@@ -785,18 +797,21 @@ textarea.input { min-height: 90px; resize: vertical; }
     <h2 style="font-family: var(--font-heading); font-weight: 600; font-size: clamp(30px, 3.2vw, 44px); line-height: 1.15; letter-spacing: -0.015em; margin: 0; max-width: 28ch">Teaching three third-year CS labs</h2>
     <p style="font-size: 13px; line-height: 14px; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(32, 30, 29, 0.7); margin: 24px 0 0">Graduate Lab Demonstrator &middot; Lancaster University Leipzig &middot; Oct 2026 – Present</p>
     <p style="font-size: 16.5px; line-height: 28px; max-width: 62ch; margin: 24px 0 0; text-align: justify; hyphens: auto">I run weekly lab sessions for Year 3 undergraduates in three modules. Most of the job is sitting next to a student, reading their code and the error it throws, and asking questions until they find the bug themselves. I don’t write their solutions.</p>
-    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 42px clamp(28px, 4vw, 64px); margin-top: 42px; margin-bottom: 56px">
+    <div class="cols-3" style="gap: 42px clamp(28px, 4vw, 64px); margin-top: 42px; margin-bottom: 56px">
       <div>
         <h3 style="font-family: var(--font-heading); font-weight: 600; font-size: 22px; line-height: 26px; letter-spacing: -0.01em; margin: 0">Deep Learning</h3>
         <p style="font-size: 15.5px; line-height: 28px; margin: 14px 0 0; color: rgba(32, 30, 29, 0.78); text-align: justify; hyphens: auto">PyTorch training loops, backprop worked by hand, and loss curves that won’t come down. The common failure is a silent shape bug: a tensor broadcasts where it shouldn’t, autograd raises nothing, and the model trains on garbage.</p>
+        <figure class="press-plate"><div class="press-plate-view" style="aspect-ratio: 16 / 10"><img src="assets/media/exp-dl-broadcast.svg" alt="Deep Learning: silent tensor broadcast bug" loading="lazy"></div><figcaption class="press-caption"><span class="fig-id">FIG. 01A</span><span class="fig-kicker">Silent tensor broadcast defect</span><span class="fig-cmyk">CMYK · Schematic</span></figcaption></figure>
       </div>
       <div>
         <h3 style="font-family: var(--font-heading); font-weight: 600; font-size: 22px; line-height: 26px; letter-spacing: -0.01em; margin: 0">Languages &amp; Compilation</h3>
         <p style="font-size: 15.5px; line-height: 28px; margin: 14px 0 0; color: rgba(32, 30, 29, 0.78); text-align: justify; hyphens: auto">Lexical analysis, parsing into an AST, tree traversal and type checking. Students usually get the grammar right and lose the bug in the visitor, where one node type is handled in the wrong order.</p>
+        <figure class="press-plate"><div class="press-plate-view" style="aspect-ratio: 16 / 10"><img src="assets/media/exp-lc-visitor.svg" alt="Languages and compilation: AST visitor traversal" loading="lazy"></div><figcaption class="press-caption"><span class="fig-id">FIG. 01B</span><span class="fig-kicker">AST visitor order failure</span><span class="fig-cmyk">CMYK · Schematic</span></figcaption></figure>
       </div>
       <div>
         <h3 style="font-family: var(--font-heading); font-weight: 600; font-size: 22px; line-height: 26px; letter-spacing: -0.01em; margin: 0">Software Quality &amp; Testing</h3>
         <p style="font-size: 15.5px; line-height: 28px; margin: 14px 0 0; color: rgba(32, 30, 29, 0.78); text-align: justify; hyphens: auto">Unit tests, shared fixtures and invariant tests. The usual review point: a test that asserts what the code already does instead of what it should do, so it passes and catches nothing.</p>
+        <figure class="press-plate"><div class="press-plate-view" style="aspect-ratio: 16 / 10"><img src="assets/media/exp-sqt-tautology.svg" alt="Software testing: tautology assertion" loading="lazy"></div><figcaption class="press-caption"><span class="fig-id">FIG. 01C</span><span class="fig-kicker">Tautology test passes but catches nothing</span><span class="fig-cmyk">CMYK · Schematic</span></figcaption></figure>
       </div>
     </div>
 
@@ -805,11 +820,17 @@ textarea.input { min-height: 90px; resize: vertical; }
     <h2 style="font-family: var(--font-heading); font-weight: 600; font-size: clamp(30px, 3.2vw, 44px); line-height: 1.15; letter-spacing: -0.015em; margin: 0; max-width: 24ch">Running IT for a Beirut studio through the power cuts</h2>
     <p style="font-size: 13px; line-height: 14px; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(32, 30, 29, 0.7); margin: 24px 0 0">IT &amp; Digital Operations Lead · <a href="https://derghamds.com" target="_blank" rel="noopener" style="color: inherit">Dergham Design Studio</a>, Beirut · Jun 2023 – May 2025</p>
     <p style="font-size: 16.5px; line-height: 28px; max-width: 62ch; margin: 24px 0 0; text-align: justify; hyphens: auto">Dergham Design is an architecture and real-estate studio that kept its drawings and maps on paper. I was the only IT person for two years, during Lebanon’s electricity crisis, when grid power came for a few hours a day. I bought the hardware, set up the network and storage, built the website and automated the listing work that used to be done by hand.</p>
-    <figure class="press-plate" style="margin-top: 36px">
-      <div class="press-plate-view" style="aspect-ratio: 16 / 9"><img src="assets/media/exp-dergham-villa.webp" alt="The coastal villa, a Dergham Design Studio monograph plate" loading="lazy" width="1000" height="563"></div>
-      <figcaption class="press-caption"><span class="fig-id">FIG. 01</span><span class="fig-kicker">The coastal villa · monograph plate · Beirut</span><span class="fig-cmyk">CMYK · Process proof</span></figcaption>
-    </figure>
-    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 42px clamp(28px, 4vw, 64px); margin-top: 56px">
+    <div class="cols-2" style="gap: 28px clamp(28px, 4vw, 56px); margin-top: 36px">
+      <figure class="press-plate" style="margin: 0">
+        <div class="press-plate-view" style="aspect-ratio: 16 / 9"><img src="assets/media/exp-dergham-villa.webp" alt="The coastal villa, a Dergham Design Studio monograph plate" loading="lazy" width="1000" height="563"></div>
+        <figcaption class="press-caption"><span class="fig-id">FIG. 02A</span><span class="fig-kicker">The coastal villa · monograph plate · Beirut</span><span class="fig-cmyk">CMYK · Process proof</span></figcaption>
+      </figure>
+      <figure class="press-plate" style="margin: 0">
+        <div class="press-plate-view" style="aspect-ratio: 16 / 9"><video src="assets/media/exp-derghamds-scroll.mp4" poster="assets/media/exp-derghamds-scroll.webp" autoplay loop muted playsinline preload="metadata" aria-label="derghamds.com scrolled top to bottom: the studio website I built"></video></div>
+        <figcaption class="press-caption"><span class="fig-id">FIG. 02B</span><span class="fig-kicker">derghamds.com · live digital build-out</span><span class="fig-cmyk">CMYK · Process proof</span></figcaption>
+      </figure>
+    </div>
+    <div class="cols-3" style="gap: 42px clamp(28px, 4vw, 64px); margin-top: 56px">
       <div>
         <h3 style="font-family: var(--font-heading); font-weight: 600; font-size: 24px; line-height: 28px; letter-spacing: -0.01em; margin: 0">Infrastructure &amp; continuity</h3>
         <p style="font-size: 15.5px; line-height: 28px; margin: 14px 0 0; color: rgba(32, 30, 29, 0.78); text-align: justify; hyphens: auto">Sourced parts and built the workstations, set up the laptops, ran the office network and installed a NAS for shared storage and backups. The NAS and network run on battery backup, so files stay reachable when the grid drops. That kept roughly four more hours a day usable.</p>
@@ -844,7 +865,7 @@ textarea.input { min-height: 90px; resize: vertical; }
         <p style="font-size: 15.5px; line-height: 28px; margin: 14px 0 0; color: rgba(32, 30, 29, 0.78); text-align: justify; hyphens: auto">A dashboard for restaurant owners with more than one branch. It ingests the daily POS exports, computes KPIs per branch, and flags voids, comps and cash drift that don’t match the receipts, the usual sign of a leak or of fraud. The flags come from plain SQL and Python rules; a language model only explains a flag that already exists. The &ge;10% saving is a projection, not a measured result.</p>
         <figure class="press-plate">
           <div class="press-plate-view" style="aspect-ratio: 16 / 10"><img src="assets/media/proj-yomyom-dash.webp" alt="YomYom operator dashboard: branch KPIs from POS ingestion" loading="lazy" width="1000" height="625"></div>
-          <figcaption class="press-caption"><span class="fig-id">FIG. 02</span><span class="fig-kicker">Operator control room · POS to KPI ingestion</span><span class="fig-cmyk">CMYK · Process proof</span></figcaption>
+          <figcaption class="press-caption"><span class="fig-id">FIG. 03</span><span class="fig-kicker">Operator control room · POS to KPI ingestion</span><span class="fig-cmyk">CMYK · Process proof</span></figcaption>
         </figure>
       </div>
 
@@ -861,7 +882,7 @@ textarea.input { min-height: 90px; resize: vertical; }
         <p style="font-size: 15.5px; line-height: 28px; margin: 14px 0 0; color: rgba(32, 30, 29, 0.78); text-align: justify; hyphens: auto">An iOS and Android app where families store photos, recordings and stories. Each family is a tenant, and Postgres Row Level Security policies scope every query to the caller’s family, so a bug in the app code can’t leak another family’s data. Media is served through short-lived signed URLs. 546 tests in 50 suites run on every commit, including checks that one tenant can’t read another’s rows.</p>
         <figure class="press-plate">
           <div class="press-plate-view" style="aspect-ratio: 16 / 10"><img src="assets/media/proj-luka-app.webp" alt="Luka: a family memory archive" loading="lazy" width="800" height="1433" style="object-position: 50% 62%"></div>
-          <figcaption class="press-caption"><span class="fig-id">FIG. 03</span><span class="fig-kicker">The living archive · database-enforced RLS</span><span class="fig-cmyk">CMYK · Process proof</span></figcaption>
+          <figcaption class="press-caption"><span class="fig-id">FIG. 04</span><span class="fig-kicker">The living archive · database-enforced RLS</span><span class="fig-cmyk">CMYK · Process proof</span></figcaption>
         </figure>
       </div>
 
@@ -878,25 +899,32 @@ textarea.input { min-height: 90px; resize: vertical; }
         <p style="font-size: 15.5px; line-height: 28px; margin: 14px 0 0; color: rgba(32, 30, 29, 0.78); text-align: justify; hyphens: auto">A small GPT written in PyTorch without <code>nn.MultiheadAttention</code> or a borrowed tokenizer. Multi-head causal attention is written out by hand, the byte-level BPE tokenizer is my own, and generation uses a KV cache so each new token doesn’t recompute the whole prefix. 34 tests check tokenizer round-trips, that hand-written attention matches PyTorch’s SDPA, that cached and uncached decoding give the same logits, and that the model can overfit a single batch.</p>
         <figure class="press-plate">
           <div class="press-plate-view" style="aspect-ratio: 16 / 9"><video src="assets/media/proj-picogpt-cli.mp4" poster="assets/media/proj-picogpt-cli.webp" autoplay loop muted playsinline preload="metadata" aria-label="pico-gpt CLI: 34 tests passing and streaming text generation with KV-cache"></video></div>
-          <figcaption class="press-caption"><span class="fig-id">FIG. 04</span><span class="fig-kicker">Terminal dispatch · 34 passing tests &amp; streaming KV generation</span><span class="fig-cmyk">CMYK · Process proof</span></figcaption>
+          <figcaption class="press-caption"><span class="fig-id">FIG. 05</span><span class="fig-kicker">Terminal dispatch · 34 passing tests &amp; streaming KV generation</span><span class="fig-cmyk">CMYK · Process proof</span></figcaption>
         </figure>
       </div>
 
       <!-- 4. FLUX.1-dev LoRA -->
       <div class="press-card proj-span2">
-        <div style="display: flex; gap: var(--space-2); align-items: baseline; flex-wrap: wrap">
-          <h3 style="font-family: var(--font-heading); font-weight: 600; font-size: 26px; line-height: 28px; letter-spacing: -0.01em; margin: 0">FLUX.1-dev LoRA</h3>
-          <span class="tag tag-accent-2">In Production</span>
+        <div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap">
+          <div style="display: flex; gap: var(--space-2); align-items: baseline">
+            <h3 style="font-family: var(--font-heading); font-weight: 600; font-size: 26px; line-height: 28px; letter-spacing: -0.01em; margin: 0">FLUX.1-dev LoRA</h3>
+            <span class="tag tag-accent-2">In Production</span>
+          </div>
+          <a href="https://derghamds.com" target="_blank" rel="noopener" style="font-size: 13px; text-decoration: none; font-weight: 600">Studio <span class="arrow">&rarr;</span></a>
         </div>
         <p style="font-size: 13px; line-height: 14px; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(32, 30, 29, 0.7); margin: 14px 0 0">Diffusion Fine-Tune &middot; 784-Image Corpus &middot; ControlNet &middot; Dergham Design</p>
         <p style="font-size: 15.5px; line-height: 28px; margin: 14px 0 0; color: rgba(32, 30, 29, 0.78); text-align: justify; hyphens: auto">A LoRA on FLUX.1-dev, trained on 784 images from the studio’s own portfolio so renders come out in its limestone and cantilevered-concrete style. ControlNet conditions the output on a 2D elevation or a SketchUp massing model, so the geometry stays the architect’s and the model only supplies materials and light. The studio’s architects use it for early client renders.</p>
         <figure class="press-plate">
           <div class="press-plate-view" style="aspect-ratio: 16 / 9"><img src="assets/media/gflow-arch-villa.webp" alt="Lebanese mountain villa pavilion generated with Google Flow Imagen" loading="lazy" width="1200" height="670"></div>
-          <figcaption class="press-caption"><span class="fig-id">FIG. 05A</span><span class="fig-kicker">Flow plate · limestone pavilion study</span><span class="fig-cmyk">CMYK · Process proof</span></figcaption>
+          <figcaption class="press-caption"><span class="fig-id">FIG. 06A</span><span class="fig-kicker">Flow plate · limestone pavilion study</span><span class="fig-cmyk">K plate · Flow-generated</span></figcaption>
         </figure>
         <figure class="press-plate">
-          <div class="press-plate-view" style="aspect-ratio: 16 / 9"><video src="assets/media/proj-flux-morph.mp4" autoplay loop muted playsinline preload="metadata" aria-label="Diffusion loop: SketchUp massing converging into a rendered limestone villa"></video></div>
-          <figcaption class="press-caption"><span class="fig-id">FIG. 05B</span><span class="fig-kicker">Massing to stone · diffusion convergence loop</span><span class="fig-cmyk">CMYK · Process proof</span></figcaption>
+          <div class="press-plate-view" style="aspect-ratio: 16 / 9"><video src="assets/media/proj-flux-morph.mp4" poster="assets/media/proj-flux-morph.webp" autoplay loop muted playsinline preload="metadata" aria-label="Diffusion loop: SketchUp massing converging into a rendered limestone villa"></video></div>
+          <figcaption class="press-caption"><span class="fig-id">FIG. 06B</span><span class="fig-kicker">Massing to stone · diffusion convergence loop</span><span class="fig-cmyk">CMYK · Process proof</span></figcaption>
+        </figure>
+        <figure class="press-plate">
+          <div class="press-plate-view" style="aspect-ratio: 16 / 9"><video src="assets/media/proj-studio-orbit.mp4" poster="assets/media/proj-studio-orbit.webp" autoplay loop muted playsinline preload="metadata" aria-label="Concept visualization: 360 degree drone orbit around a studio villa"></video></div>
+          <figcaption class="press-caption"><span class="fig-id">FIG. 06C</span><span class="fig-kicker">Concept visualization · 360° drone orbit</span><span class="fig-cmyk">CMYK · Process proof</span></figcaption>
         </figure>
       </div>
 
@@ -913,7 +941,7 @@ textarea.input { min-height: 90px; resize: vertical; }
         <p style="font-size: 15.5px; line-height: 28px; margin: 14px 0 0; color: rgba(32, 30, 29, 0.78); text-align: justify; hyphens: auto">An anti-money-laundering engine that keeps the last 72 hours of payments in memory as a graph of accounts, devices and IPs. Each payment, as JSON or ISO 20022 pacs.008, triggers a bounded 2&ndash;4 hop search for cycles and pass-through chains; hubs like payroll providers are capped so they can’t stall the search. A small graph neural network runs in-process through tract-onnx, no Python sidecar. On a 2.6M-transaction synthetic benchmark, single-threaded: 9.2 &micro;s p99 at 376k tx/s. On the public IBM AML set precision falls to 1.5%, and the report says so.</p>
         <figure class="press-plate">
           <div class="press-plate-view" style="aspect-ratio: 16 / 9"><img src="assets/media/proj-hopwire-flow.svg" alt="Hopwire: in-memory graph traversal with 2-4 hop cyclic AML detection and degree ceilings" loading="lazy" width="1600" height="900"></div>
-          <figcaption class="press-caption"><span class="fig-id">FIG. 06</span><span class="fig-kicker">Fund-flow schematic &middot; 2&ndash;4 hop cycle trace, hubs capped</span><span class="fig-cmyk">CMYK &middot; Schematic</span></figcaption>
+          <figcaption class="press-caption"><span class="fig-id">FIG. 07</span><span class="fig-kicker">Fund-flow schematic &middot; 2&ndash;4 hop cycle trace, hubs capped</span><span class="fig-cmyk">CMYK &middot; Schematic</span></figcaption>
         </figure>
       </div>
 
@@ -930,7 +958,7 @@ textarea.input { min-height: 90px; resize: vertical; }
         <p style="font-size: 15.5px; line-height: 28px; margin: 14px 0 0; color: rgba(32, 30, 29, 0.78); text-align: justify; hyphens: auto">A browser agent that runs mostly on my own GPU. A 322M-parameter model, distilled and fine-tuned on an RTX 4070 Ti, picks the next DOM action in under 75 ms. When a page has no usable labels, it falls back to a vision-language model that reads the screenshot. It controls the open tab through the Chrome DevTools Protocol from a Manifest V3 side panel in Brave.</p>
         <figure class="press-plate">
           <div class="press-plate-view" style="aspect-ratio: 1152 / 750"><video src="assets/media/proj-jev-demo.mp4" poster="assets/media/proj-jev-demo.webp" autoplay loop muted playsinline preload="metadata" aria-label="Jev Assist replay: the agent books a Zürich to London search in the browser"></video></div>
-          <figcaption class="press-caption"><span class="fig-id">FIG. 07</span><span class="fig-kicker">Live browser replay · Zürich → London in 7.1s</span><span class="fig-cmyk">CMYK · Process proof</span></figcaption>
+          <figcaption class="press-caption"><span class="fig-id">FIG. 08</span><span class="fig-kicker">Live browser replay · Zürich → London in 7.1s</span><span class="fig-cmyk">CMYK · Process proof</span></figcaption>
         </figure>
       </div>
 
@@ -944,7 +972,7 @@ textarea.input { min-height: 90px; resize: vertical; }
         <p style="font-size: 15.5px; line-height: 28px; margin: 14px 0 0; color: rgba(32, 30, 29, 0.78); text-align: justify; hyphens: auto">One Ubuntu machine at home running five long-lived services in Docker, deployed through Coolify. Nothing is exposed to the public internet: my laptops reach it over Tailscale with SSH keys only. It hosts Django backends and an OpenAI-compatible gateway that routes my coding tools across several model providers and falls back when one runs out of quota.</p>
         <figure class="press-plate">
           <div class="press-plate-view"><pre class="press-code" aria-label="Homelab deployment and tailscale mesh status"><span class="l c"># tailscale status · overlay mesh (no public ports)</span><span class="l"><span class="k">100.122.26.61</span>  coolify-server   linux    active  [Ubuntu 26.04]</span><span class="l"><span class="k">100.99.44.2</span>    zeins-pc         windows  active  [RTX 4070 Ti]</span><span class="l"> </span><span class="l c"># docker ps · coolify stack</span><span class="l">omniroute   :20128  UP  LLM router (claude / deepseek / gemini)</span><span class="l">coolify     :8000   UP  App deployment &amp; Postgres engine</span><span class="l">beszel-hub  :8090   UP  Host telemetrics agent</span></pre></div>
-          <figcaption class="press-caption"><span class="fig-id">FIG. 08</span><span class="fig-kicker">Homelab overlay mesh · private subnet dispatch</span><span class="fig-cmyk">K plate · Composing room</span></figcaption>
+          <figcaption class="press-caption"><span class="fig-id">FIG. 09</span><span class="fig-kicker">Homelab overlay mesh · private subnet dispatch</span><span class="fig-cmyk">K plate · Composing room</span></figcaption>
         </figure>
       </div>
     </div>
@@ -952,7 +980,7 @@ textarea.input { min-height: 90px; resize: vertical; }
 
   <section id="skills" data-screen-label="Skills" style="padding: 42px 0 84px" data-reveal="">
     <span style="display: block; font-size: 13px; line-height: 14px; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(32, 30, 29, 0.7); margin: 0 0 42px">The composing room</span>
-    <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 42px clamp(24px, 3vw, 48px)">
+    <div class="cols-4" style="gap: 42px clamp(24px, 3vw, 48px)">
       <div>
         <h3 style="font-family: var(--font-heading); font-weight: 600; font-size: 20px; line-height: 28px; margin: 0">AI &amp; automation</h3>
         <p style="font-size: 15.5px; line-height: 28px; margin: 14px 0 0; color: rgba(32, 30, 29, 0.78)">LLM explanations layered over rule-based logic, prompt design, retrieval (RAG), webhook automation (Sanity, Resend, AutoReels), daily Claude / ChatGPT / Perplexity.</p>
@@ -974,7 +1002,7 @@ textarea.input { min-height: 90px; resize: vertical; }
 
   <section id="education" data-screen-label="Education" style="padding: 42px 0 84px" data-reveal="">
     <span style="display: block; font-size: 13px; line-height: 14px; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(32, 30, 29, 0.7); margin: 0 0 42px">Education</span>
-    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 42px clamp(32px, 5vw, 88px)">
+    <div class="cols-2" style="gap: 42px clamp(32px, 5vw, 88px)">
       <div>
         <h3 style="font-family: var(--font-heading); font-weight: 600; font-size: 24px; line-height: 28px; margin: 0">M.Sc. Data Science</h3>
         <p style="font-size: 13px; line-height: 14px; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(32, 30, 29, 0.7); margin: 14px 0 0">Lancaster University Leipzig · Jan 2026 – present</p>

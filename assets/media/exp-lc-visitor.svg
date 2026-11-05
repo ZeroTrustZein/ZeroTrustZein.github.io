@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="800" height="500" role="img" aria-labelledby="t">
+<title id="t">Languages and compilation: a visitor walks the AST for x * 2 + y but visits Mult before its children, so type checking fails</title>
+<style>
+text{font-family:ui-monospace,Menlo,Consolas,monospace;fill:#201e1d}
+.ink{fill:none;stroke:#201e1d;stroke-width:2}
+.e{fill:none;stroke:#8c8882;stroke-width:2}
+.sm{font-size:13px;fill:#8c8882;letter-spacing:.06em}
+.nd{fill:#fff;stroke:#201e1d;stroke-width:2.5}
+.lb{font-size:15px;font-weight:700;text-anchor:middle;dominant-baseline:central}
+.cur{animation:cur 8s ease-in-out infinite both}
+.bad{fill:#d6006c;opacity:0;animation:bad 8s ease-out infinite both}
+.v1,.v2,.v3,.v4,.v5{animation:v 8s ease-out infinite both}
+.v2{animation-name:v2}.v3{animation-name:v3}.v4{animation-name:v4}.v5{animation-name:v5}
+.bd{animation:bd 8s ease-out infinite both}
+@keyframes cur{0%{transform:translate(400px,130px);opacity:0}4%{opacity:1}12%,18%{transform:translate(260px,240px)}28%,32%{transform:translate(180px,350px)}42%,46%{transform:translate(340px,350px)}56%,60%{transform:translate(540px,240px)}70%,92%{transform:translate(400px,130px);opacity:1}100%{transform:translate(400px,130px);opacity:0}}
+@keyframes bad{0%,12%{opacity:0}14%{opacity:.95}17%{opacity:.4}20%{opacity:.95}23%,92%{opacity:.85}100%{opacity:0}}
+@keyframes v{0%,12%{opacity:0}14%,92%{opacity:1}100%{opacity:0}}
+@keyframes v2{0%,28%{opacity:0}30%,92%{opacity:1}100%{opacity:0}}
+@keyframes v3{0%,42%{opacity:0}44%,92%{opacity:1}100%{opacity:0}}
+@keyframes v4{0%,56%{opacity:0}58%,92%{opacity:1}100%{opacity:0}}
+@keyframes v5{0%,70%{opacity:0}72%,92%{opacity:1}100%{opacity:0}}
+@keyframes bd{0%,72%{opacity:0;transform:translateY(10px)}76%,92%{opacity:1;transform:none}100%{opacity:0}}
+@media (prefers-reduced-motion:reduce){.cur,.bad,.v1,.v2,.v3,.v4,.v5,.bd{animation:none}.cur{opacity:0}.bad{opacity:.85}}
+</style>
+
+<text x="40" y="46" font-size="16" font-weight="700" letter-spacing=".12em">LANGUAGES &amp; COMPILATION · VISITOR ORDER</text>
+<text x="760" y="46" class="sm" text-anchor="end">AST POST-ORDER TRAVERSAL</text>
+<path class="ink" d="M40 62H760"/>
+
+<text x="40" y="96" class="sm">SRC: x * 2 + y</text>
+
+<!-- edges -->
+<path class="e" d="M400 152L260 218M400 152L540 218M260 262L180 328M260 262L340 328"/>
+
+<!-- nodes -->
+<rect class="nd" x="325" y="108" width="150" height="44" rx="6"/><text class="lb" x="400" y="130">BinaryOp(+)</text>
+<rect class="nd" x="195" y="218" width="130" height="44" rx="6"/>
+<rect class="bad" x="195" y="218" width="130" height="44" rx="6"/>
+<text class="lb" x="260" y="240">Mult(*)</text>
+<rect class="nd" x="475" y="218" width="130" height="44" rx="6"/><text class="lb" x="540" y="240">Ident(y)</text>
+<rect class="nd" x="115" y="328" width="130" height="44" rx="6"/><text class="lb" x="180" y="350">Ident(x)</text>
+<rect class="nd" x="275" y="328" width="130" height="44" rx="6"/><text class="lb" x="340" y="350">Const(2)</text>
+
+<!-- visit order stamps -->
+<g font-size="14" font-weight="700">
+<text class="v1" x="334" y="214" style="fill:#d6006c">1</text>
+<text class="v2" x="250" y="324" style="fill:#0088b0">2</text>
+<text class="v3" x="410" y="324" style="fill:#0088b0">3</text>
+<text class="v4" x="614" y="214" style="fill:#0088b0">4</text>
+<text class="v5" x="484" y="104" style="fill:#0088b0">5</text>
+</g>
+
+<!-- cyan cursor -->
+<g class="cur"><circle r="30" fill="none" stroke="#0088b0" stroke-width="3" stroke-dasharray="6 5"/><circle r="5" fill="#0088b0"/></g>
+
+<g font-size="13" letter-spacing=".04em">
+<text x="560" y="330">expected: x → 2 → * → y → +</text>
+<text x="560" y="352" style="fill:#d6006c">visited:  * → x → 2 → y → +</text>
+</g>
+
+<g class="bd">
+<rect x="60" y="392" width="680" height="44" fill="#d6006c"/>
+<text x="400" y="420" font-size="16" font-weight="700" text-anchor="middle" letter-spacing=".05em" style="fill:#fff">WRONG ORDER · VISITED BEFORE CHILD · TYPE ERROR</text>
+</g>
+
+<path class="ink" d="M40 456H760"/>
+<text x="40" y="482" font-size="14" letter-spacing=".04em">grammar ok · parse ok · bug lives in the visitor</text>
+<circle cx="752" cy="477" r="6" fill="#edbb00" stroke="#201e1d" stroke-width="1.5"/>
+</svg>

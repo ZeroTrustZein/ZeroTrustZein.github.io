@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="800" height="500" role="img" aria-labelledby="t">
+<title id="t">Software testing: assert f(x) == f(x) passes every time, but the spec asks for f(x) == expected_output(x), so the test catches zero regressions</title>
+<style>
+text{font-family:ui-monospace,Menlo,Consolas,monospace;fill:#201e1d}
+.ink{fill:none;stroke:#201e1d;stroke-width:2}
+.sm{font-size:13px;fill:#8c8882;letter-spacing:.06em}
+.code{font-size:24px;font-weight:700}
+.ok{animation:ok 8s ease-out infinite both}
+.sp{animation:sp 8s ease-out infinite both}
+.x{animation:x 8s ease-out infinite both}
+.bd{animation:bd 8s ease-out infinite both}
+@keyframes ok{0%,8%{opacity:0}11%{opacity:1}13%{opacity:.3}15%,92%{opacity:1}100%{opacity:0}}
+@keyframes sp{0%,30%{opacity:0;transform:translateY(16px)}36%,92%{opacity:1;transform:none}100%{opacity:0}}
+@keyframes x{0%,52%{opacity:0}54%{opacity:1;stroke-width:22}58%,92%{opacity:.9;stroke-width:12}100%{opacity:0}}
+@keyframes bd{0%,62%{opacity:0;transform:translateY(10px)}67%,92%{opacity:1;transform:none}100%{opacity:0}}
+@media (prefers-reduced-motion:reduce){.ok,.sp,.x,.bd{animation:none}}
+</style>
+
+<text x="40" y="46" font-size="16" font-weight="700" letter-spacing=".12em">SOFTWARE QUALITY &amp; TESTING · TAUTOLOGY SPEC</text>
+<text x="760" y="46" class="sm" text-anchor="end">INVARIANT VERIFICATION</text>
+<path class="ink" d="M40 62H760"/>
+
+<!-- code frame -->
+<text x="60" y="96" class="sm">test_f.py</text>
+<rect x="60" y="106" width="440" height="72" fill="#fff" stroke="#201e1d" stroke-width="2.5"/>
+<rect x="60" y="106" width="8" height="72" fill="#201e1d"/>
+<text x="92" y="150" class="code">assert f(x) == f(x)</text>
+
+<!-- pass status -->
+<g class="ok">
+<rect x="530" y="106" width="210" height="72" fill="#0088b0"/>
+<text x="566" y="155" font-size="38" font-weight="700" style="fill:#fff">✓</text>
+<text x="608" y="140" font-size="13" font-weight="700" style="fill:#fff">STATUS:</text>
+<text x="608" y="160" font-size="15" font-weight="700" style="fill:#fff">100% PASS</text>
+</g>
+
+<!-- what the spec actually says -->
+<g class="sp">
+<text x="60" y="226" class="sm">REQUIREMENT</text>
+<rect x="60" y="236" width="680" height="60" fill="#edbb00" stroke="#201e1d" stroke-width="2.5"/>
+<text x="84" y="273" font-size="20" font-weight="700">SPEC: f(x) == expected_output(x)</text>
+</g>
+
+<!-- magenta stamp over the tautology -->
+<path class="x" d="M240 112L320 172M320 112L240 172" stroke="#d6006c" stroke-width="12" stroke-linecap="round" fill="none"/>
+
+<g class="bd">
+<rect x="60" y="330" width="680" height="46" fill="#d6006c"/>
+<text x="400" y="359" font-size="16" font-weight="700" text-anchor="middle" letter-spacing=".05em" style="fill:#fff">✗ PASSES TAUTOLOGICALLY · CATCHES 0 REGRESSIONS</text>
+</g>
+
+<path class="ink" d="M40 448H760"/>
+<text x="40" y="476" font-size="14" letter-spacing=".04em">assert what it should do, not what it already does</text>
+<circle cx="752" cy="471" r="6" fill="#edbb00" stroke="#201e1d" stroke-width="1.5"/>
+</svg>
