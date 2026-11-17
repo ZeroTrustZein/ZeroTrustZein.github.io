@@ -46,7 +46,8 @@
     <div class="nav-links">
       <a href="#case"><span data-l="en">Case study</span><span data-l="de">Fallstudie</span></a>
       <a href="#sectors"><span data-l="en">Sectors</span><span data-l="de">Branchen</span></a>
-      <a href="#method"><span data-l="en">Method</span><span data-l="de">Vorgehen</span></a>
+      <a href="#lab"><span data-l="en">Live lab</span><span data-l="de">Live-Labor</span></a>
+      <a href="#roadmap"><span data-l="en">Your roadmap</span><span data-l="de">Ihre Roadmap</span></a>
       <a href="#builds"><span data-l="en">Builds</span><span data-l="de">Projekte</span></a>
       <a href="#germany"><span data-l="en">Hiring in Germany</span><span data-l="de">Werkstudent</span></a>
       <a href="#contact"><span data-l="en">Contact</span><span data-l="de">Kontakt</span></a>
@@ -57,6 +58,7 @@
   </div>
 </nav>
 
+<div id="progress" aria-hidden="true"></div>
 <main id="top">
 
 <!-- ============ HERO ============ -->
@@ -68,8 +70,8 @@
         <span data-l="de">KI-Systeme für echte Organisationen · Leipzig &amp; Beirut</span>
       </div>
       <h1>
-        <span data-l="en">Any organization can run on AI. <em>I build the systems that make it happen.</em></span>
-        <span data-l="de">Jede Organisation kann mit KI arbeiten. <em>Ich baue die Systeme dafür.</em></span>
+        <span data-l="en">Any <span class="rot" data-rotate="clinic|school|bank|hotel|ministry|real-estate firm|restaurant chain|organization">organization</span> can run on AI. <em>I build the systems that make it happen.</em></span>
+        <span data-l="de">Jede <span class="rot" data-rotate="Klinik|Schule|Bank|Hotelkette|Behörde|Immobilienfirma|Restaurantkette|Organisation">Organisation</span> kann mit KI arbeiten. <em>Ich baue die Systeme dafür.</em></span>
       </h1>
       <p class="lede" data-l="en">I’m Zein Dergham, a data scientist in Leipzig. In Beirut I took a real-estate and contracting company from paper drawings and phone calls to automated listings, AI renders and a client portal, while the grid was down most of the day. Now I design and build the same kind of change for real estate, hospitality, schools, clinics, finance and the public sector.</p>
       <p class="lede" data-l="de">Ich bin Zein Dergham, Data Scientist in Leipzig. In Beirut habe ich ein Immobilien- und Bauunternehmen von Papierplänen und Telefonaten zu automatisierten Exposés, KI-Renderings und einem Kundenportal geführt, während der Strom die meiste Zeit des Tages ausfiel. Heute plane und baue ich solche Veränderungen für Immobilien, Gastronomie und Hotellerie, Schulen, Kliniken, Finanzen und Verwaltung.</p>
@@ -114,6 +116,11 @@
       <span data-l="en">working languages: Arabic, English, French, German</span><span data-l="de">Arbeitssprachen: Arabisch, Englisch, Französisch, Deutsch</span></div>
   </div>
 </div>
+
+<div class="marquee" aria-hidden="true"><div class="marquee-track">
+  <span>PyTorch</span><span>Transformers</span><span>FLUX.1 · LoRA · ControlNet</span><span>Distillation</span><span>RAG</span><span>PostgreSQL · RLS</span><span>Python · SQL</span><span>Rust · tract-onnx</span><span>Graph neural networks</span><span>Next.js · Supabase</span><span>React Native · Expo</span><span>Django</span><span>Docker · Coolify</span><span>Tailscale</span><span>Chrome DevTools Protocol</span><span>ISO 20022</span><span>Webhooks · REST</span>
+  <span>PyTorch</span><span>Transformers</span><span>FLUX.1 · LoRA · ControlNet</span><span>Distillation</span><span>RAG</span><span>PostgreSQL · RLS</span><span>Python · SQL</span><span>Rust · tract-onnx</span><span>Graph neural networks</span><span>Next.js · Supabase</span><span>React Native · Expo</span><span>Django</span><span>Docker · Coolify</span><span>Tailscale</span><span>Chrome DevTools Protocol</span><span>ISO 20022</span><span>Webhooks · REST</span>
+</div></div>
 
 <!-- ============ CASE STUDY ============ -->
 <section id="case">
@@ -164,6 +171,11 @@
           <figure class="plate" style="margin:0;--ar:8/5"><img src="assets/media/exp-dds-pipeline.svg" alt="Listing pipeline: Sanity to language model to AutoReels" loading="lazy" style="object-fit:contain;background:#fff"><figcaption class="fig"><span data-l="en">Listing pipeline</span><span data-l="de">Exposé-Pipeline</span></figcaption></figure>
         </div>
       </div>
+    </div>
+    <div class="gallery" data-reveal>
+      <figure><img src="assets/media/exp-dergham-villa.webp" alt="Coastal villa in limestone and concrete above the sea" loading="lazy"><figcaption data-l="en">Coastal villa · monograph plate</figcaption><figcaption data-l="de">Küstenvilla · Monografie-Tafel</figcaption></figure>
+      <figure><img src="assets/media/gflow-arch-villa.webp" alt="Cantilevered concrete and stone house on a hillside" loading="lazy"><figcaption data-l="en">Cantilever study · AI-generated</figcaption><figcaption data-l="de">Auskragungsstudie · KI-generiert</figcaption></figure>
+      <figure><img src="assets/media/gflow-villa-elevation.webp" alt="Low limestone pavilion among olive trees" loading="lazy"><figcaption data-l="en">Limestone pavilion · AI-generated</figcaption><figcaption data-l="de">Kalksteinpavillon · KI-generiert</figcaption></figure>
     </div>
   </div>
 </section>
@@ -313,6 +325,69 @@
   </div>
 </section>
 
+<!-- ============ LIVE LAB ============ -->
+<section id="lab" class="lab-sec">
+  <div class="wrap">
+    <div class="section-head" data-reveal>
+      <div class="kicker"><span class="dot" style="background:#0088b0"></span><span data-l="en">Live lab · runs in your browser</span><span data-l="de">Live-Labor · läuft in Ihrem Browser</span></div>
+      <h2 data-l="en">Don’t take my word for it. Try the ideas yourself.</h2>
+      <h2 data-l="de">Glauben Sie mir nicht einfach. Probieren Sie es selbst.</h2>
+      <p data-l="en">Two small simulations of how my systems think. They run on sample data in this page, so you can play with them safely.</p>
+      <p data-l="de">Zwei kleine Simulationen, wie meine Systeme denken. Sie laufen mit Beispieldaten auf dieser Seite, Sie können also gefahrlos damit spielen.</p>
+    </div>
+
+    <div class="demo" data-reveal>
+      <div class="demo-head">
+        <div>
+          <span class="for">Hopwire · <span data-l="en">anti-money-laundering</span><span data-l="de">Anti-Geldwäsche</span></span>
+          <h3 data-l="en">Watch money move, and catch it going in circles</h3>
+          <h3 data-l="de">Sehen Sie Geld fließen und erkennen Sie Kreisläufe</h3>
+        </div>
+        <div class="demo-ctrl">
+          <button type="button" class="btn btn-line btn-sm" id="hw-play">Pause</button>
+          <button type="button" class="btn btn-ink btn-sm" id="hw-inject"><span data-l="en">Inject a laundering loop</span><span data-l="de">Geldwäsche-Kreislauf einschleusen</span></button>
+        </div>
+      </div>
+      <div class="demo-body hw">
+        <svg id="hw-graph" role="img" aria-label="Animated payment graph between accounts, with cycles highlighted when detected"></svg>
+        <aside>
+          <div class="hw-stats">
+            <div><b id="hw-pay">0</b><span data-l="en">payments</span><span data-l="de">Zahlungen</span></div>
+            <div><b id="hw-alerts" style="color:var(--magenta)">0</b><span data-l="en">cycle alerts</span><span data-l="de">Kreislauf-Alarme</span></div>
+            <div><b id="hw-skip" style="color:#8a6c00">0</b><span data-l="en">hub paths skipped</span><span data-l="de">Hub-Pfade übersprungen</span></div>
+          </div>
+          <ol class="hw-log" id="hw-log"></ol>
+          <p class="small" data-l="en">Each new payment starts a search of 2–4 hops back to the sender. The payroll hub is not expanded, so it can’t stall the search. The real engine does this in Rust in 9.2 µs at p99.</p>
+          <p class="small" data-l="de">Jede neue Zahlung startet eine Suche über 2–4 Sprünge zurück zum Absender. Der Lohn-Hub wird nicht durchsucht, damit er die Suche nicht blockiert. Die echte Engine schafft das in Rust in 9,2 µs (p99).</p>
+        </aside>
+      </div>
+      <div class="fig"><span data-l="en">Simulation on random sample accounts · not the production engine</span><span data-l="de">Simulation mit zufälligen Beispielkonten · nicht die Produktions-Engine</span><a href="#b-hopwire"><span data-l="en">About Hopwire ↓</span><span data-l="de">Zu Hopwire ↓</span></a></div>
+    </div>
+
+    <div class="demo" data-reveal>
+      <div class="demo-head">
+        <div>
+          <span class="for">YomYom · <span data-l="en">restaurant groups</span><span data-l="de">Restaurantgruppen</span></span>
+          <h3 data-l="en">Find the branch that is leaking money</h3>
+          <h3 data-l="de">Finden Sie die Filiale, die Geld verliert</h3>
+        </div>
+        <label class="th-ctl"><span data-l="en">Flag when voids exceed the branch’s usual rate by</span><span data-l="de">Warnen, wenn Stornos den üblichen Wert übersteigen um</span>
+          <input type="range" id="yy-th" min="1.5" max="4" step="0.1" value="2.2"><output id="yy-th-v">2.2×</output></label>
+      </div>
+      <div class="demo-body yy">
+        <div class="yy-table" id="yy-table"></div>
+        <aside>
+          <h4 data-l="en">What the owner receives</h4><h4 data-l="de">Was der Inhaber erhält</h4>
+          <ul class="yy-explain" id="yy-explain"></ul>
+          <p class="small" data-l="en">The flag comes from a plain rule, so it is auditable. In YomYom a language model writes the explanation; here a fixed template stands in for it.</p>
+          <p class="small" data-l="de">Die Warnung kommt aus einer einfachen Regel und ist damit nachprüfbar. In YomYom schreibt ein Sprachmodell die Erklärung; hier ersetzt sie eine feste Vorlage.</p>
+        </aside>
+      </div>
+      <div class="fig"><span data-l="en">Void rate, % of sales · invented sample data for four branches</span><span data-l="de">Stornoquote, % vom Umsatz · erfundene Beispieldaten für vier Filialen</span><a href="#b-yomyom"><span data-l="en">About YomYom ↓</span><span data-l="de">Zu YomYom ↓</span></a></div>
+    </div>
+  </div>
+</section>
+
 <!-- ============ METHOD ============ -->
 <section id="method" style="background:var(--card);border-block:1px solid var(--rule)">
   <div class="wrap">
@@ -384,6 +459,10 @@
           <p class="biz" data-l="de">Jeden Morgen die Zahlen aller Filialen sehen und die Verluste finden, die Geld kosten.</p>
           <p class="tech" data-l="en">Ingests daily POS exports, computes KPIs per branch and flags voids, comps and cash drift that don’t match the receipts. The flags come from plain SQL and Python rules; a language model only explains a flag that already exists. The 10%+ saving is a projection, not a measured result.</p>
           <p class="tech" data-l="de">Liest tägliche POS-Exporte ein, berechnet KPIs je Filiale und markiert Stornos, Freigaben und Kassendifferenzen, die nicht zu den Belegen passen. Die Warnungen kommen aus einfachen SQL- und Python-Regeln; ein Sprachmodell erklärt nur bereits gefundene Auffälligkeiten. Die Ersparnis von 10 %+ ist eine Prognose, kein Messwert.</p>
+          <details class="deep"><summary><span data-l="en">How it works</span><span data-l="de">So funktioniert es</span></summary>
+            <ol class="pipe"><li><b><span data-l="en">POS export</span><span data-l="de">POS-Export</span></b><small><span data-l="en">daily CSV</span><span data-l="de">tägliche CSV</span></small></li><li><b><span data-l="en">Ingest</span><span data-l="de">Einlesen</span></b><small><span data-l="en">Python cleaning</span><span data-l="de">Python-Bereinigung</span></small></li><li><b><span data-l="en">PostgreSQL</span><span data-l="de">PostgreSQL</span></b><small><span data-l="en">per-branch tables</span><span data-l="de">Tabellen je Filiale</span></small></li><li><b><span data-l="en">Rules</span><span data-l="de">Regeln</span></b><small><span data-l="en">SQL: voids, comps, cash</span><span data-l="de">SQL: Stornos, Freigaben, Kasse</span></small></li><li><b><span data-l="en">Explain</span><span data-l="de">Erklären</span></b><small><span data-l="en">LLM writes the why</span><span data-l="de">LLM schreibt das Warum</span></small></li><li><b><span data-l="en">Morning brief</span><span data-l="de">Morgenbericht</span></b><small><span data-l="en">dashboard + WhatsApp</span><span data-l="de">Dashboard + WhatsApp</span></small></li></ol>
+            <ul class="deep-pts"><li><span data-l="en">The model never decides what is suspicious. Rules do, so every flag can be audited.</span><span data-l="de">Das Modell entscheidet nie, was verdächtig ist. Das tun Regeln, daher ist jede Warnung nachprüfbar.</span></li><li><span data-l="en">Works from the exports owners already have. No new till system needed.</span><span data-l="de">Arbeitet mit Exporten, die Inhaber schon haben. Kein neues Kassensystem nötig.</span></li><li><span data-l="en">Try the leak detector in the live lab above.</span><span data-l="de">Probieren Sie den Verlust-Detektor im Live-Labor oben aus.</span></li></ul>
+          </details>
           <div class="stack"><span>Next.js · Supabase · Python · PostgreSQL</span><a href="beta.html?app=yomyom"><span data-l="en">Join the beta →</span><span data-l="de">Zur Beta →</span></a></div>
         </div>
       </article>
@@ -397,6 +476,10 @@
           <p class="biz" data-l="de">Kunden-Renderings im eigenen Stil, aus einer Skizze, in Minuten.</p>
           <p class="tech" data-l="en">A LoRA on FLUX.1-dev trained on 784 portfolio images. ControlNet conditions on an elevation or SketchUp massing, so the geometry stays the architect’s and the model adds materials and light.</p>
           <p class="tech" data-l="de">Ein LoRA auf FLUX.1-dev, trainiert auf 784 Portfoliobildern. ControlNet richtet sich nach Ansicht oder SketchUp-Massenmodell: Die Geometrie bleibt die des Architekten, das Modell ergänzt Material und Licht.</p>
+          <details class="deep"><summary><span data-l="en">How it works</span><span data-l="de">So funktioniert es</span></summary>
+            <ol class="pipe"><li><b><span data-l="en">Elevation or massing</span><span data-l="de">Ansicht oder Massenmodell</span></b><small><span data-l="en">2D or SketchUp</span><span data-l="de">2D oder SketchUp</span></small></li><li><b><span data-l="en">ControlNet</span><span data-l="de">ControlNet</span></b><small><span data-l="en">locks the geometry</span><span data-l="de">fixiert die Geometrie</span></small></li><li><b><span data-l="en">FLUX.1-dev + LoRA</span><span data-l="de">FLUX.1-dev + LoRA</span></b><small><span data-l="en">784 studio images</span><span data-l="de">784 Studiobilder</span></small></li><li><b><span data-l="en">Render</span><span data-l="de">Rendering</span></b><small><span data-l="en">house style</span><span data-l="de">Hausstil</span></small></li><li><b><span data-l="en">Architect review</span><span data-l="de">Prüfung</span></b><small><span data-l="en">before the client sees it</span><span data-l="de">bevor der Kunde es sieht</span></small></li></ol>
+            <ul class="deep-pts"><li><span data-l="en">The geometry stays the architect’s. The model only adds materials and light.</span><span data-l="de">Die Geometrie bleibt die des Architekten. Das Modell ergänzt nur Material und Licht.</span></li><li><span data-l="en">Trained on the studio’s own work, so the style is theirs, not a stock look.</span><span data-l="de">Trainiert auf eigenen Arbeiten, daher ist der Stil der eigene, kein Standard-Look.</span></li><li><span data-l="en">Used for early client renders, not for construction drawings.</span><span data-l="de">Genutzt für frühe Kunden-Renderings, nicht für Ausführungspläne.</span></li></ul>
+          </details>
           <div class="stack"><span>FLUX.1-dev · LoRA · ControlNet</span><a href="https://studio.zeindergham.me" target="_blank" rel="noopener">Studio →</a></div>
         </div>
       </article>
@@ -410,6 +493,10 @@
           <p class="biz" data-l="de">Kein Kunde sieht je die Daten eines anderen, erzwungen von der Datenbank selbst.</p>
           <p class="tech" data-l="en">An iOS and Android family archive. Postgres Row Level Security scopes every query to the caller’s family; media goes out through short-lived signed URLs. 546 tests in 50 suites run on every commit, including cross-tenant checks.</p>
           <p class="tech" data-l="de">Ein Familienarchiv für iOS und Android. Postgres Row Level Security begrenzt jede Abfrage auf die eigene Familie; Medien laufen über kurzlebige signierte URLs. 546 Tests in 50 Suites laufen bei jedem Commit, inklusive Mandanten-Isolation.</p>
+          <details class="deep"><summary><span data-l="en">How it works</span><span data-l="de">So funktioniert es</span></summary>
+            <ol class="pipe"><li><b><span data-l="en">Sign-in</span><span data-l="de">Anmeldung</span></b><small><span data-l="en">app on iOS / Android</span><span data-l="de">App auf iOS / Android</span></small></li><li><b><span data-l="en">Token</span><span data-l="de">Token</span></b><small><span data-l="en">carries the family id</span><span data-l="de">enthält die Familien-ID</span></small></li><li><b><span data-l="en">RLS policy</span><span data-l="de">RLS-Regel</span></b><small><span data-l="en">checked inside Postgres</span><span data-l="de">geprüft in Postgres</span></small></li><li><b><span data-l="en">Rows</span><span data-l="de">Zeilen</span></b><small><span data-l="en">only your family’s</span><span data-l="de">nur die der eigenen Familie</span></small></li><li><b><span data-l="en">Media</span><span data-l="de">Medien</span></b><small><span data-l="en">signed URL, expires</span><span data-l="de">signierte URL, läuft ab</span></small></li></ol>
+            <ul class="deep-pts"><li><span data-l="en">Isolation lives in the database, so a bug in the app can’t leak another family’s data.</span><span data-l="de">Die Trennung liegt in der Datenbank. Ein Fehler in der App kann keine fremden Daten preisgeben.</span></li><li><span data-l="en">546 tests in 50 suites run on every commit, including tenant-isolation checks.</span><span data-l="de">546 Tests in 50 Suites laufen bei jedem Commit, inklusive Prüfungen der Mandantentrennung.</span></li><li><span data-l="en">The same pattern protects patient records, student files or client folders.</span><span data-l="de">Dasselbe Muster schützt Patientenakten, Schülerdaten oder Kundenordner.</span></li></ul>
+          </details>
           <div class="stack"><span>React Native · Expo · PostgreSQL RLS</span><a href="beta.html?app=luka"><span data-l="en">Join the beta →</span><span data-l="de">Zur Beta →</span></a></div>
         </div>
       </article>
@@ -423,6 +510,10 @@
           <p class="biz" data-l="de">Erkennt Geld, das im Kreis fließt, bei jeder Zahlung, in Echtzeit.</p>
           <p class="tech" data-l="en">Keeps 72 hours of payments in memory as a graph and runs a bounded 2–4 hop search per payment, with a small GNN in-process via tract-onnx. 9.2 µs p99 at 376k tx/s on a 2.6M-transaction synthetic benchmark; 1.5% precision on the public IBM AML set, reported openly.</p>
           <p class="tech" data-l="de">Hält 72 Stunden Zahlungen als Graph im Speicher und sucht pro Zahlung begrenzt über 2–4 Sprünge, mit einem kleinen GNN direkt im Prozess (tract-onnx). 9,2 µs p99 bei 376k Tx/s auf 2,6 Mio. synthetischen Transaktionen; 1,5 % Präzision auf dem öffentlichen IBM-AML-Datensatz, offen berichtet.</p>
+          <details class="deep"><summary><span data-l="en">How it works</span><span data-l="de">So funktioniert es</span></summary>
+            <ol class="pipe"><li><b><span data-l="en">Payment</span><span data-l="de">Zahlung</span></b><small><span data-l="en">JSON or pacs.008</span><span data-l="de">JSON oder pacs.008</span></small></li><li><b><span data-l="en">72 h graph</span><span data-l="de">72-h-Graph</span></b><small><span data-l="en">accounts, devices, IPs</span><span data-l="de">Konten, Geräte, IPs</span></small></li><li><b><span data-l="en">Bounded search</span><span data-l="de">Begrenzte Suche</span></b><small><span data-l="en">2–4 hops, hubs capped</span><span data-l="de">2–4 Sprünge, Hubs begrenzt</span></small></li><li><b><span data-l="en">GNN score</span><span data-l="de">GNN-Bewertung</span></b><small><span data-l="en">tract-onnx, in-process</span><span data-l="de">tract-onnx, im Prozess</span></small></li><li><b><span data-l="en">Alert</span><span data-l="de">Alarm</span></b><small><span data-l="en">graph view for analysts</span><span data-l="de">Graph-Ansicht für Analysten</span></small></li></ol>
+            <ul class="deep-pts"><li><span data-l="en">No Python sidecar: the model runs inside the Rust process, which keeps latency in microseconds.</span><span data-l="de">Kein Python-Nebenprozess: Das Modell läuft im Rust-Prozess, die Latenz bleibt im Mikrosekundenbereich.</span></li><li><span data-l="en">9.2 µs p99 at 376k tx/s, single-threaded, on 2.6M synthetic transactions.</span><span data-l="de">9,2 µs p99 bei 376k Tx/s, ein Thread, auf 2,6 Mio. synthetischen Transaktionen.</span></li><li><span data-l="en">Precision falls to 1.5% on the public IBM AML set. The report says so, and a bank rollout starts with tuning on its own data.</span><span data-l="de">Auf dem öffentlichen IBM-AML-Datensatz sinkt die Präzision auf 1,5 %. Der Bericht sagt das, und ein Bankeinsatz beginnt mit Tuning auf eigenen Daten.</span></li></ul>
+          </details>
           <div class="stack"><span>Rust · tract-onnx · ISO 20022</span><a href="https://github.com/ZeroTrustZein/hopwire" target="_blank" rel="noopener">GitHub →</a></div>
         </div>
       </article>
@@ -436,6 +527,10 @@
           <p class="biz" data-l="de">Ein Agent, der für Ihr Team Webformulare durchklickt.</p>
           <p class="tech" data-l="en">A 322M-parameter model, distilled and fine-tuned on an RTX 4070 Ti, picks the next page action in under 75 ms, with a vision-language fallback for unlabeled pages. It drives the tab through the Chrome DevTools Protocol.</p>
           <p class="tech" data-l="de">Ein Modell mit 322 Mio. Parametern, destilliert und feinabgestimmt auf einer RTX 4070 Ti, wählt die nächste Aktion in unter 75 ms, mit Vision-Language-Fallback für unbeschriftete Seiten. Es steuert den Tab über das Chrome DevTools Protocol.</p>
+          <details class="deep"><summary><span data-l="en">How it works</span><span data-l="de">So funktioniert es</span></summary>
+            <ol class="pipe"><li><b><span data-l="en">Page</span><span data-l="de">Seite</span></b><small><span data-l="en">DOM snapshot</span><span data-l="de">DOM-Snapshot</span></small></li><li><b><span data-l="en">322M model</span><span data-l="de">322M-Modell</span></b><small><span data-l="en">next action in &lt;75 ms</span><span data-l="de">nächste Aktion in &lt;75 ms</span></small></li><li><b><span data-l="en">Fallback</span><span data-l="de">Fallback</span></b><small><span data-l="en">vision model reads the screen</span><span data-l="de">Vision-Modell liest den Bildschirm</span></small></li><li><b><span data-l="en">Act</span><span data-l="de">Handeln</span></b><small><span data-l="en">click, type, scroll via CDP</span><span data-l="de">Klicken, Tippen, Scrollen per CDP</span></small></li></ol>
+            <ul class="deep-pts"><li><span data-l="en">Distilled and fine-tuned on one RTX 4070 Ti, so most steps never leave my own GPU.</span><span data-l="de">Destilliert und feinabgestimmt auf einer RTX 4070 Ti, die meisten Schritte bleiben auf meiner GPU.</span></li><li><span data-l="en">Runs as a Manifest V3 side panel in Brave and drives the open tab.</span><span data-l="de">Läuft als Manifest-V3-Seitenleiste in Brave und steuert den offenen Tab.</span></li><li><span data-l="en">The same idea fills legacy government or bank portals that have no API.</span><span data-l="de">Dieselbe Idee füllt alte Behörden- oder Bankportale ohne API aus.</span></li></ul>
+          </details>
           <div class="stack"><span>Distillation · CDP · Manifest V3</span><span data-l="en">Code private · demo above</span><span data-l="de">Code privat · Demo oben</span></div>
         </div>
       </article>
@@ -449,6 +544,10 @@
           <p class="biz" data-l="de">Ein Sprachmodell von Grund auf, damit ich ehrlich sagen kann, was KI kann und was nicht.</p>
           <p class="tech" data-l="en">Hand-written multi-head causal attention, my own byte-level BPE tokenizer and KV-cache generation. 34 tests check tokenizer round-trips, parity with PyTorch SDPA and cached vs. uncached logits.</p>
           <p class="tech" data-l="de">Handgeschriebene Multi-Head-Causal-Attention, eigener Byte-Level-BPE-Tokenizer und KV-Cache-Generierung. 34 Tests prüfen Tokenizer-Roundtrips, Gleichheit mit PyTorch SDPA und Logits mit und ohne Cache.</p>
+          <details class="deep"><summary><span data-l="en">How it works</span><span data-l="de">So funktioniert es</span></summary>
+            <ol class="pipe"><li><b><span data-l="en">Text</span><span data-l="de">Text</span></b><small><span data-l="en">raw bytes</span><span data-l="de">Rohbytes</span></small></li><li><b><span data-l="en">BPE tokenizer</span><span data-l="de">BPE-Tokenizer</span></b><small><span data-l="en">my own, byte-level</span><span data-l="de">eigener, Byte-Ebene</span></small></li><li><b><span data-l="en">Embeddings</span><span data-l="de">Embeddings</span></b><small><span data-l="en">tokens + positions</span><span data-l="de">Tokens + Positionen</span></small></li><li><b><span data-l="en">N × block</span><span data-l="de">N × Block</span></b><small><span data-l="en">causal attention + MLP</span><span data-l="de">Causal Attention + MLP</span></small></li><li><b><span data-l="en">Sampling</span><span data-l="de">Sampling</span></b><small><span data-l="en">KV cache, no recompute</span><span data-l="de">KV-Cache, ohne Neuberechnung</span></small></li></ol>
+            <ul class="deep-pts"><li><span data-l="en">34 tests: tokenizer round-trips, attention equal to PyTorch SDPA, cached and uncached logits identical, single-batch overfit.</span><span data-l="de">34 Tests: Tokenizer-Roundtrips, Attention gleich PyTorch SDPA, Logits mit und ohne Cache identisch, Overfit auf einem Batch.</span></li><li><span data-l="en">Building one from scratch is why I can tell a client plainly what a language model can and can’t do.</span><span data-l="de">Weil ich eins selbst gebaut habe, kann ich Kunden klar sagen, was ein Sprachmodell kann und was nicht.</span></li></ul><figure class="plate" style="margin:16px 0 0;--ar:3/1"><img src="assets/media/exp-picogpt-loss.webp" alt="pico-gpt training and validation loss falling over 10,000 steps, and the warmup plus cosine learning-rate schedule" loading="lazy" style="object-fit:contain;background:#fff"><figcaption class="fig"><span data-l="en">Training on Shakespeare · loss and learning rate</span><span data-l="de">Training auf Shakespeare · Loss und Lernrate</span></figcaption></figure>
+          </details>
           <div class="stack"><span>PyTorch · BPE · KV-cache</span><a href="https://github.com/ZeroTrustZein/pico-gpt" target="_blank" rel="noopener">GitHub →</a></div>
         </div>
       </article>
@@ -462,10 +561,61 @@
           <p class="biz" data-l="de">KI und Apps auf eigener Hardware, nur für Ihr Team erreichbar.</p>
           <p class="tech" data-l="en">An Ubuntu server running five services in Docker through Coolify, with no public ports: devices reach it over a Tailscale mesh with SSH keys only. It hosts Django backends and a model gateway that fails over between providers.</p>
           <p class="tech" data-l="de">Ein Ubuntu-Server mit fünf Diensten in Docker über Coolify, ohne öffentliche Ports: Geräte erreichen ihn nur über ein Tailscale-Mesh mit SSH-Schlüsseln. Er hostet Django-Backends und ein Modell-Gateway mit Ausfallumschaltung zwischen Anbietern.</p>
+          <details class="deep"><summary><span data-l="en">How it works</span><span data-l="de">So funktioniert es</span></summary>
+            <ol class="pipe"><li><b><span data-l="en">My devices</span><span data-l="de">Meine Geräte</span></b><small><span data-l="en">laptops, GPU PC</span><span data-l="de">Laptops, GPU-PC</span></small></li><li><b><span data-l="en">Tailscale mesh</span><span data-l="de">Tailscale-Mesh</span></b><small><span data-l="en">SSH keys only</span><span data-l="de">nur SSH-Schlüssel</span></small></li><li><b><span data-l="en">Coolify</span><span data-l="de">Coolify</span></b><small><span data-l="en">deploys from Git</span><span data-l="de">Deployment aus Git</span></small></li><li><b><span data-l="en">Docker services</span><span data-l="de">Docker-Dienste</span></b><small><span data-l="en">Django, gateway, telemetry</span><span data-l="de">Django, Gateway, Telemetrie</span></small></li></ol>
+            <ul class="deep-pts"><li><span data-l="en">Nothing listens on the public internet. That is the setup a clinic or ministry needs for private AI.</span><span data-l="de">Nichts ist aus dem Internet erreichbar. So ein Setup braucht eine Klinik oder Behörde für private KI.</span></li><li><span data-l="en">The model gateway speaks the OpenAI API and fails over when one provider runs out of quota.</span><span data-l="de">Das Modell-Gateway spricht die OpenAI-API und schaltet um, wenn ein Anbieter sein Kontingent erreicht.</span></li></ul>
+          </details>
           <div class="stack"><span>Ubuntu · Docker · Coolify · Tailscale</span></div>
         </div>
       </article>
     </div>
+  </div>
+</section>
+
+<!-- ============ JOURNEY ============ -->
+<section id="journey">
+  <div class="wrap">
+    <div class="section-head" data-reveal>
+      <div class="kicker"><span class="dot" style="background:#d6006c"></span><span data-l="en">The path so far</span><span data-l="de">Der Weg bisher</span></div>
+      <h2 data-l="en">From a Beirut studio to a Leipzig lab.</h2><h2 data-l="de">Vom Studio in Beirut ins Labor in Leipzig.</h2>
+    </div>
+    <div class="journey">
+      <div class="journey-line" aria-hidden="true"><i></i></div>
+      <ol><li class="stop"><span class="when"><span data-l="en">2021</span><span data-l="de">2021</span></span><span class="where">Beirut</span><strong><span data-l="en">Business IT at LAU</span><span data-l="de">Wirtschaftsinformatik an der LAU</span></strong><p data-l="en">B.Sc. at the Lebanese American University: ERP, systems analysis, digital transformation.</p><p data-l="de">B.Sc. an der Lebanese American University: ERP, Systemanalyse, digitale Transformation.</p></li><li class="stop"><span class="when"><span data-l="en">2023</span><span data-l="de">2023</span></span><span class="where">Beirut</span><strong><span data-l="en">The only IT person at Dergham Design</span><span data-l="de">Die gesamte IT bei Dergham Design</span></strong><p data-l="en">Networks, storage, website and client portal for a real-estate and contracting company, through the power crisis.</p><p data-l="de">Netzwerk, Speicher, Website und Kundenportal für ein Immobilien- und Bauunternehmen, mitten in der Stromkrise.</p></li><li class="stop"><span class="when"><span data-l="en">2023–25</span><span data-l="de">2023–25</span></span><span class="where">Beirut</span><strong><span data-l="en">Automation and AI in production</span><span data-l="de">Automatisierung und KI im Einsatz</span></strong><p data-l="en">Listings that publish themselves, AI-drafted posts and videos, and a render model trained on the studio’s own work.</p><p data-l="de">Exposés, die sich selbst veröffentlichen, KI-Posts und -Videos und ein Rendermodell, trainiert auf eigenen Arbeiten.</p></li><li class="stop"><span class="when"><span data-l="en">2025</span><span data-l="de">2025</span></span><span class="where">Beirut → Leipzig</span><strong><span data-l="en">B.Sc. done, move to Germany</span><span data-l="de">B.Sc. abgeschlossen, Umzug nach Deutschland</span></strong><p data-l="en">Finished the degree and left the studio in May to go deeper into machine learning.</p><p data-l="de">Studium abgeschlossen, im Mai das Studio verlassen, um tiefer in Machine Learning einzusteigen.</p></li><li class="stop"><span class="when"><span data-l="en">Jan 2026</span><span data-l="de">Jan. 2026</span></span><span class="where">Leipzig</span><strong><span data-l="en">M.Sc. Data Science</span><span data-l="de">M.Sc. Data Science</span></strong><p data-l="en">Lancaster University Leipzig. Alongside it: pico-gpt, Hopwire, Jev Assist, YomYom and Luka.</p><p data-l="de">Lancaster University Leipzig. Daneben: pico-gpt, Hopwire, Jev Assist, YomYom und Luka.</p></li><li class="stop"><span class="when"><span data-l="en">Oct 2026</span><span data-l="de">Okt. 2026</span></span><span class="where">Leipzig</span><strong><span data-l="en">Teaching three CS labs</span><span data-l="de">Betreuung von drei Informatik-Laboren</span></strong><p data-l="en">Graduate Lab Demonstrator for Deep Learning, Compilers and Software Testing.</p><p data-l="de">Graduate Lab Demonstrator für Deep Learning, Compilerbau und Softwaretests.</p></li><li class="stop"><span class="when"><span data-l="en">Now</span><span data-l="de">Heute</span></span><span class="where">Leipzig ⇄ Beirut</span><strong><span data-l="en">AI systems for organizations, and a Werkstudent role</span><span data-l="de">KI-Systeme für Organisationen und eine Werkstudentenstelle</span></strong><p data-l="en">Helping companies in Lebanon run on AI, and looking for 20 hours a week of ML and data work in Germany.</p><p data-l="de">Ich helfe Unternehmen im Libanon, mit KI zu arbeiten, und suche 20 Stunden pro Woche ML- und Data-Arbeit in Deutschland.</p></li><li class="stop"><span class="when"><span data-l="en">Dec 2027</span><span data-l="de">Dez. 2027</span></span><span class="where">Leipzig</span><strong><span data-l="en">M.Sc. expected</span><span data-l="de">M.Sc. voraussichtlich</span></strong></li></ol>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ROADMAP BUILDER ============ -->
+<section id="roadmap" class="rm-sec">
+  <div class="wrap">
+    <div class="section-head" data-reveal>
+      <div class="kicker"><span class="dot" style="background:#edbb00"></span><span data-l="en">Your AI roadmap in one minute</span><span data-l="de">Ihre KI-Roadmap in einer Minute</span></div>
+      <h2 data-l="en">Tell me what hurts. See the plan.</h2><h2 data-l="de">Sagen Sie mir, was hakt. Sehen Sie den Plan.</h2>
+      <p data-l="en">Pick your sector and your biggest problems. You get the four-step plan I would start from, and you can send it to me in one click.</p><p data-l="de">Wählen Sie Ihre Branche und Ihre größten Probleme. Sie sehen den Vier-Schritte-Plan, mit dem ich beginnen würde, und können ihn mir mit einem Klick schicken.</p>
+    </div>
+    <form id="rm-form" class="rm" data-reveal onsubmit="return false">
+      <fieldset><legend><span data-l="en">1 · Sector</span><span data-l="de">1 · Branche</span></legend><div class="pills" id="rm-sectors"></div></fieldset>
+      <fieldset><legend><span data-l="en">2 · What hurts most?</span><span data-l="de">2 · Was hakt am meisten?</span></legend><div class="checks" id="rm-pains"></div></fieldset>
+      <fieldset><legend><span data-l="en">3 · Team size</span><span data-l="de">3 · Teamgröße</span></legend><div class="pills">
+        <label class="pill"><input type="radio" name="rm-size" value="s" checked>1–10</label>
+        <label class="pill"><input type="radio" name="rm-size" value="m">11–50</label>
+        <label class="pill"><input type="radio" name="rm-size" value="l">50+</label></div></fieldset>
+      <div class="rm-out" id="rm-out" aria-live="polite"></div>
+      <div class="rm-foot"><a class="btn btn-ink" id="rm-send" href="#contact"><span data-l="en">Send me this plan</span><span data-l="de">Plan an mich senden</span> <span class="arrow">→</span></a>
+        <span class="small" data-l="en">Opens your email with the plan filled in. Nothing is stored on this site.</span><span class="small" data-l="de">Öffnet Ihr E-Mail-Programm mit dem ausgefüllten Plan. Diese Seite speichert nichts.</span></div>
+    </form>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section id="faq">
+  <div class="wrap faq-grid">
+    <div class="section-head" data-reveal>
+      <div class="kicker"><span class="dot"></span><span data-l="en">Questions clients ask</span><span data-l="de">Fragen von Kunden</span></div>
+      <h2 data-l="en">Straight answers.</h2><h2 data-l="de">Klare Antworten.</h2>
+    </div>
+    <div class="faq" data-reveal><details class="qa"><summary><span data-l="en">We’re still on paper. Is AI even possible for us?</span><span data-l="de">Wir arbeiten noch auf Papier. Ist KI für uns überhaupt möglich?</span></summary><p data-l="en">Yes. Dergham Design started exactly there. The first step is getting the information that matters into one place, and that step already saves time on its own.</p><p data-l="de">Ja. Dergham Design hat genau dort angefangen. Der erste Schritt ist, die wichtigen Informationen an einen Ort zu bringen, und schon das spart Zeit.</p></details><details class="qa"><summary><span data-l="en">Will our data leave the country?</span><span data-l="de">Verlassen unsere Daten das Land?</span></summary><p data-l="en">Only if you agree. For sensitive data I run models on your own hardware with no public access, the way my own server works. Where a cloud service is fine, I tell you which one and why.</p><p data-l="de">Nur mit Ihrer Zustimmung. Für sensible Daten betreibe ich Modelle auf Ihrer eigenen Hardware ohne öffentlichen Zugang, so wie mein eigener Server läuft. Wo ein Cloud-Dienst passt, sage ich Ihnen welcher und warum.</p></details><details class="qa"><summary><span data-l="en">What happens when the power goes out?</span><span data-l="de">Was passiert bei einem Stromausfall?</span></summary><p data-l="en">I design for it from day one: battery-backed storage and network, and tools that keep working offline and sync when power returns.</p><p data-l="de">Das plane ich von Anfang an ein: batteriegepufferter Speicher und Netz sowie Werkzeuge, die offline weiterlaufen und später synchronisieren.</p></details><details class="qa"><summary><span data-l="en">Do we have to replace our current systems?</span><span data-l="de">Müssen wir unsere Systeme ersetzen?</span></summary><p data-l="en">Usually not. I start from what you already use, such as till exports, Excel files or your website, and connect AI to it.</p><p data-l="de">Meist nicht. Ich beginne mit dem, was Sie schon nutzen, etwa Kassenexporte, Excel-Dateien oder Ihre Website, und verbinde KI damit.</p></details><details class="qa"><summary><span data-l="en">Will AI replace my staff?</span><span data-l="de">Ersetzt KI meine Mitarbeitenden?</span></summary><p data-l="en">It takes the repetitive work off them. People stay in charge: teachers sign off feedback, owners decide on flagged shifts, architects approve renders. I train your team to use it well.</p><p data-l="de">Sie nimmt ihnen Routinearbeit ab. Entscheidungen bleiben bei Menschen: Lehrkräfte geben Feedback frei, Inhaber entscheiden über Warnungen, Architekten prüfen Renderings. Ich schule Ihr Team im Umgang damit.</p></details><details class="qa"><summary><span data-l="en">You’re in Leipzig. How do we work together?</span><span data-l="de">Sie sind in Leipzig. Wie arbeiten wir zusammen?</span></summary><p data-l="en">Remotely, in Arabic, English, French or German: calls, shared screens and secure access to your systems.</p><p data-l="de">Remote, auf Arabisch, Englisch, Französisch oder Deutsch: Gespräche, geteilte Bildschirme und sicherer Zugang zu Ihren Systemen.</p></details><details class="qa"><summary><span data-l="en">What does it cost?</span><span data-l="de">Was kostet das?</span></summary><p data-l="en">The first 30-minute call is free. After the audit you get a written scope and price for the quick win before any work starts.</p><p data-l="de">Das erste 30-Minuten-Gespräch ist kostenlos. Nach dem Audit erhalten Sie Umfang und Preis für den ersten Schritt schriftlich, bevor die Arbeit beginnt.</p></details></div>
   </div>
 </section>
 
@@ -562,5 +712,6 @@ window.__FLOWS = {
 };
 </script>
 <script src="js/site.js"></script>
+<script src="js/lab.js"></script>
 </body>
 </html>
