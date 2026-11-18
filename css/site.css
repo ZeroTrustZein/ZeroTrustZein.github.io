@@ -260,7 +260,7 @@ a:hover .arrow { transform: translateX(4px); }
 .contact { background: var(--ink); color: var(--paper); }
 .contact .section-head p { color: #c9c5c2; }
 .contact .kicker { color: #c9c5c2; }
-.channels { display: grid; grid-template-columns: minmax(0, 1.5fr) repeat(3, minmax(0, 1fr)); gap: 1px; background: #444141; border: 1px solid #444141; }
+.channels { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1px; background: #444141; border: 1px solid #444141; }
 .channel { background: var(--ink); padding: 22px; text-decoration: none; transition: background .2s; display: block; }
 .channel:hover { background: #2d2b2b; }
 .channel small { font-family: var(--mono); font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: #9b9797; display: block; margin-bottom: 8px; }
