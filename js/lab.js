@@ -251,11 +251,11 @@
         return;
       }
       var first = picked[0];
-      var auditLen = size === 's' ? ['1 week', '1 Woche'] : size === 'm' ? ['1–2 weeks', '1–2 Wochen'] : ['2–3 weeks', '2–3 Wochen'];
+      var auditLen = size === 's' ? ['1 week', '1 Woche'] : size === 'm' ? ['1-2 weeks', '1-2 Wochen'] : ['2-3 weeks', '2-3 Wochen'];
       var cols = [
         { n: '01', h: ['Audit', 'Audit'], w: auditLen, items: [['Map how ' + picked.length + ' problem' + (picked.length > 1 ? 's' : '') + ' show up in your daily work', 'Erfassen, wie sich ' + picked.length + ' Problem' + (picked.length > 1 ? 'e' : '') + ' im Alltag zeigen'], ['Check what data you already have', 'Prüfen, welche Daten schon vorhanden sind'], ['Ranked list of fixes with effort and impact', 'Priorisierte Liste mit Aufwand und Nutzen']] },
         { n: '02', h: ['Quick win', 'Schneller Erfolg'], w: ['first 30 days', 'erste 30 Tage'], items: [first.q, ['Measure before and after', 'Vorher und nachher messen']] },
-        { n: '03', h: ['Core systems', 'Kernsysteme'], w: ['months 2–6', 'Monate 2–6'], items: picked.slice(1).map(function (p) { return p.q; }).concat(picked.map(function (p) { return p.c; })).slice(0, 4) },
+        { n: '03', h: ['Core systems', 'Kernsysteme'], w: ['months 2-6', 'Monate 2-6'], items: picked.slice(1).map(function (p) { return p.q; }).concat(picked.map(function (p) { return p.c; })).slice(0, 4) },
         { n: '04', h: ['Handover', 'Übergabe'], w: ['ongoing', 'laufend'], items: [['Staff training in your language', 'Schulung in Ihrer Sprache'], ['Documentation, code and data are yours', 'Dokumentation, Code und Daten gehören Ihnen']] }
       ];
       out.innerHTML = cols.map(function (c, i) {
