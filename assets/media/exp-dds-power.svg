@@ -24,7 +24,7 @@ text{font-family:ui-monospace,Menlo,Consolas,monospace;fill:#201e1d}
 <g transform="translate(60, 110)">
   <rect class="nd" x="0" y="0" width="180" height="110" rx="4"/>
   <text x="90" y="32" class="lb" text-anchor="middle">STATE GRID</text>
-  <text x="90" y="54" class="sm" text-anchor="middle">2–4h / DAY</text>
+  <text x="90" y="54" class="sm" text-anchor="middle">2-4h / DAY</text>
   <path class="grid-fail" stroke-width="2.5" fill="none" d="M30 82 Q45 62 60 82 T90 82 T120 82 T150 82"/>
   <text x="90" y="140" class="sm" text-anchor="middle" style="fill:#d6006c">OUTAGE ARBITRAGE</text>
 </g>
